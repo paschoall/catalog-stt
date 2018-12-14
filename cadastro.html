@@ -43,7 +43,7 @@
 				<form class="col s12" method="post" name="new_user" action="cadastro.php">
 					<div class="row" style=" margin-top: -10px;">
 						<div class="input-field col s5"> 
-							<input type="text" id="nome" name="nome" class="obrigatorio"> </input> 
+							<input type="text" id="nome" name="nome" class="obrigatorio" maxlength="45"> </input> 
 							<label for="nome"> Nome *</label>
 						</div>
 						<div class="input-field col s3"> 
@@ -60,22 +60,22 @@
 						</div>
 
 						<div class="input-field col s5" style=" margin-top: -10px;"> 
-							<input type="text" id="cidade" name="cidade" class="obrigatorio"> </input> 
+							<input type="text" id="cidade" name="cidade" class="obrigatorio" maxlength="45"> </input> 
 							<label for="cidade"> Cidade *</label>
 						</div>
 						<div class="input-field col s1" style=" margin-top: -10px;"> 
-							<input type="text" id="uf" name="uf" class="obrigatorio"> </input> 
+							<input type="text" id="uf" name="uf" class="obrigatorio" maxlength="45"> </input> 
 							<label for="uf"> UF *</label>
 						</div>
 					</div>
 					<div class="row">
 						<div class="input-field col s4" style=" margin-top: -10px;"> 
-							<input type="text" id="rua" name="rua" class="obrigatorio"> </input> 
+							<input type="text" id="rua" name="rua" class="obrigatorio" maxlength="120"> </input> 
 							<label for="rua"> Rua *</label>
 						</div>
 
 						<div class="input-field col s4" style=" margin-top: -10px;"> 
-							<input type="text" id="bairro" name="bairro" class="obrigatorio"> </input> 
+							<input type="text" id="bairro" name="bairro" class="obrigatorio" maxlength="100"> </input> 
 							<label for="bairro"> Bairro *</label>
 						</div>
 					</div>
@@ -87,14 +87,14 @@
 						</div>
 
 						<div class="input-field col s7" style=" margin-top: -10px;"> 
-							<input type="text" id="complemento" name="complemento"> </input> 
+							<input type="text" id="complemento" name="complemento" maxlength="100"> </input> 
 							<label for="complemento"> Complemento</label>
 						</div>
 					</div>
 
 					<div class="row">
 						<div class="input-field col s8" style=" margin-top: 10px;"> 
-							<input type="email" id="email" name="email" class="validate obrigatorio"> </input> 
+							<input type="email" id="email" name="email" class="validate obrigatorio" maxlength="45"> </input> 
 							<label for="email"> Email *</label>
 							<span class="helper-text" data-error="Email inválido" data-success=""></span>
 						</div>
@@ -102,12 +102,12 @@
 
 					<div class="row">
 						<div class="input-field col s3" style=" margin-top: -10px;"> 
-							<input autocomplete="off" type="password" id="senha" name="senha" class="obrigatorio validate"> </input> 
+							<input autocomplete="off" type="password" id="senha" name="senha" class="obrigatorio validate" maxlength="255"> </input> 
 							<label for="senha"> Senha *</label>
 							<span class="helper-text" data-error="Senha inválida" data-success=""></span>
 						</div>
 						<div class="input-field col s3" style=" margin-top: -10px;"> 
-							<input autocomplete="off" type="password" id="confirmar_senha" name="confirmar_senha" class="obrigatorio"> </input> 
+							<input autocomplete="off" type="password" id="confirmar_senha" name="confirmar_senha" class="obrigatorio" maxlength="255"> </input> 
 							<label for="confirmar_senha"> Confirmar Senha *</label>
 						</div>
 
