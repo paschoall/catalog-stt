@@ -1,5 +1,8 @@
 <?php
-
+/*
+    ! ATENCAO: Esse script nao esta seguro contra ataques de SQL injection e XSS !
+    Eh preciso corrigir depois
+*/
 
 /* Retirado de: https://stackoverflow.com/questions/4356289/php-random-string-generator*/
 function generateRandomPassword($length = 15) {
@@ -32,6 +35,9 @@ $nome = $_POST['nome'];
 if(isset($_POST['senha'])) $senha = $_POST['senha'];
 else $senha = generateRandomString();
 if(isset($_POST['cep'])) $cep = $_POST['cep'];
+if(isset($_POST['data_nascimento'])) {
+    $data_nasc = "STR_TO_DATE('" . $_POST['data_nascimento'] . "', '%d/%m/%Y')";
+}
 if(isset($_POST['rua'])) $rua = $_POST['rua'];
 if(isset($_POST['bairro'])) $bairro = $_POST['bairro'];
 if(isset($_POST['numero'])) $numero = $_POST['numero'];
@@ -39,11 +45,14 @@ if(isset($_POST['cidade'])) $cidade = $_POST['cidade'];
 if(isset($_POST['uf'])) $uf = $_POST['uf'];
 if(isset($_POST['complemento'])) $complemento = $_POST['complemento'];
 
+
+
 if(isset($_POST['senha'])) { // cadastro realizado normalmente
-    $sql = "insert into usuario(email, nome, senha, cep, nome_rua, bairro, numero, cidade, estado, complemento) values(" .
+    $sql = "insert into usuario(email, nome, senha, data_nasc, cep, nome_rua, bairro, numero, cidade, estado, complemento) values(" .
         "'". $email . "'" . ",".
         "'". $nome . "'" . ",".
         "'". $senha . "'" . ",".
+        $data_nasc . "," . //numero nao precisa por entre aspas
         "'". $cep . "'" . ",".
         "'". $rua . "'" . ",".
         "'". $bairro . "'" . ",".

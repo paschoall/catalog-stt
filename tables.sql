@@ -3,6 +3,7 @@ create table usuario(
     email varchar(45) not null,
     nome varchar(45) not null,
     senha varchar(255) not null,
+    data_nasc date,
     data_reg datetime not null default current_timestamp,
     cep varchar(9),
     nome_rua varchar(120),
