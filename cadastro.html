@@ -17,24 +17,40 @@
 		<style type="text/css">
 			body {
 				/* Inserir fonte*/
-				background-color: #FFFF;
+				display: flex;
+			    min-height: 100vh;
+				flex-direction: column;
+			}
+
+			main {
+			    flex: 1 0 auto;
+			    text-align: justify;
+			}
+
+			.vertical-divider {
+				min-width: 10px;
+				border-left: 1px solid white; //#00acc1;
 			}
 		</style>
 	</head>
 	<body>
 
 		<!-- O logo e os links da navbar deverao ser decididos depois -->
-		<nav class="cyan">
-			<div class="nav-wrapper container">
-				<a href="index.html" class="brand-logo">Catalog-STT</a>
-				<ul id="nav-mobile" class="right hide-on-med-and-down">
-					<li><a >Link 1</a></li>
-					<li><a >Link 2</a></li>
-					<li><a >Link 3</a></li>
-				</ul>
-			</div>
-		</nav>
+		<header>
+			<nav class="cyan">
+				<div class="nav-wrapper container">
+					<a href="index.html" class="brand-logo">Catalog-STT</a>
+					<ul id="nav-mobile" class="right hide-on-med-and-down">
+						<li><a href="pesquisa.html"><i class="material-icons right"> search </i> Consultar</a></li>
+						<li><div class="vertical-divider">&nbsp; </div>
+						<li><a href="login.html">Entrar</a></li>
+						<li><a href="cadastro.html">Cadastrar</a></li>
+					</ul>
+				</div>
+			</nav>
+		</header>
 
+		<main>
 		<div class="container">
 			<div class="section" style="margin-top: 20px">
 				<h5> Cadastrar </h5>
@@ -122,6 +138,16 @@
 			</div>
 
 		</div>
+		</main>
+
+		<footer class="page-footer cyan darken-4" style="max-height: 50px;">
+			<div class="footer-copyright valign-wrapper" style="margin-top: -20px">
+				<div class="container">
+					© 2018 Copyright
+					<a class="grey-text text-lighten-4 right" href="#!">Sobre</a>
+				</div>
+			</div>
+		</footer>	
 
 
 		<!--  Scripts-->

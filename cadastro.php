@@ -15,18 +15,21 @@ function generateRandomPassword($length = 15) {
     return $randomString;
 }
 
-/* Retirado de https://www.w3schools.com/php/php_mysql_select.asp */
+/* Retirado de https://websitebeaver.com/prepared-statements-in-php-mysqli-to-prevent-sql-injection */
 
 $servername = "localhost";
 $username = "lucas";
 $password = "lucas123";
 $dbname = "Catalog_STT";
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+try {
+    $conn = new mysqli($servername, $username, $password, $dbname); // Create connection
+    $conn->set_charset("utf8mb4");
+} catch(Exception $e) {
+  error_log($e->getMessage());
+  exit('Error connecting to database'); //Should be a message a typical user could understand
 }
 
 // Get POST variables
@@ -46,31 +49,24 @@ if(isset($_POST['cidade'])) $cidade = $_POST['cidade'];
 if(isset($_POST['uf'])) $uf = $_POST['uf'];
 if(isset($_POST['complemento'])) $complemento = $_POST['complemento'];
 
+
 if(isset($_POST['senha'])) { // cadastro realizado normalmente
-    $sql = "insert into usuario(email, nome, senha, data_nasc, cep, nome_rua, bairro, numero, cidade, estado, complemento) values(" .
-        "'". $email . "'" . ",".
-        "'". $nome . "'" . ",".
-        "'". $senha . "'" . ",".
-        $data_nasc . "," . //numero nao precisa por entre aspas
-        "'". $cep . "'" . ",".
-        "'". $rua . "'" . ",".
-        "'". $bairro . "'" . ",".
-        $numero . "," . //numero nao precisa por entre aspas
-        "'". $cidade . "'" . "," .
-        "'". $uf . "'" . "," .
-        "'". $complemento . "'" .
-        ")";
+    $statement = $conn->prepare(
+        "insert into usuario(email, nome, senha, data_nasc, cep, nome_rua, bairro, numero, cidade, estado, complemento)"
+        ."values(?, ?, ?, STR_TO_DATE(?, '%d/%m/%Y'), ?, ?, ?, ?, ?, ?, ?);"
+    );
+    $statement->bind_param("sssssssisss", $email, $nome, $senha, $data_nasc, $cep, $rua, $bairro, $numero, $cidade, $uf, $complemento);
+
 } else { // pre-cadastro eh realizado (somente nome email e senha)
-    $sql = "insert into usuario(email, nome, senha) values(" .
-        "'". $email . "'" . ",".
-        "'". $nome . "'" . ",".
-        "'". $senha . "'" .
-        ")";
+    $statement = $conn->prepare("insert into usuario(email, nome, senha) values(?, ?, ?);");
+    $statement->bind_param("sss", $email, $nome, $senha);
 }
 
-$result = $conn->query($sql);
-if($result == null) {
-    die($conn->error);
+try {
+    $statement->execute();
+    $statement->close();
+} catch(Exception $e) {
+    if($conn->errno === 1062) echo 'Duplicate entry';
 }
 
 echo "Cadastro realizado com sucesso";
