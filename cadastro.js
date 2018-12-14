@@ -201,8 +201,12 @@ $(function() {
 	});
 
 	/* Submete o form */
-	$("form").submit(function(event) {
+	$("#form").submit(function(event) {
 		if(!validarCampos()) return false;
-		return true;
+		$.post("cadastro.php", $("#form").serialize()).done(function(data) {
+			if(data.includes("Duplicate entry")) alert("Este email já existe");
+			else alert(data);
+		});
+		return false;
 	});
 });
