@@ -1,44 +1,113 @@
 <?php
-/*
-    ! ATENCAO: Esse script nao esta seguro contra ataques de SQL injection e XSS !
-    Eh preciso corrigir depois
-*/
+	session_start(); // cria o hash do browser do usuario no servidor ou entao recupera se existente
+?>
 
-/* Retirado de https://www.w3schools.com/php/php_mysql_select.asp */
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<title> Catalog-STT </title>
 
-$hostname = "localhost";
-$dbname = "Catalog_STT";
-$user = "lucas";
-$password = "lucas123";
+		<!-- CSS Materialize -->
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+		<link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 
-mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
-try {
-    $conn = new mysqli($hostname, $user, $password, $dbname);
-    $conn->set_charset('utf8mb4');
-} catch(Exception $e) {
-    error_log($e->getMessage());
-    die('Nao foi possivel conectar ao banco');
-}
+		<!-- Jquery UI -->
+		<link rel="stylesheet" href="jquery/jquery-ui.min.css">
+		
 
-$email = $_POST['email'];
-$senha = $_POST['senha'];
+		<style type="text/css">
+			body {
+				/* Inserir fonte*/
+				display: flex;
+			    min-height: 100vh;
+				flex-direction: column;
+			}
 
-$statement = $conn->prepare("select nome from usuario where email = ? and senha = ?");
-$statement->bind_param("ss", $email, $senha);
 
-try {
-    $statement->execute();
-    $result = $statement->get_result();
-    if($result->num_rows === 0) die('Nenhuma linha');
-    while($row = $result->fetch_assoc()) {
-        echo $row['nome'];
-    }
-} catch(Exception $e) {
-    error_log($e->getMessage());
-    die('Houve um erro');
-}
+			main {
+			    flex: 1 0 auto;
+			    text-align: justify;
+			}
 
-$statement->close();
-$conn->close();
+			.vertical-divider {
+				min-width: 10px;
+				border-left: 1px solid white; //#00acc1;
+			}
+		</style>
+	</head>
+	<body>
 
-?> 
+		<!-- O logo e os links da navbar deverao ser decididos depois -->
+		<header>
+			<nav class="cyan">
+				<div class="nav-wrapper container">
+					<a href="index.html" class="brand-logo">Catalog-STT</a>
+					<ul id="nav-mobile" class="right hide-on-med-and-down">
+						<li><a href="pesquisa.html"><i class="material-icons right"> search </i> Consultar</a></li>
+						<li><div class="vertical-divider">&nbsp; </div>
+						<li><a href="login.php">Entrar</a></li>
+						<li><a href="cadastro.php">Cadastrar</a></li>
+					</ul>
+				</div>
+			</nav>
+		</header>
+
+		<main>
+		<div class="container valign-wrapper" style="min-height: 80vh;">
+			<div class="row" style="width: 100%;">
+				<div class = "col s6 offset-s3">
+					<div class="card" style="width: 100%;">
+						<div class="card-content">
+							<div class="container">
+								<h5 class="center-align"> Entrar </h5>
+								<form id="login" method="post">
+								<div class="row valign-wrapper" style="margin-bottom: -10px;">
+									<div class="col s2 right-align"> Email: </div>
+									<div class="col s8">
+										<div class="input-field inline" style="margin-left: 20px;"> <input id="email" type="email" name="email"> </div>
+									</div>
+									<div class="col s2"></div>
+								</div>
+
+								<div class="row valign-wrapper" style="margin-top: -20px">
+									<div class="col s2 right-align"> Senha: </div>
+									<div class="col s8">
+										<div class="input-field inline" style="margin-left: 20px;"> <input id="senha" type="password" name="senha"> </div>
+									</div>
+									<div class="col s2">
+										<a class="btn-floating btn-medium green" onclick="login()"><i class="material-icons" style="font-size: 20px">arrow_forward</i></a>
+									</div>
+								</div>
+								<input type="submit" hidden="true">
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		</main>
+
+		<footer class="page-footer cyan darken-4" style="max-height: 50px;">
+			<div class="footer-copyright valign-wrapper" style="margin-top: -20px">
+				<div class="container">
+					© 2018 Copyright
+					<a class="grey-text text-lighten-4 right" href="#!">Sobre</a>
+				</div>
+			</div>
+		</footer>	
+
+
+		<!--  Scripts-->
+		<script src="jquery/external/jquery/jquery.js"></script>
+		<script src="jquery/jquery-ui.min.js"></script>
+		<script src="js/materialize.js"></script>
+		<script src="js/init.js"></script>
+
+		<script type="text/javascript" src="login.js"> </script>
+	</body>
+</html>

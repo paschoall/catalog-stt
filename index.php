@@ -1,3 +1,7 @@
+<?php
+	session_start(); // cria o hash do browser do usuario no servidor ou entao recupera se existente
+?>
+
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -47,8 +51,8 @@
 					<ul id="nav-mobile" class="right hide-on-med-and-down">
 						<li><a href="pesquisa.html"><i class="material-icons right"> search </i> Consultar</a></li>
 						<li><div class="vertical-divider">&nbsp; </div>
-						<li><a href="login.html">Entrar</a></li>
-						<li><a href="cadastro.html">Cadastrar</a></li>
+						<li><a href="login.php">Entrar</a></li>
+						<li><a href="cadastro.php">Cadastrar</a></li>
 					</ul>
 				</div>
 			</nav>
@@ -62,7 +66,7 @@
 				<div class="divider"> </div>
 				<div class="section">
 					<p> O Catalog-STT - acrônimo para <i> A Catalog of Open Educational Resources to Support Software Testing Teaching </i> - é um sistema criado por um grupo de pesquisa do ICMC-USP com o objetivo de facilitar o registro e a consulta de recursos educacionais abertos no domínio de teste de software. Se você deseja explorar ou procurar um material didático - seja vídeo, apostila ou qualquer tipo de recurso educacional, faça uma <a href="pesquisa.html"> consulta. </a> </p>
-					<p> Se você é um professor ou autor de algum material e deseja publicá-lo, <a href="login.html"> entre</a> ou <a href="cadastro.html"> cadastre-se.</a>
+					<p> Se você é um professor ou autor de algum material e deseja publicá-lo, <a href="login.php"> entre</a> ou <a href="cadastro.php"> cadastre-se.</a>
 				</div>
 
 			</div>
