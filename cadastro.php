@@ -43,12 +43,14 @@
 		<header>
 			<nav class="cyan">
 				<div class="nav-wrapper container">
-					<a href="index.html" class="brand-logo">Catalog-STT</a>
+					<a href="index.php" class="brand-logo">Catalog-STT</a>
 					<ul id="nav-mobile" class="right hide-on-med-and-down">
 						<li><a href="pesquisa.html"><i class="material-icons right"> search </i> Consultar</a></li>
 						<li><div class="vertical-divider">&nbsp; </div>
-						<li><a href="login.php">Entrar</a></li>
-						<li><a href="cadastro.php">Cadastrar</a></li>
+						<li id="bem_vindo"> </li>
+						<li id="perfil"> <a href="perfil.php"> <i class="material-icons">person</i> </a> </li>
+						<li id='entrar'><a href="login.php" >Entrar</a></li>
+						<li id='cadastrar'><a href="cadastro.php">Cadastrar</a></li>
 					</ul>
 				</div>
 			</nav>
@@ -160,6 +162,7 @@
 		<script src="js/materialize.js"></script>
 		<script src="js/init.js"></script>
 
+		<?php include('export_session.php') ?> <!-- Incluir esse arquivo antes do outro, senao a variavel sessao nao estaria iniciada -->
 		<script type="text/javascript" src="cadastro.js"> </script>
 	</body>
 </html>
