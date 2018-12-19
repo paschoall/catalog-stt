@@ -18,15 +18,12 @@ function generateRandomPassword($length = 15) {
 
 /* Retirado de https://websitebeaver.com/prepared-statements-in-php-mysqli-to-prevent-sql-injection */
 
-$servername = "localhost";
-$username = "lucas";
-$password = "lucas123";
-$dbname = "Catalog_STT";
+include('database_credentials.php');
 
 
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 try {
-    $conn = new mysqli($servername, $username, $password, $dbname); // Create connection
+    $conn = new mysqli($hostname, $username, $password, $database); // Create connection
     $conn->set_charset("utf8mb4");
 } catch(Exception $e) {
   error_log($e->getMessage());

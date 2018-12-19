@@ -107,11 +107,14 @@
 								<div class="collection-item">
 									<h6 style="color: black;"> Mudar senha </h6>
 									<div class="row">
-										<div class="col s5"> <input type="password" name="anterior" id="anterior"><label for="anterior"> Senha anterior </label></div>
-										<div class="col s5"> <input type="password" name="nova" id="nova"><label for="nova"> Senha nova </label></div>
+										<form id="mudar_senha" method="post">
+											<input type="email" name="email" value="<?php echo $_SESSION["email"];?>" hidden>
+											<div class="col s5"> <input type="password" name="anterior" id="anterior"><label for="anterior"> Senha anterior </label></div>
+											<div class="col s5"> <input type="password" name="nova" id="nova"><label for="nova"> Senha nova </label></div>
+										</form>
 										
 										
-										<div class="col s2"> <button class="btn waves-effect waves-light green lighten-3" type="submit">Alterar</button></div>
+										<div class="col s2"> <button id="mudar_senha_btn" class="btn waves-effect waves-light green lighten-3" type="submit">Alterar</button></div>
 									</div>
 								</div>
 							</div>

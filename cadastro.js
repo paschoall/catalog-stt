@@ -133,7 +133,18 @@ $(function() {
 	        	$("#cep").removeClass("valid");
 	            //cep é inválido.
 	            limpa_formulario_cep();
-	            alert("Formato de CEP inválido.");
+	            aler$("#senha").blur(function(){
+		var senha = $("#senha").val();
+		console.log("aqui");
+
+		if(!validarSenha(senha)) {
+			$("#senha").removeClass("valid");
+			$("#senha").addClass("invalid");
+		} else {
+			$("#senha").removeClass("invalid");
+			$("#senha").addClass("valid");
+		}
+	});t("Formato de CEP inválido.");
 	        }
 	    } //end if.
 	    else {

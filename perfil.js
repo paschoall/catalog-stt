@@ -25,4 +25,16 @@ $(function() {
 	$("#complemento").html(window.sessao["complemento"]);
 	$("#cidade").html(window.sessao["cidade"]);
 	$("#estado").html(window.sessao["estado"]);
+
+	$("#mudar_senha_btn").click(function(event) {
+		$("#mudar_senha").submit();
+	});
+	$("#mudar_senha").submit(function(event) {
+		console.log("Aqui");	
+		$.post("mudar_senha-db.php", $("#mudar_senha").serialize()).done(function(data) {
+			alert(data);
+		});
+
+		return false;
+	});
 });

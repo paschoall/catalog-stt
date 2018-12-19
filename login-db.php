@@ -7,14 +7,11 @@ session_start(); // cria o hash do browser do usuario no servidor ou entao recup
 
 /* Retirado de https://www.w3schools.com/php/php_mysql_select.asp */
 
-$hostname = "localhost";
-$dbname = "Catalog_STT";
-$user = "lucas";
-$password = "lucas123";
+include('database_credentials.php')
 
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 try {
-    $conn = new mysqli($hostname, $user, $password, $dbname);
+    $conn = new mysqli($hostname, $username, $password, $database);
     $conn->set_charset('utf8mb4');
 } catch(Exception $e) {
     error_log($e->getMessage());
