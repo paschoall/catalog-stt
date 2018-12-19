@@ -113,7 +113,7 @@
 							</div>
 						</div>
 						<div class="divider"></div>
-						<btn 
+						<a class=" btn-small grey lighten-4 right" style="color: #333333; margin-top: 20px;">Excluir conta</a>
 
 					</div>
 				</div>
