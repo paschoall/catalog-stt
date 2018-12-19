@@ -112,7 +112,8 @@
 								</div>
 							</div>
 						</div>
-						<div class="divider""></div>
+						<div class="divider"></div>
+						<btn 
 
 					</div>
 				</div>
