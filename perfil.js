@@ -1,3 +1,8 @@
+/* Valida senha: pelo menos 6 caracteres, com pelo menos 1 digito, 1 letra minuscula e 1 maiuscula */
+function validarSenha(senha) {
+	return senha.length >= 6 && senha.match(/[0-9]/g) && senha.match(/[a-z]/g) && senha.match(/[A-Z]/g);
+}
+
 $(function() {
 	if(window.sessao == null) {
 		$("#bem_vindo").hide();
@@ -9,7 +14,7 @@ $(function() {
 	}
 
 	// Muda a cor dos elementos pra cor tema da pagina 
-	$(".collection-item").css("color", "#00bcd4");
+	$(".sidebar").css("color", "#00bcd4");
 	$(".active").css("color", "white");
 	$(".active").css("background-color", "#00bcd4");
 
@@ -26,13 +31,29 @@ $(function() {
 	$("#cidade").html(window.sessao["cidade"]);
 	$("#estado").html(window.sessao["estado"]);
 
-	$("#mudar_senha_btn").click(function(event) {
-		$("#mudar_senha").submit();
-	});
+	var validacao = function(e){
+		var senha = $("#nova").val();
+		if(!validarSenha(senha)) {
+			console.log("Aqui");
+			$("#nova").removeClass("valid");
+			$("#nova").addClass("invalid");
+		} else {
+			$("#nova").removeClass("invalid");
+			$("#nova").addClass("valid");
+		}
+	}
+	$("#nova").keyup(validacao);
+	$("#nova").blur(validacao);
+
 	$("#mudar_senha").submit(function(event) {
-		console.log("Aqui");	
+		if(validarSenha($("#nova").val()) == false) { // If redundante para segurança
+			alert("Senha inválida");
+			return false;
+		}
+		$("#mudar_senha_btn").attr("disabled", true);
 		$.post("mudar_senha-db.php", $("#mudar_senha").serialize()).done(function(data) {
 			alert(data);
+			$("#mudar_senha_btn").attr("disabled", false);
 		});
 
 		return false;

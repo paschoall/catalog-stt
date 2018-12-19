@@ -69,15 +69,15 @@
 		<main>
 			<div class="container">
 				<div class="row" style="margin-top: 50px">
-					<div class="col s2" id="sidebar">
+					<div class="col s2">
 						<div class="collection">
-							<a href="perfil.php" class="collection-item active">
+							<a href="perfil.php" class="sidebar collection-item active">
 								Meus Dados
 							</a>
-							<a href="recursos.php" class="collection-item">
+							<a href="recursos.php" class="sidebar collection-item">
 								Meus Recursos
 							</a>
-							<a href="logout.php" class="collection-item">
+							<a href="logout.php" class="sidebar collection-item">
 								Sair <i id="sair_icon" class="material-icons right"> vertical_align_bottom </i>
 							</a>
 						</div>
@@ -105,16 +105,21 @@
 						<div class="section">
 							<div class="collection" style="width: 100%;">
 								<div class="collection-item">
-									<h6 style="color: black;"> Mudar senha </h6>
+									<h6> Mudar senha </h6>
 									<div class="row">
 										<form id="mudar_senha" method="post">
 											<input type="email" name="email" value="<?php echo $_SESSION["email"];?>" hidden>
-											<div class="col s5"> <input type="password" name="anterior" id="anterior"><label for="anterior"> Senha anterior </label></div>
-											<div class="col s5"> <input type="password" name="nova" id="nova"><label for="nova"> Senha nova </label></div>
+											<div class="col s5"> <input type="password" name="anterior" id="anterior" maxlength="255"><label for="anterior"> Senha anterior </label></div>
+											<div class="col s5"> 
+												<input type="password" name="nova" id="nova" class="validate" maxlength="255">
+												<label for="nova"> Senha nova </label>
+												<p> A senha deve conter pelo menos 6 caracteres compostos por letras maiúsculas e minúsculas e pelo menos 1 dígito.</p>
+											</div>
+										
+										
+											
+											<div class="col s2"> <button id="mudar_senha_btn" class="btn waves-effect waves-light green lighten-3" type="submit" >Alterar</button></div>
 										</form>
-										
-										
-										<div class="col s2"> <button id="mudar_senha_btn" class="btn waves-effect waves-light green lighten-3" type="submit">Alterar</button></div>
 									</div>
 								</div>
 							</div>
