@@ -91,6 +91,7 @@
 				</div>
 			</div>
 
+
 		</div>
 		</main>
 
@@ -111,6 +112,9 @@
 		<script src="js/init.js"></script>
 
 		<?php include('export_session.php') ?> <!-- Incluir esse arquivo antes do outro, senao a variavel sessao nao estaria iniciada -->
+		<script type="text/javascript"> 
+			window.redirect = <?php if(isset($_GET["redirect"])) {echo "'" . $_GET["redirect"] ."'";} else {echo "null";} ?> 
+		</script>
 		<script type="text/javascript" src="login.js"> </script>
 
 	</body>

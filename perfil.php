@@ -1,5 +1,9 @@
 <?php
 	session_start(); // cria o hash do browser do usuario no servidor ou entao recupera se existente
+
+	if(isset($_SESSION['email']) == false) {
+		header('location: login.php?redirect=' . $_SERVER['REQUEST_URI']);
+	}
 ?>
 
 <!DOCTYPE HTML>
@@ -113,7 +117,7 @@
 							</div>
 						</div>
 						<div class="divider"></div>
-						<a class=" btn-small grey lighten-4 right" style="color: #333333; margin-top: 20px;">Excluir conta</a>
+						<a class=" waves-effect waves-teal btn-flat right" style="font-size: 10pt; color: #333333; margin-top: 20px;">Excluir conta</a>
 
 					</div>
 				</div>

@@ -14,10 +14,12 @@ $(function() {
 	}
 
 	$("#login").submit(function(evt) {
-		console.log("Here");
 		$.post("login-db.php", $("#login").serialize()).done(function(data) {
 			if(data == 'Nenhuma linha') alert("Email ou senha incorretos");
-			else window.location.replace("index.php");
+			else {
+				if(window.redirect == null) window.location.replace("index.php");
+				else window.location.replace(window.redirect);
+			}
 		});
 
 		return false;

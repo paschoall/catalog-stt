@@ -3,7 +3,7 @@
 		// Exporta variaveis de sessao para o javascript
 		
 		window.sessao = [];
-		if(<?php echo isset($_SESSION['email'])?>) {
+		if(<?php echo (isset($_SESSION['email'])? "true" : "false"); ?>) {
 			window.sessao["email"] = "<?php echo $_SESSION['email']?>";
 			window.sessao["nome"] = "<?php echo $_SESSION['nome']?>";
 			window.sessao["data_nasc"] = "<?php echo $_SESSION['data_nasc']?>";
