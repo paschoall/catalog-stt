@@ -222,9 +222,12 @@ $(function() {
 	/* Submete o form */
 	$("#form").submit(function(event) {
 		if(!validarCampos()) return false;
+
+		$("#confirmar").attr("disabled", true);
 		$.post("cadastro-db.php", $("#form").serialize()).done(function(data) {
 			if(data.includes("Duplicate entry")) alert("Este email já existe");
 			else alert(data);
+			$("#confirmar").attr("disabled", false);
 		});
 		return false;
 	});

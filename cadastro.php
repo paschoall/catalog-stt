@@ -134,7 +134,7 @@
 						</div>
 
 						<div class="input-field col s3 valign-wrapper" style=" margin-top: -10px;"> 
-							<button class="btn waves-effect waves-light cyan darken-1" name="confirmar">Confirmar</button>
+							<button class="btn waves-effect waves-light cyan darken-1" id="confirmar" name="confirmar">Confirmar</button>
 						</div>
 					</div>
 					<div class="row" style="margin-top: -20px; margin-left: 0px;">
