@@ -35,6 +35,12 @@
 				min-width: 10px;
 				border-left: 1px solid white; //#00acc1;
 			}
+
+			#sair_icon { transform: rotate(-90deg); }
+
+			.clickable {
+				cursor: pointer;
+			}
 		</style>
 	</head>
 	<body>
@@ -58,10 +64,58 @@
 
 		<main>
 			<div class="container">
-				<ul class="sidenav sidenav-fixed">
-					<li> Oi </li>
-					<li> Turubom? </li>
-				</ul>
+				<div class="row" style="margin-top: 50px">
+					<div class="col s2" id="sidebar">
+						<div class="collection">
+							<a href="perfil.php" class="collection-item active">
+								Meus Dados
+							</a>
+							<a href="recursos.php" class="collection-item">
+								Meus Recursos
+							</a>
+							<a href="logout.php" class="collection-item">
+								Sair <i id="sair_icon" class="material-icons right"> vertical_align_bottom </i>
+							</a>
+						</div>
+					</div>
+					<div class="col s1"></div>
+					<div class="col s9">
+						<div class="divider"></div>
+						<div class="section">
+							<h5 id="nome"> </h5>
+						
+							<table class="striped">
+								<tr> <td> Email </td> <td id="email"> </td> </tr>
+								<tr> <td> Data de Nascimento </td> <td id="data_nasc"> </td> <td> <i id="edit_data_nasc" class="material-icons tiny clickable">edit</i></a></td></tr>
+								<tr> <td> CEP </td> <td id="cep"> </td> <td> <i id="edit_cep" class="material-icons tiny clickable">edit</i></a></td></tr>
+								<tr> <td> Rua </td> <td id="rua"> </td> <td> <i id="edit_rua" class="material-icons tiny clickable">edit</i></a></td></tr>
+								<tr> <td> Numero </td> <td id="numero"> </td> <td> <i id="edit_numero" class="material-icons tiny clickable">edit</i></a></td></tr>
+								<tr> <td> Bairro </td> <td id="bairro"> </td> <td> <i id="edit_bairro" class="material-icons tiny clickable">edit</i></a></td></tr>
+								<tr> <td> Complemento </td> <td id="complemento"> </td> <td> <i id="edit_complemento" class="material-icons tiny clickable">edit</i></a></td></tr>
+								<tr> <td> Cidade </td> <td id="cidade"> </td> <td> <i id="edit_cidade" class="material-icons tiny clickable">edit</i></a></td></tr>
+								<tr> <td> Estado </td> <td id="estado"> </td> <td> <i id="edit_estado" class="material-icons tiny clickable">edit</i></a></td></tr>
+							</table>
+							<button class="btn waves-effect waves-light green lighten-3 right" style="margin-top: 10px;">Salvar mudanças</button>
+						</div>
+						<div class="divider" style="margin-top: 100px"></div>
+						<div class="section">
+							<div class="collection" style="width: 100%;">
+								<div class="collection-item">
+									<h6 style="color: black;"> Mudar senha </h6>
+									<div class="row">
+										<div class="col s5"> <input type="password" name="anterior" id="anterior"><label for="anterior"> Senha anterior </label></div>
+										<div class="col s5"> <input type="password" name="nova" id="nova"><label for="nova"> Senha nova </label></div>
+										
+										
+										<div class="col s2"> <button class="btn waves-effect waves-light green lighten-3" type="submit">Alterar</button></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="divider""></div>
+
+					</div>
+				</div>
 			</div>
 		</main>
 
