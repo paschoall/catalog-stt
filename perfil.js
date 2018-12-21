@@ -31,9 +31,12 @@ function setInputFilter(textBox, inputFilter) {
 	});
 }
 
-// Classe de alerta
+// Variaveis bool que falam se alguns campos estao invalidos
+var cep_invalido;
 
+// Classe de alerta
 var editBox;
+var cep_confirmation;
 function EditBox(title, content, cancelEvent, confirmEvent) {
 	this.title = title;
 	this.content = content;
@@ -102,6 +105,59 @@ function removeBlurDiv() {
 	$("#blurdiv").remove();
 }
 
+function createCepEditBox() {
+
+}
+
+function createCepEditBox() {
+	var content = $(document.createElement('div'));
+	content.html("<div style='width:100%;'> <center> <input type='text' id='editbox-cep'> </center> <label for='editbox-cep'> Novo CEP </label> </div>");
+	
+	editBox = new EditBox("EDITAR CEP", content, cancelEventCepEditBox, confirmEventCepEditBox);
+
+	editBox.add();
+	setInputFilter(document.getElementById("editbox-cep"), onlyDigits);
+}
+
+function cancelEventCepEditBox() {
+	return true;
+}
+function confirmEventCepEditBox(){
+
+	var validacep = /^[0-9]{8}$/;
+	var cep = $('#editbox-cep').val();
+	if(validacep.test(cep)) {
+		$.getJSON("https://viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
+
+            if (!("erro" in dados)) {
+                //Atualiza os campos com os valores da consulta.
+
+                console.log(dados);
+                console.log(document.getElementById('cep'))
+                $("#cep").html(dados.cep);
+                $("#rua").html(dados.logradouro);
+                $("#bairro").html(dados.bairro);
+                $("#cidade").html(dados.localidade);
+                $("#estado").html(dados.uf);
+
+            } //end if.
+            else {
+                //CEP pesquisado não foi encontrado.
+                alert("CEP não encontrado.");
+                createCepEditBox();
+                $("#cep").addClass("invalid");
+                $("#cep").removeClass("valid");
+
+            }
+        });
+        /* Criar funcao de wait ate que o callback seja chamado (poe um icone de carregamento na tela) */
+        return true;
+	} else {
+		alert("Formato inválido");	
+		return false;
+	}
+}
+
 $(function() {
 	if(window.sessao == null) {
 		$("#bem_vindo").hide();
@@ -163,58 +219,7 @@ $(function() {
 		
 	});
 
-	$("#edit_cep").click(function() {
-		var content = $(document.createElement('div'));
-		content.html("<div style='width:100%;'> <center> <input type='text' id='editbox-cep'> </center> <label for='editbox-cep'> Novo CEP </label> </div>");
-		
-		editBox = new EditBox("EDITAR CEP", content, function() {
-			// Funcao de cancelar
-			return true;
-		}, function() {
-			// Funcao de confirmar
-			alert("Confirmando");
-			var validacep = /^[0-9]{8}$/;
-			var cep = $('#editbox-cep').val();
-			var cep_confirmation = null;
-			console.log(cep_confirmation);
-			if(validacep.test(cep)) {
-				$.getJSON("https://viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
-
-	                if (!("erro" in dados)) {
-	                    //Atualiza os campos com os valores da consulta.
-	                    $("#rua").val(dados.logradouro);
-	                    $("#bairro").val(dados.bairro);
-	                    $("#cidade").val(dados.localidade);
-	                    $("#estado").val(dados.uf);
-	                    cep_confirmation = true;
-	                } //end if.
-	                else {
-	                    //CEP pesquisado não foi encontrado.
-	                    alert("CEP não encontrado.");
-	                    $("#cep").addClass("invalid");
-	                    $("#cep").removeClass("valid");
-	                	cep_confirmation = false;
-	                }
-	            });
-			} else {
-				alert("Formato inválido");	
-				return false;
-			}
-			console.log(cep_confirmation);
-			while(cep_confirmation == null){}
-			if(cep_confirmation == false) {
-				alert("O CEP não foi encontrado");
-				return false;
-			} else {
-				$('#cep').val(cep);
-				return true;
-			}
-		});
-
-		editBox.add();
-		setInputFilter(document.getElementById("editbox-cep"), onlyDigits);
-
-	});
+	$("#edit_cep").click(createCepEditBox);
 	$("#edit_numero").click(function() {
 		
 	});
