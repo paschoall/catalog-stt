@@ -45,6 +45,8 @@
 			.clickable {
 				cursor: pointer;
 			}
+
+
 		</style>
 	</head>
 	<body>
@@ -90,14 +92,14 @@
 						
 							<table class="striped">
 								<tr> <td> Email </td> <td id="email"> </td> </tr>
-								<tr> <td> Data de Nascimento </td> <td id="data_nasc"> </td> <td> <i id="edit_data_nasc" class="material-icons tiny clickable">edit</i></a></td></tr>
-								<tr> <td> CEP </td> <td id="cep"> </td> <td> <i id="edit_cep" class="material-icons tiny clickable">edit</i></a></td></tr>
-								<tr> <td> Rua </td> <td id="rua"> </td> <td> <i id="edit_rua" class="material-icons tiny clickable">edit</i></a></td></tr>
+								<tr> <td> Data de Nascimento </td> <td id="data_nasc"> </td> <td> <i id="edit_data_nasc" class="material-icons tiny clickable">edit</i></td></tr>
+								<tr> <td> CEP </td> <td id="cep"> </td> <td> <i id="edit_cep" class="material-icons tiny clickable">edit</i> </td></tr>
+								<tr> <td> Estado </td> <td id="estado"> </td> <td> </td></tr>
+								<tr> <td> Cidade </td> <td id="cidade"> </td> <td> </td></tr>
+								<tr> <td> Bairro </td> <td id="bairro"> </td> <td> </td></tr>
+								<tr> <td> Rua </td> <td id="rua"> </td> <td> </td></tr>
 								<tr> <td> Numero </td> <td id="numero"> </td> <td> <i id="edit_numero" class="material-icons tiny clickable">edit</i></a></td></tr>
-								<tr> <td> Bairro </td> <td id="bairro"> </td> <td> <i id="edit_bairro" class="material-icons tiny clickable">edit</i></a></td></tr>
 								<tr> <td> Complemento </td> <td id="complemento"> </td> <td> <i id="edit_complemento" class="material-icons tiny clickable">edit</i></a></td></tr>
-								<tr> <td> Cidade </td> <td id="cidade"> </td> <td> <i id="edit_cidade" class="material-icons tiny clickable">edit</i></a></td></tr>
-								<tr> <td> Estado </td> <td id="estado"> </td> <td> <i id="edit_estado" class="material-icons tiny clickable">edit</i></a></td></tr>
 							</table>
 							<button class="btn waves-effect waves-light green lighten-3 right" style="margin-top: 10px;">Salvar mudanças</button>
 						</div>
@@ -139,8 +141,10 @@
 					<a class="grey-text text-lighten-4 right" href="#!">Sobre</a>
 				</div>
 			</div>
-		</footer>	
+		</footer>
 
+		
+		
 
 		<!--  Scripts-->
 		<script src="jquery/external/jquery/jquery.js"></script>

@@ -133,26 +133,14 @@ $(function() {
 	        	$("#cep").removeClass("valid");
 	            //cep é inválido.
 	            limpa_formulario_cep();
-	            aler$("#senha").blur(function(){
-		var senha = $("#senha").val();
-		console.log("aqui");
-
-		if(!validarSenha(senha)) {
-			$("#senha").removeClass("valid");
-			$("#senha").addClass("invalid");
+				alert("Formato de CEP inválido.");
+		    }
 		} else {
-			$("#senha").removeClass("invalid");
-			$("#senha").addClass("valid");
-		}
-	});t("Formato de CEP inválido.");
-	        }
-	    } //end if.
-	    else {
-	    	$("#cep").removeClass("invalid");
+			$("#cep").removeClass("invalid");
 	        $("#cep").removeClass("valid");
 	        //cep sem valor, limpa formulário.
 	        limpa_formulario_cep();
-	    }
+		}
 	});
 
 	/* Valida campo de senha chamando a funcao validarSenha quando este perder o foco */
