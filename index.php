@@ -46,21 +46,7 @@
 	<body>
 
 		<!-- O logo e os links da navbar deverao ser decididos depois -->
-		<header>
-			<nav class="cyan">
-				<div class="nav-wrapper container">
-					<a href="index.php" class="brand-logo">Catalog-STT</a>
-					<ul id="nav-mobile" class="right hide-on-med-and-down">
-						<li><a href="pesquisa.html"><i class="material-icons right"> search </i> Consultar</a></li>
-						<li><div class="vertical-divider">&nbsp; </div>
-						<li id="bem_vindo"> </li>
-						<li id="perfil"> <a href="perfil.php"> <i class="material-icons">person</i> </a> </li>
-						<li id='entrar'><a href="login.php" >Entrar</a></li>
-						<li id='cadastrar'><a href="cadastro.php">Cadastrar</a></li>
-					</ul>
-				</div>
-			</nav>
-		</header>
+		<?php include "header.php"; ?>
 
 		<main>
 			<div class="container" style="margin-top: 50px">
@@ -76,14 +62,8 @@
 			</div>
 		</main>
 
-		<footer class="page-footer cyan darken-4" style="max-height: 50px;">
-			<div class="footer-copyright valign-wrapper" style="margin-top: -20px">
-				<div class="container">
-					© 2018 Copyright
-					<a class="grey-text text-lighten-4 right" href="#!">Sobre</a>
-				</div>
-			</div>
-		</footer>	
+		
+		<?php include "footer.php" ?>	
 
 
 		<!--  Scripts-->
