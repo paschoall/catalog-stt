@@ -220,7 +220,41 @@ function confirmEventDataNascEditBox() {
 	return true;
 }
 
-function ddmmYYYY(data) {
+function alterarUsuario() {
+	var email = window.sessao["email"];
+	var data_nasc = $("#data_nasc").html();
+	var cep = $("#cep").html();
+	var estado = $("#estado").html();
+	var cidade = $("#cidade").html();
+	var bairro = $("#bairro").html();
+	var rua = $("#rua").html();
+	var numero = $("#numero").html();
+	var complemento = $("#complemento").html();
+
+
+	var objeto = {
+		"email" : email,
+		"data_nasc" : data_nasc,
+		"cep" : cep,
+		"estado" : estado,
+		"cidade" : cidade,
+		"bairro" : bairro,
+		"rua" : rua,
+		"numero" : numero,
+		"complemento" : complemento
+	};
+
+	console.log(objeto);
+
+	$("salvar_mudancas").attr("disabled", true);
+
+	$.post("alterar_usuario-db.php", objeto).done(function(data) {
+		alert(data);
+		$("salvar_mudancas").attr("disabled", false);
+	});
+}
+
+function ddmmYYYY(data) { // reformata uma string yyyy-mm-dd para dd/mm/yyyy
 	return  data.substr(8, 2) + '/' + data.substr(5, 2) + '/' + data.substr(0, 4);
 }
 
