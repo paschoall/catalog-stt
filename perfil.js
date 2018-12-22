@@ -60,15 +60,12 @@ function EditBox(title, content, cancelEvent, confirmEvent) {
 			editBox.remove();
 	}
 	this.confirmEvent = function() {
-		if(confirmEvent()) {
-			alert("Entrou aqui mesmo assim");
+		if(confirmEvent())
 			editBox.remove();
-		}
 	}
 }
 
 EditBox.prototype.remove = function() {
-	alert("Removendo");
 	$("#editBox").remove();
 	removeBlurDiv();
 }
@@ -133,8 +130,7 @@ function confirmEventCepEditBox(){
                 //Atualiza os campos com os valores da consulta.
 
                 console.log(dados);
-                console.log(document.getElementById('cep'))
-                $("#cep").html(dados.cep);
+                $("#cep").html(dados.cep.replace(/\D/g, ''));
                 $("#rua").html(dados.logradouro);
                 $("#bairro").html(dados.bairro);
                 $("#cidade").html(dados.localidade);
@@ -158,6 +154,76 @@ function confirmEventCepEditBox(){
 	}
 }
 
+function createNumeroEditBox() {
+	var content = $(document.createElement('div'));
+	content.html("<div style='width:100%;'> <center> <input type='text' id='editbox-numero'> </center> <label for='editbox-numero'> Novo Número </label> </div>");
+	editBox = new EditBox("EDITAR NÚMERO", content, cancelEventNumeroEditBox, confirmEventNumeroEditBox);
+	editBox.add();
+
+	setInputFilter(document.getElementById("editbox-numero"), onlyDigits);
+}
+function cancelEventNumeroEditBox() { return true; }
+function confirmEventNumeroEditBox() {
+	var novo_numero = $("#editbox-numero").val();
+	$("#numero").html(novo_numero);
+	return true;
+}
+
+function createComplementoEditBox() {
+	var content = $(document.createElement('div'));
+	content.html("<div style='width:100%;'> <center> <input type='text' id='editbox-complemento'> </center> <label for='editbox-complemento'> Novo Complemento </label> </div>");
+	editBox = new EditBox("EDITAR COMPLEMENTO", content, cancelEventComplementoEditBox, confirmEventComplementoEditBox);
+	editBox.add();
+
+	setInputFilter(document.getElementById("editbox-complemento"), noDigits);
+}
+function cancelEventComplementoEditBox() { return true; }
+function confirmEventComplementoEditBox() {
+	var novo_complemento = $("#editbox-complemento").val();
+	$("#complemento").html(novo_complemento);
+	return true;
+}
+
+function createDataNascEditBox() {
+	var content = $(document.createElement('div'));
+	content.html("<div style='width:100%;'> <center> <input type='text' id='editbox-datanasc'> </center> <label for='editbox-datanasc'> Nova data de nascimento </label> </div>");
+	editBox = new EditBox("EDITAR DATA DE NASCIMENTO", content, cancelEventDataNascEditBox, confirmEventDataNascEditBox);
+	editBox.add();
+
+	setInputFilter(document.getElementById("editbox-datanasc"), onlyDigitsAndBars);
+	$("#editbox-datanasc").datepicker({
+		i18n: {
+			months: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+			monthsShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+			weekdays: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabádo'],
+			weekdaysShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
+			weekdaysAbbrev: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
+			today: 'Hoje',
+			clear: 'Limpar',
+			cancel: 'Sair',
+			done: 'Confirmar',
+			labelMonthNext: 'Próximo mês',
+			labelMonthPrev: 'Mês anterior',
+			labelMonthSelect: 'Selecione um mês',
+			labelYearSelect: 'Selecione um ano',
+			selectMonths: true,
+			selectYears: 15,
+		},
+		format: 'dd/mm/yyyy',
+		yearRange: [1920, 2018],
+	});
+}
+function cancelEventDataNascEditBox() { return true; }
+function confirmEventDataNascEditBox() {
+	var nova_datanasc = $("#editbox-datanasc").val();
+	$("#data_nasc").html(nova_datanasc);
+	return true;
+}
+
+function ddmmYYYY(data) {
+	return  data.substr(8, 2) + '/' + data.substr(5, 2) + '/' + data.substr(0, 4);
+}
+
 $(function() {
 	if(window.sessao == null) {
 		$("#bem_vindo").hide();
@@ -177,7 +243,7 @@ $(function() {
 
 	//Preenche a tabela de dados
 	$("#email").html(window.sessao["email"]);
-	$("#data_nasc").html(window.sessao["data_nasc"]);
+	$("#data_nasc").html(ddmmYYYY(window.sessao["data_nasc"]));
 	$("#cep").html(window.sessao["cep"]);
 	$("#rua").html(window.sessao["nome_rua"]);
 	$("#numero").html(window.sessao["numero"]);
@@ -207,26 +273,16 @@ $(function() {
 		}
 		$("#mudar_senha_btn").attr("disabled", true);
 		$.post("mudar_senha-db.php", $("#mudar_senha").serialize()).done(function(data) {
-			alert(data);
 			$("#mudar_senha_btn").attr("disabled", false);
 		});
 
 		return false;
 	});
 
-	$("#edit_data_nasc").click(function() {
-
-		
-	});
-
+	$("#edit_data_nasc").click(createDataNascEditBox);
 	$("#edit_cep").click(createCepEditBox);
-	$("#edit_numero").click(function() {
-		
-	});
-	$("#edit_complemento").click(function() {
-		
-	});
+	$("#edit_numero").click(createNumeroEditBox);
+	$("#edit_complemento").click(createComplementoEditBox);
 
-	
 
 });
