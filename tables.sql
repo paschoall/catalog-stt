@@ -8,19 +8,19 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema catalog
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema catalog
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
-USE `mydb` ;
+CREATE SCHEMA IF NOT EXISTS `catalog` DEFAULT CHARACTER SET utf8 ;
+USE `catalog` ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`USUARIO`
+-- Table `catalog`.`USUARIO`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`USUARIO` (
+CREATE TABLE IF NOT EXISTS `catalog`.`USUARIO` (
   `ID_USER` INT NOT NULL AUTO_INCREMENT COMMENT '		',
   `EMAIL` VARCHAR(45) NOT NULL,
   `NOME` VARCHAR(45) NOT NULL,
@@ -41,9 +41,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`RECURSO`
+-- Table `catalog`.`RECURSO`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`RECURSO` (
+CREATE TABLE IF NOT EXISTS `catalog`.`RECURSO` (
   `ID_RECURSO` INT NOT NULL AUTO_INCREMENT,
   `DATA_AD` DATE NOT NULL,
   `TITULO` VARCHAR(100) NOT NULL,
@@ -74,9 +74,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`AUTOR_RECURSO`
+-- Table `catalog`.`AUTOR_RECURSO`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`AUTOR_RECURSO` (
+CREATE TABLE IF NOT EXISTS `catalog`.`AUTOR_RECURSO` (
   `ID_RECURSO` INT NOT NULL,
   `ID_USER` INT NOT NULL,
   INDEX `FK_AUTOR_RECURSO_AUTOR_idx` (`ID_USER` ASC),
@@ -84,76 +84,76 @@ CREATE TABLE IF NOT EXISTS `mydb`.`AUTOR_RECURSO` (
   PRIMARY KEY (`ID_RECURSO`, `ID_USER`),
   CONSTRAINT `FK_AUTOR_RECURSO_AUTOR`
     FOREIGN KEY (`ID_USER`)
-    REFERENCES `mydb`.`USUARIO` (`ID_USER`)
+    REFERENCES `catalog`.`USUARIO` (`ID_USER`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_AUTOR_RECURSO_RECURSO`
     FOREIGN KEY (`ID_RECURSO`)
-    REFERENCES `mydb`.`RECURSO` (`ID_RECURSO`)
+    REFERENCES `catalog`.`RECURSO` (`ID_RECURSO`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`PALAVRASCHAVE`
+-- Table `catalog`.`PALAVRASCHAVE`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`PALAVRASCHAVE` (
+CREATE TABLE IF NOT EXISTS `catalog`.`PALAVRASCHAVE` (
   `NOME` VARCHAR(80) NOT NULL,
   `ID_RECURSO` INT(11) NOT NULL,
   PRIMARY KEY (`NOME`, `ID_RECURSO`),
   INDEX `FK_PALAVRASCHAVE_RECURSO_idx` (`ID_RECURSO` ASC),
   CONSTRAINT `FK_PALAVRASCHAVE_RECURSO`
     FOREIGN KEY (`ID_RECURSO`)
-    REFERENCES `mydb`.`RECURSO` (`ID_RECURSO`)
+    REFERENCES `catalog`.`RECURSO` (`ID_RECURSO`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`NIVEIS`
+-- Table `catalog`.`NIVEIS`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`NIVEIS` (
+CREATE TABLE IF NOT EXISTS `catalog`.`NIVEIS` (
   `NOME` VARCHAR(10) NOT NULL,
   `ID_RECURSO` INT(11) NOT NULL,
   PRIMARY KEY (`NOME`, `ID_RECURSO`),
   INDEX `FK_NIVEIS_RECURSO_idx` (`ID_RECURSO` ASC),
   CONSTRAINT `FK_NIVEIS_RECURSO`
     FOREIGN KEY (`ID_RECURSO`)
-    REFERENCES `mydb`.`RECURSO` (`ID_RECURSO`)
+    REFERENCES `catalog`.`RECURSO` (`ID_RECURSO`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`TECNICA`
+-- Table `catalog`.`TECNICA`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`TECNICA` (
+CREATE TABLE IF NOT EXISTS `catalog`.`TECNICA` (
   `NOME` VARCHAR(80) NOT NULL,
   `ID_RECURSO` INT(11) NOT NULL,
   PRIMARY KEY (`NOME`, `ID_RECURSO`),
   INDEX `FK_TECNICA_RECURSO_idx` (`ID_RECURSO` ASC),
   CONSTRAINT `FK_TECNICA_RECURSO`
     FOREIGN KEY (`ID_RECURSO`)
-    REFERENCES `mydb`.`RECURSO` (`ID_RECURSO`)
+    REFERENCES `catalog`.`RECURSO` (`ID_RECURSO`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`CRITERIOS`
+-- Table `catalog`.`CRITERIOS`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`CRITERIOS` (
+CREATE TABLE IF NOT EXISTS `catalog`.`CRITERIOS` (
   `NOME` VARCHAR(80) NOT NULL,
   `ID_RECURSO` INT(11) NOT NULL,
   PRIMARY KEY (`NOME`, `ID_RECURSO`),
   INDEX `FK_CRITERIOS_RECURSO_idx` (`ID_RECURSO` ASC),
   CONSTRAINT `FK_CRITERIOS_RECURSO`
     FOREIGN KEY (`ID_RECURSO`)
-    REFERENCES `mydb`.`RECURSO` (`ID_RECURSO`)
+    REFERENCES `catalog`.`RECURSO` (`ID_RECURSO`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
