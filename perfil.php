@@ -87,7 +87,7 @@
 								<tr> <td> Numero </td> <td id="numero"> </td> <td> <i id="edit_numero" class="material-icons tiny clickable">edit</i></a></td></tr>
 								<tr> <td> Complemento </td> <td id="complemento"> </td> <td> <i id="edit_complemento" class="material-icons tiny clickable">edit</i></a></td></tr>
 							</table>
-							<button class="btn waves-effect waves-light green lighten-3 right" style="margin-top: 10px;">Salvar mudanças</button>
+							<button class="btn waves-effect waves-light green lighten-3 right" id="salvar_mudancas" onclick='alterarUsuario()' style="margin-top: 10px;">Salvar mudanças</button>
 						</div>
 						<div class="divider" style="margin-top: 100px"></div>
 						<div class="section">
