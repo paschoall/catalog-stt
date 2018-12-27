@@ -38,7 +38,9 @@
 
 	}
 
-	if($anterior != $anterior_select) die('Senha incorreta');
+	if(!password_verify($anterior, $anterior_select)) die('Senha incorreta');
+
+	$nova = password_hash($nova, PASSWORD_DEFAULT); // cria o hash da senha nova
 
 	$statement = $conn->prepare("update usuario set senha=? where email=?");
 	$statement->bind_param("ss", $nova, $email);

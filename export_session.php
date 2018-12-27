@@ -11,11 +11,10 @@
 			window.sessao["nome_rua"] = "<?php echo $_SESSION['nome_rua']?>";
 			window.sessao["bairro"] = "<?php echo $_SESSION['bairro']?>";
 			window.sessao["numero"] = "<?php echo $_SESSION['numero']?>";
-			window.sessao["cidade"] = "<?php echo $_SESSION['cidade']?>";					
+			window.sessao["cidade"] = "<?php echo $_SESSION['cidade']?>";
 			window.sessao["estado"] = "<?php echo $_SESSION['estado']?>";
 			window.sessao["complemento"] = "<?php echo $_SESSION['complemento']?>";
 		}
-
 		console.log(sessao);	
 	});
 

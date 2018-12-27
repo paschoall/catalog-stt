@@ -44,6 +44,7 @@ if(isset($_POST['cidade'])) $cidade = $_POST['cidade'];
 if(isset($_POST['uf'])) $uf = $_POST['uf'];
 if(isset($_POST['complemento'])) $complemento = $_POST['complemento'];
 
+$senha = password_hash($senha, PASSWORD_DEFAULT); // faz um hash da senha
 
 if(isset($_POST['senha'])) { // cadastro realizado normalmente
     $statement = $conn->prepare(

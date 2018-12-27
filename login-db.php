@@ -1,3 +1,4 @@
+
 <?php
 session_start(); // cria o hash do browser do usuario no servidor ou entao recupera se existente
 /*
@@ -21,13 +22,36 @@ try {
 $email = $_POST['email'];
 $senha = $_POST['senha'];
 
-$statement = $conn->prepare("select email, nome, data_nasc, cep, nome_rua, bairro, numero, cidade, estado, pais, complemento, admin from usuario where email = ? and senha = ?");
-$statement->bind_param("ss", $email, $senha);
+$statement = $conn->prepare("select senha from usuario where email=?");
+$statement->bind_param("s", $email);
+
+$hash = null;
+try {
+    $statement->execute();
+    $result = $statement->get_result();
+
+    if($result->num_rows == 0) die('Nao encontramos usuario');
+    else if($result->num_rows == 1) {
+        while($row = $result->fetch_assoc()) {
+            $hash = $row["senha"];
+        }
+    } else die('Algo de errado! Mais de um usuário encontrado');
+    $statement->close();
+} catch(Exception $e) {
+    error_log($e->getMessage());
+    die('Houve um erro');
+}
+
+if(!password_verify($senha, $hash)) die('Senha incorreta');
+
+
+$statement = $conn->prepare("select email, nome, data_nasc, cep, nome_rua, bairro, numero, cidade, estado, pais, complemento, admin from usuario where email = ?");
+$statement->bind_param("s", $email);
 
 try {
     $statement->execute();
     $result = $statement->get_result();
-    if($result->num_rows === 0) die('Nenhuma linha');
+    if($result->num_rows === 0) die('Email inexistente');
     if($result->num_rows > 1) die("Algo de errado! Mais de um usuário foi encontrado!");
     while($row = $result->fetch_assoc()) {
 

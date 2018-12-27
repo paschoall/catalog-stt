@@ -308,6 +308,7 @@ $(function() {
 		$("#mudar_senha_btn").attr("disabled", true);
 		$.post("mudar_senha-db.php", $("#mudar_senha").serialize()).done(function(data) {
 			$("#mudar_senha_btn").attr("disabled", false);
+			alert(data);
 		});
 
 		return false;
