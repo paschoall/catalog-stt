@@ -157,7 +157,7 @@
 					</div>
 					<div class="row">
 						<div class="input-field col s12 m3" style=""> 
-							<input type="text" id="palavra-chave" data-box="chave" name="palavra-chave" class="obrigatorio multiply-adder" maxlength="45" > 
+							<input type="text" id="palavraschave" data-box="chave" name="palavraschave" class="obrigatorio multiply-adder" maxlength="45" > 
 							<label for="palavra-chave"> Palavra-Chave *</label>
 						</div>
 						<div class="col s9">
@@ -170,8 +170,8 @@
 					</div>
 					<div class="row">
 						<div class="input-field col s12 m3" style=""> 
-							<input type="email" id="autor" name="autor" data-box="autor" class="obrigatorio multiply-adder" maxlength="45" >
-							<label for="autor"> Autor(Email do autor) *</label>
+							<input type="email" id="autor-recurso" name="autor-recurso" data-box="autor" class="obrigatorio multiply-adder" maxlength="45" >
+							<label for="autor-recurso"> Autor(Email do autor) *</label>
 						</div>
 
 						<div class="col s12 m9">
@@ -346,10 +346,11 @@
 					</div>
 					<!------------------Fim Direitos----------------------->
 
-					<div class="input-field col s3 valign-wrapper" style=" margin-top: -10px;"> 
-						<button class="btn waves-effect waves-light cyan darken-1" id="confirmar" name="confirmar">Confirmar</button>
-					</div>
+					
 				</form>
+				<div class="input-field col s3 valign-wrapper" style=" margin-top: -10px;"> 
+						<button class="btn waves-effect waves-light cyan darken-1" id="enviar" name="enviar">Enviar</button>
+					</div>
 			</div>
 		</div>
 		</main>
@@ -384,6 +385,36 @@
 			var multiplos = [];
 			$('select').formSelect();
 
+			$('#enviar').on('click',function(e){
+				var dataForm = $('#form').serializeArray();
+
+				//Atribuindo os elementos multivalorados
+				
+				dataForm[4]["value"]  = multiplos['autor'] ;
+				dataForm[5]["value"]  = multiplos['chave'] ;
+				dataForm[17]["value"] = multiplos['niveis'] ;
+				dataForm[18]["value"] = multiplos['tecnica'] ;
+				dataForm[19]["value"] = multiplos['criterio'] ;
+
+
+				$.ajax({
+					method : 'POST',
+					url    : 'server/inserir.php',
+					data   : dataForm,
+					dataType: "json",
+				})
+					.done(function(ret){
+						console.log(ret);
+					})
+					.fail(function(xhr, textStatus, errorThrown) {
+						console.log(textStatus);
+						console.log(xhr.responseText);   
+					})
+					.always(function() {
+					}); 
+
+
+			});
 			$('#form').submit(function(e){
 				e.preventDefault();
 				return false;
