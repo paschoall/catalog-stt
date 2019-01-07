@@ -16,7 +16,7 @@
 	$anterior = $_POST["anterior"];
 	$nova = $_POST["nova"];
 
-	$statement = $conn->prepare("select senha from usuario where email=?");
+	$statement = $conn->prepare("select senha from USUARIO where email=?");
 	$statement->bind_param("s", $email);
 
 	$anterior_select = null;
@@ -42,7 +42,7 @@
 
 	$nova = password_hash($nova, PASSWORD_DEFAULT); // cria o hash da senha nova
 
-	$statement = $conn->prepare("update usuario set senha=? where email=?");
+	$statement = $conn->prepare("update USUARIO set senha=? where email=?");
 	$statement->bind_param("ss", $nova, $email);
 
 	try {

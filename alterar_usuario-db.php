@@ -23,7 +23,7 @@
 	$complemento = $_POST["complemento"];
 
 
-	$statement = $conn->prepare("update usuario set data_nasc=STR_TO_DATE(?, '%d/%m/%Y'), cep=?, nome_rua=?, bairro=?, cidade=?, estado=?, numero=?, complemento=? where email=?");
+	$statement = $conn->prepare("update USUARIO set data_nasc=STR_TO_DATE(?, '%d/%m/%Y'), cep=?, nome_rua=?, bairro=?, cidade=?, estado=?, numero=?, complemento=? where email=?");
 	$statement->bind_param("ssssssiss", $data_nasc, $cep, $nome_rua, $bairro, $cidade, $estado, $numero, $complemento, $email);
 	try {
 		$statement->execute();

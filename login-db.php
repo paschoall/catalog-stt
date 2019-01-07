@@ -22,7 +22,7 @@ try {
 $email = $_POST['email'];
 $senha = $_POST['senha'];
 
-$statement = $conn->prepare("select senha from usuario where email=?");
+$statement = $conn->prepare("select senha from USUARIO where email=?");
 $statement->bind_param("s", $email);
 
 $hash = null;
@@ -45,10 +45,10 @@ try {
 if(!password_verify($senha, $hash)) die('Senha incorreta');
 
 
-$statement = $conn->prepare("select email, nome, data_nasc, cep, nome_rua, bairro, numero, cidade, estado, pais, complemento, admin from usuario where email = ?");
+$statement = $conn->prepare("select email, nome, data_nasc, cep, nome_rua, bairro, numero, cidade, estado, pais, complemento, admin from USUARIO where email = ?");
 $statement->bind_param("s", $email);
 
-try {
+try {   
     $statement->execute();
     $result = $statement->get_result();
     if($result->num_rows === 0) die('Email inexistente');

@@ -54,7 +54,7 @@ if(isset($_POST['senha'])) { // cadastro realizado normalmente
     $statement->bind_param("sssssssisss", $email, $nome, $senha, $data_nasc, $cep, $rua, $bairro, $numero, $cidade, $uf, $complemento);
 
 } else { // pre-cadastro eh realizado (somente nome email e senha)
-    $statement = $conn->prepare("insert into usuario(email, nome, senha) values(?, ?, ?);");
+    $statement = $conn->prepare("insert into USUARIO(email, nome, senha) values(?, ?, ?);");
     $statement->bind_param("sss", $email, $nome, $senha);
 }
 
