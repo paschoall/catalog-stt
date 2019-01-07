@@ -16,7 +16,7 @@ $(function() {
 	$("#login").submit(function(evt) {
 		$.post("login-db.php", $("#login").serialize()).done(function(data) {
 			data = data.trim();
-			if(data == "Email inexistente" || data == "Senha incorreta") alert(data);
+			if(data == "Email inexistente" || data == "Senha incorreta" || data == "Usuario nao encontrado") alert(data);
 			else {
 				if(window.redirect == null) window.location.replace("index.php");
 				else window.location.replace(window.redirect);

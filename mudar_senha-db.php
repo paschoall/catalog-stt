@@ -25,7 +25,7 @@
 		$statement->execute();
 		$result = $statement->get_result();
 
-		if($result->num_rows == 0) die('Nao encontramos usuario');
+		if($result->num_rows == 0) die('Usuario nao encontrado');
 		else if($result->num_rows == 1) {
 			while($row = $result->fetch_assoc()) {
 				$anterior_select = $row["senha"];

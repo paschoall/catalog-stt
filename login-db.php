@@ -30,7 +30,7 @@ try {
     $statement->execute();
     $result = $statement->get_result();
 
-    if($result->num_rows == 0) die('Nao encontramos usuario');
+    if($result->num_rows == 0) die('Usuario nao encontrado');
     else if($result->num_rows == 1) {
         while($row = $result->fetch_assoc()) {
             $hash = $row["senha"];
@@ -51,7 +51,7 @@ $statement->bind_param("s", $email);
 try {   
     $statement->execute();
     $result = $statement->get_result();
-    if($result->num_rows === 0) die('Email inexistente');
+    if($result->num_rows === 0) die('Usuario nao encontrado');
     if($result->num_rows > 1) die("Algo de errado! Mais de um usuário foi encontrado!");
     while($row = $result->fetch_assoc()) {
 
