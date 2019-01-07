@@ -48,7 +48,7 @@ $senha = password_hash($senha, PASSWORD_DEFAULT); // faz um hash da senha
 
 if(isset($_POST['senha'])) { // cadastro realizado normalmente
     $statement = $conn->prepare(
-        "insert into usuario(email, nome, senha, data_nasc, cep, nome_rua, bairro, numero, cidade, estado, complemento)"
+        "insert into USUARIO(email, nome, senha, data_nasc, cep, nome_rua, bairro, numero, cidade, estado, complemento)"
         ."values(?, ?, ?, STR_TO_DATE(?, '%d/%m/%Y'), ?, ?, ?, ?, ?, ?, ?);"
     );
     $statement->bind_param("sssssssisss", $email, $nome, $senha, $data_nasc, $cep, $rua, $bairro, $numero, $cidade, $uf, $complemento);
