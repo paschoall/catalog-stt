@@ -1,5 +1,9 @@
 /* Alimentar tabelas de SQL para teste */
 
+#Insere admin
+insert into USUARIO(EMAIL, NOME, SENHA, ADMIN) values('paschoalln@usp.br', 'Leo Natan Paschoal', 
+	'$2y$10$TR937qgts6b6PbsstPGA3.LbPgYXzbmSHMqDYISISMJi4K5XRyTGm', 1);
+
 # Insere Joao, senha Joao123
 insert into USUARIO(EMAIL, NOME, SENHA, CEP, 
 	NOME_RUA, BAIRRO, NUMERO, CIDADE, ESTADO, 

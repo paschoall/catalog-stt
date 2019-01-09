@@ -2,13 +2,13 @@
 	session_start(); // cria o hash do browser do usuario no servidor ou entao recupera se existente
 
 	
-	// if(isset($_SESSION['email']) == false) {
-	// 	header('location: login.php?redirect=' . $_SERVER['REQUEST_URI']);
-	// }
+	if(isset($_SESSION['email']) == false) {
+		header('location: login.php?redirect=' . $_SERVER['REQUEST_URI']);
+	}
 
-	// if($_SESSION['admin'] == '0') {
-	// 	header('location: index.php');
-	// }
+	if($_SESSION['admin'] == '0') {
+		header('location: index.php');
+	}
 
 	/* Faz a conexao com o banco de dados e retorna as requisicoes */
 
