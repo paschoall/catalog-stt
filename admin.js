@@ -10,6 +10,12 @@ $(function() {
 		$("#cadastrar").hide();
 	}
 
+	// Muda a cor dos elementos para a cor tema da pagina
+	$(".sidebar").css("color", "#00bcd4");
+	$(".active").css("color", "white");
+	$(".active").css("background-color", "#00bcd4");
+
+
 	// Adiciona as requisicoes de window.requisicoes para o html
 	var div_lista_requisicoes = $("#lista_requisicoes");
 
