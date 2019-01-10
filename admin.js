@@ -9,7 +9,7 @@ $(function() {
 		$("#entrar").hide();
 		$("#cadastrar").hide();
 	}
-	
+
 	// Adiciona as requisicoes de window.requisicoes para o html
 	var div_lista_requisicoes = $("#lista_requisicoes");
 
@@ -18,7 +18,7 @@ $(function() {
 
 		var titulo = $("<p style='font-size: 15pt;'> </p>");
 		titulo.append(window.requisicoes[i]['TITULO']);
-		titulo.append("<a style='float: right; font-size:11pt;'href=''>Ver recurso</a>"); // falta adicionar o link para ver o recurso
+		titulo.append("<a style='float: right; font-size:11pt;'href='info_recurso.php?id=" + window.requisicoes[i]['ID_RECURSO'] + "'>Ver recurso</a>"); 
 		li.append(titulo);
 
 		var autor = $("<p> Por " + window.requisicoes[i]['NOME'] + ", " + window.requisicoes[i]['EMAIL'] + "</p>");
