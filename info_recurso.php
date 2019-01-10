@@ -226,7 +226,7 @@
 								?> 
 							</td> 
 						</tr>
-						<tr> <td class="legenda"> Localização: </td> <td><a rel='external' href="http://<?php echo $req['LOCALIZACAO'];?>"> <?php echo $req['LOCALIZACAO'];?></a></td></tr>
+						<tr> <td class="legenda"> Localização: </td> <td><a rel='external' href="<?php echo $req['LOCALIZACAO'];?>"> <?php echo $req['LOCALIZACAO'];?></a></td></tr>
 						<tr> <td class="legenda"> Repositório: </td> <td><?php echo $req['REPOSITORIO'];?></td></tr>
 						<tr> <td class="legenda"> Versão: </td> <td><?php echo $req['VERSAO'];?></td></tr>
 						<tr> <td class="legenda"> Status: </td> <td><?php echo $req['STATUS'];?></td></tr>

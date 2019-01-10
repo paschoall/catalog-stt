@@ -1,4 +1,17 @@
+function aceitarRecurso(id) {
+	var titulo;
+	for(var i = 0; i < window.requisicoes.length; ++i) {
+		if(window.requisicoes[i]['ID_RECURSO'] == id) titulo = window.requisicoes[i]['TITULO'];
+	}
 
+	if(confirm("Aceitar recurso \"" + titulo + "\"?")) {
+		$.post('aceitar_recurso-db.php', {"id_recurso": id}).done(function(data) {
+			data = data.trim();
+			if(data != 'success') alert(data);
+			else location.reload();
+		});
+	}
+}
 
 $(function() {
 	if(window.sessao == null) {
@@ -24,7 +37,7 @@ $(function() {
 
 		var titulo = $("<p style='font-size: 15pt;'> </p>");
 		titulo.append(window.requisicoes[i]['TITULO']);
-		titulo.append("<a style='float: right; font-size:11pt;'href='info_recurso.php?id=" + window.requisicoes[i]['ID_RECURSO'] + "'>Ver recurso</a>"); 
+		titulo.append("<a style='float: right; font-size:11pt;' target='_blank' href='info_recurso.php?id=" + window.requisicoes[i]['ID_RECURSO'] + "'>Ver recurso</a>"); 
 		li.append(titulo);
 
 		var autor = $("<p> Por " + window.requisicoes[i]['NOME'] + ", " + window.requisicoes[i]['EMAIL'] + "</p>");
@@ -34,12 +47,11 @@ $(function() {
 		li.append(data_ad);
 
 		var div_botoes = $("<div class='row'> </div>");
-		var bot_aceitar = $("<div class = 'col s6'> <center> <a id='aceitar_" + window.requisicoes[i]['ID_RECURSO'] + "' class='waves-effect waves-light btn green'>ACEITAR</a> </center> </div>")
-		var bot_recusar = $("<div class = 'col s6'> <center> <a id='recusar_" + window.requisicoes[i]['ID_RECURSO'] + "' class='waves-effect waves-light btn red'>RECUSAR</a> </center> </div>")
+		var bot_aceitar = $("<div class = 'col s6'> <center> <a id='aceitar_" + window.requisicoes[i]['ID_RECURSO'] + "' onclick='aceitarRecurso(" + window.requisicoes[i]['ID_RECURSO'] + ")' class='waves-effect waves-light btn green'>ACEITAR</a> </center> </div>")
+		var bot_recusar = $("<div class = 'col s6'> <center> <a id='recusar_" + window.requisicoes[i]['ID_RECURSO'] + "'target = '_blank' href='recusarRecurso.php?id=" + window.requisicoes[i]['ID_RECURSO'] + "&email=" + window.requisicoes[i]['EMAIL'] + "' class='waves-effect waves-light btn red'>RECUSAR</a> </center> </div>")
 		div_botoes.append(bot_aceitar);
 		div_botoes.append(bot_recusar);
 		li.append(div_botoes);
 		div_lista_requisicoes.append(li);
 	}
-
 })
