@@ -48,7 +48,7 @@ $(function() {
 
 		var div_botoes = $("<div class='row'> </div>");
 		var bot_aceitar = $("<div class = 'col s6'> <center> <a id='aceitar_" + window.requisicoes[i]['ID_RECURSO'] + "' onclick='aceitarRecurso(" + window.requisicoes[i]['ID_RECURSO'] + ")' class='waves-effect waves-light btn green'>ACEITAR</a> </center> </div>")
-		var bot_recusar = $("<div class = 'col s6'> <center> <a id='recusar_" + window.requisicoes[i]['ID_RECURSO'] + "'target = '_blank' href='recusarRecurso.php?id=" + window.requisicoes[i]['ID_RECURSO'] + "&email=" + window.requisicoes[i]['EMAIL'] + "' class='waves-effect waves-light btn red'>RECUSAR</a> </center> </div>")
+		var bot_recusar = $("<div class = 'col s6'> <center> <a id='recusar_" + window.requisicoes[i]['ID_RECURSO'] + "'target = '_blank' href='recusarRecurso.php?id=" + window.requisicoes[i]['ID_RECURSO'] + "&email=" + window.requisicoes[i]['EMAIL'] + "' class='waves-effect waves-light btn red lighten'>FAZER UMA OBSERVAÇÂO</a> </center> </div>")
 		div_botoes.append(bot_aceitar);
 		div_botoes.append(bot_recusar);
 		li.append(div_botoes);
