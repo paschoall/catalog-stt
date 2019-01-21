@@ -259,7 +259,7 @@ function ddmmYYYY(data) { // reformata uma string yyyy-mm-dd para dd/mm/yyyy
 }
 
 $(function() {
-	if(window.sessao == null) {
+	if(window.sessao.length == 0) {
 		$("#bem_vindo").hide();
 		$("#perfil").hide();
 	} else {

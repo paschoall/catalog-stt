@@ -4,7 +4,7 @@ function login() {
 }
 
 $(function() {
-	if(window.sessao == null) {
+	if(window.sessao.length == 0) {
 		$("#bem_vindo").hide();
 		$("#perfil").hide();
 	} else {
