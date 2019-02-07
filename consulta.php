@@ -49,7 +49,31 @@
 
 		<main>
 			<div class="container" style="margin-top: 50px">
+				<div class = "row">
+					<div class = "col s9" style=" height: 50px;"> 
+						<div class="collection" style="padding: 0px; margin: 0px;">
+							<li class="collection-item" style="padding: 0px; margin: 0px;">
+								<div class = "row" style="padding: 0px; margin: 0px;"> 
+									<div class = "col s11"> <input style="border: 0px; padding-left: 15px; margin: 0px;"> </input> </div>
 
+									<!-- Colocar onclick event para botao de pesquisa aqui -->
+									<div class = "col s1"> <a class="btn-flat right" style="margin-top: 5px;"><i class="material-icons"> search </i></a> </div>
+								</div>	
+							</li>
+						</div>
+					</div>
+					<div class = "col s3">
+											<!-- Dropdown Trigger -->
+						<a class='dropdown-trigger btn-flat' data-target='modo_pesquisa' style='position: fixed; z-index: 10'>Escolher forma de pesquisa <i class="tiny material-icons right">arrow_drop_down</i></a>
+
+						  <!-- Dropdown Structure -->
+						<ul id='modo_pesquisa' class='dropdown-content' style="padding-top: 50px; z-index: 0">
+							<li><a style="color: #00bcd4"> Por título </a></li>
+							<li><a style="color: #00bcd4"> Por autor </a></li>
+							<li><a style="color: #00bcd4"> Por palavras-chave </a></li>
+						</ul>
+					</div>
+				</div>
 			</div>
 		</main>
 

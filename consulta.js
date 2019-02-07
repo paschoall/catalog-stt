@@ -1,4 +1,5 @@
 $(function() {
+	$('.dropdown-trigger').dropdown();
 	if(window.sessao.length == 0) {
 		$("#bem_vindo").hide();
 		$("#perfil").hide();
