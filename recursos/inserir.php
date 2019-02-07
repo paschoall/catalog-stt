@@ -7,7 +7,7 @@
 
 		<!-- CSS Materialize -->
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-		<link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+		<link href="../cfss/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 		<link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 
 		<!-- Jquery UI -->
@@ -36,21 +36,7 @@
 	<body>
 
 		<!-- O logo e os links da navbar deverao ser decididos depois -->
-		<header>
-			<nav class="cyan">
-				<div class="nav-wrapper container">
-					<a href="index.php" class="brand-logo">Catalog-STT</a>
-					<ul id="nav-mobile" class="right hide-on-med-and-down">
-						<li><a href="pesquisa.html"><i class="material-icons right"> search </i> Consultar</a></li>
-						<li><div class="vertical-divider">&nbsp; </div>
-						<li id="bem_vindo"> </li>
-						<li id="perfil"> <a href="perfil.php"> <i class="material-icons">person</i> </a> </li>
-						<li id='entrar'><a href="login.php" >Entrar</a></li>
-						<li id='cadastrar'><a href="cadastro.php">Cadastrar</a></li>
-					</ul>
-				</div>
-			</nav>
-		</header>
+		<?php include('header.php') ?>
 
 		<main>
 		<div class="container">
