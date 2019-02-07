@@ -14,7 +14,7 @@
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 		<link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
 		<!-- Materialize icons -->
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -23,7 +23,7 @@
 
 		<style type="text/css">
 			body {
-				/* Inserir fonte*/
+				font-family: 'Open Sans', sans-serif;
 				display: flex;
 			    min-height: 100vh;
 				flex-direction: column;
@@ -63,15 +63,30 @@
 						</div>
 					</div>
 					<div class = "col s3">
-											<!-- Dropdown Trigger -->
-						<a class='dropdown-trigger btn-flat' data-target='modo_pesquisa' style='position: fixed; z-index: 10'>Escolher forma de pesquisa <i class="tiny material-icons right">arrow_drop_down</i></a>
 
-						  <!-- Dropdown Structure -->
-						<ul id='modo_pesquisa' class='dropdown-content' style="padding-top: 50px; z-index: 0">
-							<li><a style="color: #00bcd4"> Por título </a></li>
-							<li><a style="color: #00bcd4"> Por autor </a></li>
-							<li><a style="color: #00bcd4"> Por palavras-chave </a></li>
-						</ul>
+						<div class = "col s12" style="font-size: 12pt;">
+							<select id="modo_pesquisa" class="browser-default">
+								<option style="color: grey" value="1">Por título</option>
+								<option style="color: grey" value="2">Por autor</option>
+								<option style="color: grey" value="3">Por palavras-chave</option>
+							</select>
+							<label for="modo_pesquisa"> Escolha o modo de pesquisa </label>
+						</div>
+					</div>
+				</div>
+
+				<div class = "row">
+					<div class = "col s9">
+						<div class = "divider"> </div> 
+					</div>
+					<div class = "col s3">
+						<div class = "divider"> </div>
+						<div class = "card" style="margin-top: 50px;">
+							<div class = "card-content" style="font-size: 13pt; font-family: 'Open Sans', sans-serif;">
+								<span class = "card-title"> <h5> Filtros </h5></span>
+								<!-- Inserir filtros aqui -->
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

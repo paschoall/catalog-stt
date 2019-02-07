@@ -1,5 +1,5 @@
 $(function() {
-	$('.dropdown-trigger').dropdown();
+	$('select').formSelect();
 	if(window.sessao.length == 0) {
 		$("#bem_vindo").hide();
 		$("#perfil").hide();
