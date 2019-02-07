@@ -13,14 +13,14 @@
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 		<link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
 		<!-- Jquery UI -->
 		<link rel="stylesheet" href="jquery/jquery-ui.min.css">
 		
 
 		<style type="text/css">
 			body {
-				/* Inserir fonte*/
+				font-family: 'Open Sans', sans-serif;
 				display: flex;
 			    min-height: 100vh;
 				flex-direction: column;

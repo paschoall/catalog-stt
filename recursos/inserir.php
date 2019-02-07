@@ -12,11 +12,11 @@
 
 		<!-- Jquery UI -->
 		<link rel="stylesheet" href="../jquery/jquery-ui.min.css">
-		
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
 
 		<style type="text/css">
 			body {
-				/* Inserir fonte*/
+				font-family: 'Open Sans', sans-serif;
 				display: flex;
 			    min-height: 100vh;
 				flex-direction: column;
