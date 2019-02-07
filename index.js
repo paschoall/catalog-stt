@@ -1,5 +1,5 @@
 $(function() {
-	if(window.sessao.length == 0) {
+	if(window.sessao.email === undefined) {
 		$("#bem_vindo").hide();
 		$("#perfil").hide();
 	} else {
