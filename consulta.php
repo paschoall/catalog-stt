@@ -83,38 +83,21 @@
 				<div class = "row">
 					<div class = "col s9">
 						<div class = "divider"> </div> 
+						<label id="label_resultados" style="font-size: 15pt; position:relative; top: 15px;"> Por ordem de adição </label>
 						<!-- Aqui eh onde vai aparecer a lista de resultados -->
 
-						<div class="collection" style="margin-top: 20px;">
-							<li class="collection-item result grey lighten-5">
+						<div id="result_box" class="collection" style="margin-top: 20px;">
+							<li id='item_template' class="collection-item result grey lighten-5" hidden>
 								<div class='result'>
-									<a href="nada.html" style="font-size: 10pt; float: right;"> Ver mais </a> 
-									<p id="titulo" style="font-size: 14pt;"> <b> Titulo </b> </p>
-									<span style="font-size: 10pt;">
-										<p id="descricao"> Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum</p>
-										<i> Autores: </i> <br>
-										<i> Idioma: </i> <br>
-									</i>
+									<a id='link' href="nada.html" style="font-size: 10pt; float: right;"> Ver mais </a> 
+									<b> <p id="titulo" style="font-size: 15pt;"> Titulo </p> </b>
+									<p id="descricao" style="font-size: 12pt;"> Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum</p>
+									<span style="font-size: 9pt;">
+										<i id='autores'> Autores: </i> <br>
+										<i id='idioma'> Idioma: </i> <br>
+									</span>
 									
 								</div>
-							</li>
-							<li class="collection-item result grey lighten-5">
-								<div class='result'>
-									<a href="nada.html" style="font-size: 10pt; float: right;"> Ver mais </a> 
-									<p id="titulo" style="font-size: 14pt;"> <b> Titulo </b> </p>
-									<span style="font-size: 10pt;">
-										<p id="descricao"> Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum</p>
-										<i> Autores: </i> <br>
-										<i> Idioma: </i> <br>
-									</i>
-									
-								</div>
-							</li>
-							<li class="collection-item result grey lighten-5">
-
-							</li>
-							<li class="collection-item result grey lighten-5">
-
 							</li>
 						</div>
 					</div>
