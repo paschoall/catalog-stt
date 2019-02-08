@@ -18,7 +18,7 @@ function generateRandomPassword($length = 15) {
 
 /* Retirado de https://websitebeaver.com/prepared-statements-in-php-mysqli-to-prevent-sql-injection */
 
-include('database_credentials.php');
+include('/database_credentials.php');
 
 
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);

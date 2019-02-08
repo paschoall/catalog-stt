@@ -11,11 +11,11 @@
 
 		<!-- CSS Materialize -->
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-		<link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-		<link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+		<link href="/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+		<link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
 		<!-- Jquery UI -->
-		<link rel="stylesheet" href="jquery/jquery-ui.min.css">
+		<link rel="stylesheet" href="/jquery/jquery-ui.min.css">
 		
 
 		<style type="text/css">
@@ -41,7 +41,7 @@
 	<body>
 
 		<!-- O logo e os links da navbar deverao ser decididos depois -->
-		<?php include "header.php"; ?>
+		<?php include "/header.php"; ?>
 
 		<main>
 		<div class="container valign-wrapper" style="min-height: 80vh;">
@@ -82,20 +82,20 @@
 		</main>
 
 		
-		<?php include "footer.php" ?>	
+		<?php include "/footer.php" ?>	
 
 
 		<!--  Scripts-->
-		<script src="jquery/external/jquery/jquery.js"></script>
-		<script src="jquery/jquery-ui.min.js"></script>
-		<script src="js/materialize.js"></script>
-		<script src="js/init.js"></script>
+		<script src="/jquery/external/jquery/jquery.js"></script>
+		<script src="/jquery/jquery-ui.min.js"></script>
+		<script src="/js/materialize.js"></script>
+		<script src="/js/init.js"></script>
 
 		<?php include('export_session.php') ?> <!-- Incluir esse arquivo antes do outro, senao a variavel sessao nao estaria iniciada -->
 		<script type="text/javascript"> 
 			window.redirect = <?php if(isset($_GET["redirect"])) {echo "'" . $_GET["redirect"] ."'";} else {echo "null";} ?> 
 		</script>
-		<script type="text/javascript" src="login.js"> </script>
+		<script type="text/javascript" src="/login.js"> </script>
 
 	</body>
 </html>

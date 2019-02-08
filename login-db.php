@@ -8,7 +8,7 @@ session_start(); // cria o hash do browser do usuario no servidor ou entao recup
 
 /* Retirado de https://www.w3schools.com/php/php_mysql_select.asp */
 
-include('database_credentials.php');
+include('/database_credentials.php');
 
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 try {

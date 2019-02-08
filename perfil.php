@@ -2,7 +2,7 @@
 	session_start(); // cria o hash do browser do usuario no servidor ou entao recupera se existente
 
 	if(isset($_SESSION['email']) == false) {
-		header('location: login.php?redirect=' . $_SERVER['REQUEST_URI']);
+		header('location: /login.php?redirect=' . $_SERVER['REQUEST_URI']);
 	}
 ?>
 
@@ -15,11 +15,11 @@
 
 		<!-- CSS Materialize -->
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-		<link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-		<link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+		<link href="/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+		<link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
 		<!-- Jquery UI -->
-		<link rel="stylesheet" href="jquery/jquery-ui.min.css">
+		<link rel="stylesheet" href="/jquery/jquery-ui.min.css">
 		
 
 		<style type="text/css">
@@ -52,20 +52,20 @@
 	<body>
 
 		<!-- O logo e os links da navbar deverao ser decididos depois -->
-		<?php include "header.php"; ?>
+		<?php include "/header.php"; ?>
 
 		<main>
 			<div class="container">
 				<div class="row" style="margin-top: 50px">
 					<div class="col s2">
 						<div class="collection">
-							<a href="perfil.php" class="sidebar collection-item active">
+							<a href="/perfil.php" class="sidebar collection-item active">
 								Meus Dados
 							</a>
-							<a href="recursos.php" class="sidebar collection-item">
+							<a href="/recursos.php" class="sidebar collection-item">
 								Meus Recursos
 							</a>
-							<a href="logout.php" class="sidebar collection-item">
+							<a href="/logout.php" class="sidebar collection-item">
 								Sair <i id="sair_icon" class="material-icons right"> vertical_align_bottom </i>
 							</a>
 						</div>
@@ -121,18 +121,18 @@
 		</main>
 
 		
-		<?php include "footer.php" ?>
+		<?php include "/footer.php" ?>
 
 		
 		
 
 		<!--  Scripts-->
-		<script src="jquery/external/jquery/jquery.js"></script>
-		<script src="jquery/jquery-ui.min.js"></script>
-		<script src="js/materialize.js"></script>
-		<script src="js/init.js"></script>
+		<script src="/jquery/external/jquery/jquery.js"></script>
+		<script src="/jquery/jquery-ui.min.js"></script>
+		<script src="/js/materialize.js"></script>
+		<script src="/js/init.js"></script>
 
-		<?php include('export_session.php') ?> <!-- Incluir esse arquivo antes do outro, senao a variavel sessao nao estaria iniciada -->
-		<script type="text/javascript" src="perfil.js"> </script>
+		<?php include('/export_session.php') ?> <!-- Incluir esse arquivo antes do outro, senao a variavel sessao nao estaria iniciada -->
+		<script type="text/javascript" src="/perfil.js"> </script>
 	</body>
 </html>

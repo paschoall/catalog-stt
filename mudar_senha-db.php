@@ -1,7 +1,7 @@
 <?php
 	session_start(); // cria hash do browser ou recupera se já existente
 
-	include('database_credentials.php');
+	include('/database_credentials.php');
 
 	mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 	try {

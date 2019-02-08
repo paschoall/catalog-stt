@@ -13,15 +13,15 @@
 
 		<!-- CSS Materialize -->
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-		<link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-		<link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+		<link href="/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+		<link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 
 		<!-- Materialize icons -->
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
 
 		<!-- Jquery UI -->
-		<link rel="stylesheet" href="jquery/jquery-ui.min.css">
+		<link rel="stylesheet" href="/jquery/jquery-ui.min.css">
 
 		<style type="text/css">
 			body {
@@ -47,7 +47,7 @@
 	<body>
 
 		<!-- O logo e os links da navbar deverao ser decididos depois -->
-		<?php include "header.php"; ?>
+		<?php include "/header.php"; ?>
 
 		<main>
 			<div class="container" style="margin-top: 50px">
@@ -56,25 +56,25 @@
 				</div>
 				<div class="divider"> </div>
 				<div class="section">
-					<p> O Catalog-STT - acrônimo para <i> A Catalog of Open Educational Resources to Support Software Testing Teaching </i> - é um sistema criado por um grupo de pesquisa do ICMC-USP com o objetivo de facilitar o registro e a consulta de recursos educacionais abertos no domínio de teste de software. Se você deseja explorar ou procurar um material didático - seja vídeo, apostila ou qualquer tipo de recurso educacional, faça uma <a href="consulta.php"> consulta. </a> </p>
-					<p> Se você é um professor ou autor de algum material e deseja publicá-lo, <a href="login.php"> entre</a> ou <a href="cadastro.php"> cadastre-se.</a>
+					<p> O Catalog-STT - acrônimo para <i> A Catalog of Open Educational Resources to Support Software Testing Teaching </i> - é um sistema criado por um grupo de pesquisa do ICMC-USP com o objetivo de facilitar o registro e a consulta de recursos educacionais abertos no domínio de teste de software. Se você deseja explorar ou procurar um material didático - seja vídeo, apostila ou qualquer tipo de recurso educacional, faça uma <a href="/consulta.php"> consulta. </a> </p>
+					<p> Se você é um professor ou autor de algum material e deseja publicá-lo, <a href="/login.php"> entre</a> ou <a href="/cadastro.php"> cadastre-se.</a>
 				</div>
 
 			</div>
 		</main>
 
 		
-		<?php include "footer.php" ?>	
+		<?php include "/footer.php" ?>	
 
 
 		<!--  Scripts-->
-		<script src="jquery/external/jquery/jquery.js"></script>
-		<script src="jquery/jquery-ui.min.js"></script>
-		<script src="js/materialize.js"></script>
-		<script src="js/init.js"></script>
+		<script src="/jquery/external/jquery/jquery.js"></script>
+		<script src="/jquery/jquery-ui.min.js"></script>
+		<script src="/js/materialize.js"></script>
+		<script src="/js/init.js"></script>
 
-		<?php include('export_session.php') ?> <!-- Incluir esse arquivo antes do outro, senao a variavel sessao nao estaria iniciada -->
-		<script type="text/javascript" src="index.js"> </script>
+		<?php include('/export_session.php') ?> <!-- Incluir esse arquivo antes do outro, senao a variavel sessao nao estaria iniciada -->
+		<script type="text/javascript" src="/index.js"> </script>
 		
 	</body>
 </html>

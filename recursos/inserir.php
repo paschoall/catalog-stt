@@ -1,3 +1,11 @@
+<?php
+	session_start(); // cria o hash do browser do usuario no servidor ou entao recupera se existente
+
+	if(isset($_SESSION['email']) == false) {
+		header('location: /login.php?redirect=' . $_SERVER['REQUEST_URI']);
+	}
+?>
+
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -7,8 +15,8 @@
 
 		<!-- CSS Materialize -->
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-		<link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-		<link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+		<link href="/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+		<link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 
 		<!-- Jquery UI -->
 		<link rel="stylesheet" href="../jquery/jquery-ui.min.css">
