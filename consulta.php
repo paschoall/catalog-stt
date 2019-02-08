@@ -40,6 +40,11 @@
 				border-left: 1px solid white; //#00acc1;
 			}
 
+			.result {
+				min-height: 150px;
+				overflow: auto;
+			}
+
 		</style>
 	</head>
 	<body>
@@ -78,6 +83,40 @@
 				<div class = "row">
 					<div class = "col s9">
 						<div class = "divider"> </div> 
+						<!-- Aqui eh onde vai aparecer a lista de resultados -->
+
+						<div class="collection" style="margin-top: 20px;">
+							<li class="collection-item result grey lighten-5">
+								<div class='result'>
+									<a href="nada.html" style="font-size: 10pt; float: right;"> Ver mais </a> 
+									<p id="titulo" style="font-size: 14pt;"> <b> Titulo </b> </p>
+									<span style="font-size: 10pt;">
+										<p id="descricao"> Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum</p>
+										<i> Autores: </i> <br>
+										<i> Idioma: </i> <br>
+									</i>
+									
+								</div>
+							</li>
+							<li class="collection-item result grey lighten-5">
+								<div class='result'>
+									<a href="nada.html" style="font-size: 10pt; float: right;"> Ver mais </a> 
+									<p id="titulo" style="font-size: 14pt;"> <b> Titulo </b> </p>
+									<span style="font-size: 10pt;">
+										<p id="descricao"> Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum</p>
+										<i> Autores: </i> <br>
+										<i> Idioma: </i> <br>
+									</i>
+									
+								</div>
+							</li>
+							<li class="collection-item result grey lighten-5">
+
+							</li>
+							<li class="collection-item result grey lighten-5">
+
+							</li>
+						</div>
 					</div>
 					<div class = "col s3">
 						<div class = "divider"> </div>
