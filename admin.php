@@ -133,7 +133,7 @@
 		</main>
 
 		
-		<?php include "/footer.php" ?>
+		<?php include "footer.php" ?>
 
 
 		<!--  Scripts-->
@@ -142,7 +142,7 @@
 		<script src="/js/materialize.js"></script>
 		<script src="/js/init.js"></script>
 
-		<?php include('/export_session.php') ?> <!-- Incluir esse arquivo antes do outro, senao a variavel sessao nao estaria iniciada -->
+		<?php include('export_session.php') ?> <!-- Incluir esse arquivo antes do outro, senao a variavel sessao nao estaria iniciada -->
 		<script type="text/javascript">
 			$(function() {
 				window.requisicoes = [];
