@@ -81,10 +81,112 @@
 					</div>
 					<div class = "col s3">
 						<div class = "divider"> </div>
-						<div class = "card" style="margin-top: 50px;">
+						<div class = "card medium" style="margin-top: 50px;">
 							<div class = "card-content" style="font-size: 13pt; font-family: 'Open Sans', sans-serif;">
-								<span class = "card-title"> <h5> Filtros </h5></span>
-								<!-- Inserir filtros aqui -->
+								<span class = "card-title"> <h6> Filtros </h6></span>
+								<br>
+								<label>
+									<input type="checkbox" class="filled-in"/> <span style="color: black;"> Somente recursos grátis </span>
+								</label>
+
+								<div class="input-field col s12"> 
+									<select id="idioma" name="idioma" class='browser-default'>
+										<option value="ALL" selected> Todos os idiomas </option>
+										<option value="AF"> Afrikanns </option>
+										<option value="AR"> Árabe </option>
+										<option value="HY"> Armênio </option>
+										<option value="SQ"> Albanês </option>
+										<option value="EU"> Basco </option>
+										<option value="BN"> Bengali </option>
+										<option value="BG"> Búlgaro </option>
+										<option value="CA"> Catalão </option>
+										<option value="KM"> Cambojano </option>
+										<option value="ZH"> Chinês (Mandarim) </option>
+										<option value="HR"> Croata </option>
+										<option value="CS"> Tcheco </option>
+										<option value="DA"> Dinamarquês </option>
+										<option value="NL"> Holandês </option>
+										<option value="ET"> Estoniano </option>
+										<option value="FJ"> Fiji </option>
+										<option value="FI"> Finlandês </option>
+										<option value="FR"> Francês </option>
+										<option value="KA"> Georgiano </option>
+										<option value="DE"> Alemão </option>
+										<option value="EL"> Grego </option>
+										<option value="GU"> Gujarati </option>
+										<option value="HE"> Hebraico </option>
+										<option value="HI"> Hindi </option>
+										<option value="HU"> Húngaro </option>
+										<option value="IS"> Islandês </option>
+										<option value="ID"> Indonésio </option>
+										<option value="GA"> Irlandês </option>
+										<option value="IT"> Italiano </option>
+										<option value="JA"> Japonês </option>
+										<option value="JW"> Javanês </option>
+										<option value="KO"> Coreano </option>
+										<option value="LA"> Latim </option>
+										<option value="LV"> Letão </option>
+										<option value="LT"> Lituano </option>
+										<option value="MK"> Macedônio </option>
+										<option value="MS"> Malaio </option>
+										<option value="ML"> Malayalam </option>
+										<option value="MT"> Maltês </option>
+										<option value="MI"> Maori </option>
+										<option value="MR"> Marathi </option>
+										<option value="MN"> Mongol </option>
+										<option value="NE"> Nepali </option>
+										<option value="NO"> Norueguês </option>
+										<option value="FA"> Persa </option>
+										<option value="PL"> Polonês </option>
+										<option value="PT"> Português </option>
+										<option value="BR"> Português (Brasil) </option>
+										<option value="PA"> Punjabi </option>
+										<option value="QU"> Quechua </option>
+										<option value="RO"> Romeno </option>
+										<option value="RU"> Russo </option>
+										<option value="SM"> Samoano </option>
+										<option value="SR"> Sérvio </option>
+										<option value="SK"> Eslovaco </option>
+										<option value="SL"> Esloveno </option>
+										<option value="ES"> Espanhol </option>
+										<option value="SW"> Suaíli </option>
+										<option value="SV"> Sueco </option>
+										<option value="TA"> Tâmil </option>
+										<option value="TT"> Tártaro </option>
+										<option value="TE"> Telugu </option>
+										<option value="TH"> Tailandês </option>
+										<option value="BO"> Tibetano </option>
+										<option value="TO"> Tonga </option>
+										<option value="TR"> Turco </option>
+										<option value="UK"> Ucraniano </option>
+										<option value="UR"> Urdu </option>
+										<option value="UZ"> Uzbeque </option>
+										<option value="VI"> Vietnamita </option>
+										<option value="CY"> Welsh </option>
+										<option value="XH"> Xhosa </option>
+									</select>
+								</div>
+								<div class="input-field col s12"> 
+									<select id="formato" name="formato" class='browser-default'>
+										<option value="ALL">Todos os formatos</option>
+										<option value="EXE">Executável</option>
+										<optgroup label="Vídeo">
+											<option value="AVI">AVI</option>
+											<option value="QuickTime">QuickTime</option>
+											<option value="WMV">Windows Media Video</option>
+											<option value="Flash">Flash Video</option>
+											<option value="MPEG-1">MPEG-1</option>
+											<option value="MPEG-2">MPEG-2</option>
+											<option value="MPEG-4">MPEG-4</option>
+										</optgroup>
+										<optgroup label="Outros">
+											<option value="Site">Site</option>
+										</optgroup>
+									</select>
+								</div>
+								<center>
+									<a class="waves-effect waves-light btn cyan" style="width: 60%; position: absolute; bottom: 15px;right: 20%;">Limpar filtros</a>
+								</center>
 							</div>
 						</div>
 					</div>
