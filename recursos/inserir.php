@@ -7,7 +7,7 @@
 
 		<!-- CSS Materialize -->
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-		<link href="../cfss/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+		<link href="../css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 		<link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 
 		<!-- Jquery UI -->
@@ -36,7 +36,7 @@
 	<body>
 
 		<!-- O logo e os links da navbar deverao ser decididos depois -->
-		<?php include('header.php') ?>
+		<?php include('../header.php') ?>
 
 		<main>
 		<div class="container">
@@ -347,16 +347,7 @@
 		</div>
 		</main>
 
-		<footer class="page-footer cyan darken-4" style="max-height: 50px;">
-			<div class="footer-copyright valign-wrapper" style="margin-top: -20px">
-				<div class="container">
-					© 2018 Copyright
-					<a class="grey-text text-lighten-4 right" href="#!">Sobre</a>
-				</div>
-			</div>
-		</footer>	
-
-
+		<?php include('../footer.php') ?>
 		<!--  Scripts-->
 		<script src="../jquery/external/jquery/jquery.js"></script>
 		<script src="../jquery/jquery-ui.min.js"></script>
