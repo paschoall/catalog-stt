@@ -357,11 +357,12 @@
 
 		<?php include('../footer.php') ?>
 		<!--  Scripts-->
-		<script src="../jquery/external/jquery/jquery.js"></script>
-		<script src="../jquery/jquery-ui.min.js"></script>
-		<script src="../js/materialize.js"></script>
-		<script src="../js/init.js"></script>
+		<script src="/jquery/external/jquery/jquery.js"></script>
+		<script src="/jquery/jquery-ui.min.js"></script>
+		<script src="/js/materialize.js"></script>
+		<script src="/js/init.js"></script>
 
+		<?php include('../export_session.php') ?>
 
 		<script>
 		function validateEmail(email) {
@@ -372,7 +373,17 @@
 				return false;
 			}
 		}
-		$(document).ready(function(){
+		$(function(){
+			// console.log(window.sessao);
+			if(window.sessao.email === undefined) {
+				$("#bem_vindo").hide();
+				$("#perfil").hide();
+			} else {
+				$("#bem_vindo").html("Bem vindo, " + window.sessao["nome"] + "&nbsp;&nbsp;&nbsp;");
+				$("#entrar").hide();
+				$("#cadastrar").hide();
+			}
+
 			var multiplos = [];
 			$('select').formSelect();
 

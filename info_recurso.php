@@ -1,7 +1,7 @@
 <?php
 	session_start(); // cria o hash do browser do usuario no servidor ou entao recupera se existente
 
-	include ('/database_credentials.php');
+	include ('database_credentials.php');
 	mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 	try {
 		$conn = new mysqli($hostname, $username, $password, $database);
@@ -170,7 +170,7 @@
 	<body>
 	
 		<!-- O logo e os links da navbar deverao ser decididos depois -->
-		<?php include "/header.php"; ?>
+		<?php include "header.php"; ?>
 		<main>
 			<div class="container">
 				<div class="section"><h5><?php echo $req['TITULO']?></h5></div> 
@@ -246,7 +246,7 @@
 					</table>
 			</div>
 		</main>
-		<?php include "/footer.php" ?>
+		<?php include "footer.php" ?>
 
 		<!-- Scripts -->
 		<script src="/jquery/external/jquery/jquery.js"></script>

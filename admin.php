@@ -12,7 +12,7 @@
 
 	/* Faz a conexao com o banco de dados e retorna as requisicoes */
 
-	include ('/database_credentials.php');
+	include('database_credentials.php');
 
 	mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 	try {
@@ -93,7 +93,7 @@
 	<body>
 
 		<!-- O logo e os links da navbar deverao ser decididos depois -->
-		<?php include "/header.php"; ?>
+		<?php include "header.php"; ?>
 
 		<main>
 			<div class="container">

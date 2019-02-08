@@ -41,7 +41,7 @@
 	<body>
 
 		<!-- O logo e os links da navbar deverao ser decididos depois -->
-		<?php include "/header.php"; ?>
+		<?php include "header.php"; ?>
 
 		<main>
 		<div class="container valign-wrapper" style="min-height: 80vh;">
@@ -82,7 +82,7 @@
 		</main>
 
 		
-		<?php include "/footer.php" ?>	
+		<?php include "footer.php" ?>	
 
 
 		<!--  Scripts-->

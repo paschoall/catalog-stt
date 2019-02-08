@@ -40,7 +40,7 @@
 	<body>
 
 		<!-- O logo e os links da navbar deverao ser decididos depois -->
-		<?php include "/header.php"; ?>
+		<?php include "header.php"; ?>
 
 		<main>
 		<div class="container">
@@ -140,7 +140,7 @@
 		<script src="/js/materialize.js"></script>
 		<script src="/js/init.js"></script>
 
-		<?php include('/export_session.php') ?> <!-- Incluir esse arquivo antes do outro, senao a variavel sessao nao estaria iniciada -->
+		<?php include('export_session.php') ?> <!-- Incluir esse arquivo antes do outro, senao a variavel sessao nao estaria iniciada -->
 		<script type="text/javascript" src="/cadastro.js"> </script>
 	</body>
 </html>

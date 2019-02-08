@@ -45,7 +45,7 @@
 	<body>
 
 		<!-- O logo e os links da navbar deverao ser decididos depois -->
-		<?php include "/header.php"; ?>
+		<?php include "header.php"; ?>
 
 		<main>
 			<div class="container" style="margin-top: 50px">
@@ -195,7 +195,7 @@
 		</main>
 
 		
-		<?php include "/footer.php" ?>	
+		<?php include "footer.php" ?>	
 
 		<!--  Scripts-->
 		<script src="/jquery/external/jquery/jquery.js"></script>
@@ -203,7 +203,7 @@
 		<script src="/js/materialize.js"></script>
 		<script src="/js/init.js"></script>
 
-		<?php include('/export_session.php') ?> <!-- Incluir esse arquivo antes do outro, senao a variavel sessao nao estaria iniciada -->
+		<?php include('export_session.php') ?> <!-- Incluir esse arquivo antes do outro, senao a variavel sessao nao estaria iniciada -->
 		<script type="text/javascript" src="/consulta.js"> </script>
 		
 	</body>
