@@ -1,5 +1,5 @@
 <?php
-
+	include_once "../defines.php";
 	function get_autores($conn, $id) {
 		$answer = [];
 		$statement = $conn->prepare("SELECT USUARIO.NOME AS NOME FROM AUTOR_RECURSO JOIN USUARIO ON AUTOR_RECURSO.NOME = USUARIO.EMAIL WHERE AUTOR_RECURSO.ID_RECURSO = {$id}");
@@ -19,7 +19,7 @@
 	// Script que simplesmente consulta todos os recursos existentes 
 	session_start();
 
-	include('../database_credentials.php');
+	include(BASE_URL.'database_credentials.php');
 
 	mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 	try {

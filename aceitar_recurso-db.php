@@ -1,10 +1,11 @@
 <?php
+	include_once "defines.php";
 	session_start();
 
 	if($_SESSION['admin'] == "0") exit; // Nao pode acessar esta pagina
 	$id = $_POST['id_recurso'];
 
-	include('database_credentials.php');
+	include(BASE_URL.'database_credentials.php');
 
 	mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 	try {

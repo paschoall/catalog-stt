@@ -1,4 +1,5 @@
 /<?php
+	include_once "defines.php";
 	session_start();
 	session_unset();
 ?>

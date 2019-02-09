@@ -1,7 +1,8 @@
 <?php
+	include_once "defines.php";
 	session_start(); // cria o hash do browser do usuario no servidor ou entao recupera se existente
 
-	include ('database_credentials.php');
+	include (BASE_URL.'database_credentials.php');
 	mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 	try {
 		$conn = new mysqli($hostname, $username, $password, $database);
@@ -136,11 +137,11 @@
 
 		<!-- CSS Materialize -->
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-		<link href="/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-		<link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+		<link href="<?=ROOT?>css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+		<link href="<?=ROOT?>css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
 		<!-- Jquery UI -->
-		<link rel="stylesheet" href="/jquery/jquery-ui.min.css">
+		<link rel="stylesheet" href="<?=ROOT?>jquery/jquery-ui.min.css">
 
 		<style type="text/css">
 			body {
@@ -170,7 +171,7 @@
 	<body>
 	
 		<!-- O logo e os links da navbar deverao ser decididos depois -->
-		<?php include "header.php"; ?>
+		<?php include BASE_URL."header.php"; ?>
 		<main>
 			<div class="container">
 				<div class="section"><h5><?php echo $req['TITULO']?></h5></div> 
@@ -246,15 +247,15 @@
 					</table>
 			</div>
 		</main>
-		<?php include "footer.php" ?>
+		<?php include BASE_URL."footer.php" ?>
 
 		<!-- Scripts -->
-		<script src="/jquery/external/jquery/jquery.js"></script>
-		<script src="/jquery/jquery-ui.min.js"></script>
-		<script src="/js/materialize.js"></script>
-		<script src="/js/init.js"></script>
+		<script src="<?=ROOT?>jquery/external/jquery/jquery.js"></script>
+		<script src="<?=ROOT?>jquery/jquery-ui.min.js"></script>
+		<script src="<?=ROOT?>js/materialize.js"></script>
+		<script src="<?=ROOT?>js/init.js"></script>
 
-		<?php include('export_session.php') ?> <!-- Incluir esse arquivo antes do outro, senao a variavel sessao nao estaria iniciada -->
+		<?php include(BASE_URL.'export_session.php') ?> <!-- Incluir esse arquivo antes do outro, senao a variavel sessao nao estaria iniciada -->
 		<script type="text/javascript"> 
 			$(function() {
 				if(window.sessao.email === undefined) {

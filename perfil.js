@@ -248,7 +248,7 @@ function alterarUsuario() {
 
 	$("salvar_mudancas").attr("disabled", true);
 
-	$.post("alterar_usuario-db.php", objeto).done(function(data) {
+	$.post(window.root + "alterar_usuario-db.php", objeto).done(function(data) {
 		alert(data);
 		$("salvar_mudancas").attr("disabled", false);
 	});
@@ -306,7 +306,7 @@ $(function() {
 			return false;
 		}
 		$("#mudar_senha_btn").attr("disabled", true);
-		$.post("mudar_senha-db.php", $("#mudar_senha").serialize()).done(function(data) {
+		$.post(window.root + "mudar_senha-db.php", $("#mudar_senha").serialize()).done(function(data) {
 			$("#mudar_senha_btn").attr("disabled", false);
 			alert(data);
 		});

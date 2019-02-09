@@ -1,7 +1,10 @@
+<?php include_once "defines.php"; ?>
+
 <script type = "text/javascript"> 
 	$(function() {
 		// Exporta variaveis de sessao para o javascript
 		
+		window.root = "<?=ROOT?>";
 		window.sessao = {};
 		if(<?php echo (isset($_SESSION['email'])? "true" : "false"); ?>) window.sessao["email"] = "<?php echo isset($_SESSION['email'])? $_SESSION['email'] : 0?>";
 		if(<?php echo (isset($_SESSION['nome'])? "true" : "false"); ?>) window.sessao["nome"] = "<?php echo isset($_SESSION['nome'])? $_SESSION['nome'] : 0?>";

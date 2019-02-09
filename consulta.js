@@ -16,7 +16,7 @@ function showData(data) { // data must be an array
 		item.find("#descricao").html(rec["DESCRICAO"]);
 		item.find("#idioma").html("Idioma: " + rec["IDIOMA"]);
 		item.find("#autores").html("Autores: " + autores);
-		item.find("#link").attr("href", "/info_recurso.php?id=" + rec["ID_RECURSO"]);
+		item.find("#link").attr("href", window.root + "info_recurso.php?id=" + rec["ID_RECURSO"]);
 
 		$("#result_box").append(item);
 	}
@@ -24,7 +24,7 @@ function showData(data) { // data must be an array
 
 function blankQuery() {
 	spinningWheel();
-	$.get("queries/consultar-db.php", function(data) {
+	$.get(window.root + "queries/consultar-db.php", function(data) {
 		console.log(data);
 		var recursos = JSON.parse(data);
 		showData(recursos);

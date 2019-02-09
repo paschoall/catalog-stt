@@ -1,5 +1,6 @@
 
 <?php
+include_once "defines.php";
 session_start(); // cria o hash do browser do usuario no servidor ou entao recupera se existente
 /*
     ! ATENCAO: Esse script nao esta seguro contra ataques de SQL injection e XSS !
@@ -8,7 +9,7 @@ session_start(); // cria o hash do browser do usuario no servidor ou entao recup
 
 /* Retirado de https://www.w3schools.com/php/php_mysql_select.asp */
 
-include('database_credentials.php');
+include(BASE_URL.'database_credentials.php');
 
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 try {

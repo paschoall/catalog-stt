@@ -1,4 +1,5 @@
 <?php
+include_once "defines.php";
 session_start(); // cria o hash do browser do usuario no servidor ou entao recupera se existente
 /*
     ! ATENCAO: Esse script nao esta seguro contra ataques de SQL injection e XSS !
@@ -18,7 +19,7 @@ function generateRandomPassword($length = 15) {
 
 /* Retirado de https://websitebeaver.com/prepared-statements-in-php-mysqli-to-prevent-sql-injection */
 
-include('database_credentials.php');
+include(BASE_URL.'database_credentials.php');
 
 
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
