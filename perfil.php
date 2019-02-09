@@ -3,7 +3,7 @@
 	session_start(); // cria o hash do browser do usuario no servidor ou entao recupera se existente
 
 	if(isset($_SESSION['email']) == false) {
-		header('location: /login.php?redirect=' . $_SERVER['REQUEST_URI']);
+		header('location:'.ROOT.'login.php?redirect=' . $_SERVER['REQUEST_URI']);
 	}
 ?>
 
