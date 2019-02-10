@@ -1,4 +1,4 @@
 <?php
-	define('BASE_URL', "/home/lucas/htmldocs/");
-	define('ROOT', "http://".$_SERVER['SERVER_NAME']."/");
+	define('BASE_URL', "/home/leo/public_html/");
+	define('ROOT', "http://".$_SERVER['SERVER_NAME']."/~leo/");
 ?>
