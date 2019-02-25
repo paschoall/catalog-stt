@@ -1,5 +1,9 @@
 <?php
+	include_once "../database_credentials.php";
 	include_once "../defines.php";
+
+
+	
 	function get_autores($conn, $id) {
 		$answer = [];
 		$statement = $conn->prepare("SELECT USUARIO.NOME AS NOME FROM AUTOR_RECURSO JOIN USUARIO ON AUTOR_RECURSO.NOME = USUARIO.EMAIL WHERE AUTOR_RECURSO.ID_RECURSO = {$id}");
@@ -34,7 +38,23 @@
 	}
 	function get_tecnicas($conn, $id) {
 		$answer = [];
-	$statement = $conn->prepare("SELECT TECNICA.NOME AS NOME FROM TECNICA WHERE ID_RECURSO={$id}");
+		$statement = $conn->prepare("SELECT TECNICA.NOME AS NOME FROM TECNICA WHERE ID_RECURSO={$id}");
+		try {
+			$statement->execute();
+			$result = $statement->get_result();
+			while($row = $result->fetch_assoc()) {
+				$answer[] = $row["NOME"];
+			}
+			$statement->close();
+		} catch(Exception $e) {
+			error_log("On id = {$id}: " + $e->getMessage());
+		}
+
+		return $answer;
+	}
+	function get_chaves($conn, $id) {
+		$answer = [];
+		$statement = $conn->prepare("SELECT PALAVRASCHAVE.NOME AS NOME FROM PALAVRASCHAVE WHERE ID_RECURSO={$id}");
 		try {
 			$statement->execute();
 			$result = $statement->get_result();
@@ -67,7 +87,6 @@
 	// Script que simplesmente consulta todos os recursos existentes 
 	session_start();
 
-	include(BASE_URL.'database_credentials.php');
 
 	mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 	try {
@@ -87,17 +106,23 @@
 
 		$answer =array();
 		while($row = $result->fetch_assoc()) {
-			$save[0] =  $row["TITULO"];
-			$save[1] = implode(', ', get_niveis($conn, $row["ID_RECURSO"]));
-			$save[2] = implode(', ', get_tecnicas($conn, $row["ID_RECURSO"]));
-			$save[3] = implode(', ', get_criterios($conn, $row["ID_RECURSO"]));
-			$answer[] = "[\"".implode('", "', $save)."\"]";
+			$save =  $row;
+			$save["NIVEIS"] = implode(', ', get_niveis($conn, $row["ID_RECURSO"]));
+			$save["TECNICAS"] = implode(', ', get_tecnicas($conn, $row["ID_RECURSO"]));
+			$save["PALAVRAS_CHAVE"] = implode(', ', get_chaves($conn, $row["ID_RECURSO"]));
+			$save["AUTORES"] = implode(', ', get_autores($conn, $row["ID_RECURSO"]));
+			$save["CRITERIOS"] = implode(', ', get_criterios($conn, $row["ID_RECURSO"]));
+			unset($save["APROVADO"]);
+			unset($save["DATA_AD"]);
+			unset($save["CADASTRADOR"]);
+			
+			$answer[] = $save;
 		}
 		$retorno = array();
 		$retorno["draw"] = 1;
 		$retorno["recordsTotal"] = 2;
 		$retorno["recordsFiltered"] = 2;	
-		$retorno["data"] = json_decode("[".implode(',', $answer)."]");
+		$retorno["data"] = $answer;
 
 		echo json_encode($retorno, JSON_UNESCAPED_UNICODE);
 		$statement->close();

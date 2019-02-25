@@ -44,13 +44,13 @@
 				<div class = "row">
 					<div class = "col s9" style=" height: 50px;"> 
 
-					<label for="search"> Escolha o modo de pesquisa </label>
+					<label for="search"> Filtros: </label>
 						<div class="collection" style="padding: 0px; margin: 0px;">
 								<div class = "row" style="padding: 0px; margin: 0px;"> 
 									<div class = "col s11"> <input id="search" style="border: 0px; padding-left: 15px; margin: 0px;"></div>
 
 									<!-- Colocar onclick event para botao de pesquisa aqui -->
-									<div class = "col s1"> <a class="btn-flat right" style="margin-top: 5px;"><i class="material-icons"> search </i></a> </div>
+									<div class = "col s1"> <a id="submit-filtro" class="waves-effect waves-light btn cyan right" style="margin-top: 5px;"><i class="material-icons"> search </i></a> </div>
 								</div>	
 							
 						</div>
@@ -80,21 +80,10 @@
 									<th>Nível de teste</th>
 									<th>Técnica de teste</th>
 									<th>Critério de teste</th>
+									<th>Mais</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td>Tiger Nixon</td>
-									<td>System Architect</td>
-									<td>Edinburgh</td>
-									<td>61</td>
-								</tr>
-								<tr>
-									<td>Garrett Winters</td>
-									<td>Accountant</td>
-									<td>Tokyo</td>
-									<td>63</td>
-								</tr>
 							<tbody>
 						</table>
 					</div>
@@ -202,7 +191,7 @@
 										</div>
 									</div>
 									<center>
-										<a class="waves-effect waves-light btn cyan" style="width: 60%; position: absolute; bottom: 15px;right: 20%;">Limpar filtros</a>
+										<a class="waves-effect waves-light btn cyan" id="limpar-filtro" style="width: 60%; position: absolute; bottom: 15px;right: 20%;">Limpar filtros</a>
 									</center>
 								</form>
 							</div>
@@ -211,7 +200,20 @@
 				</div>
 			</div>
 		</main>
-
+		<!-- Modal Structure -->
+		<div id="show_info" class="modal">
+			<div class="modal-content">
+				<div class="row">
+					<div class="col s12">
+						<ul class="collection" id="insert-contet">
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<a href="#!" class="modal-close waves-effect waves-green btn-flat">Fechar</a>
+			</div>
+		</div>
 		
 		<?php include BASE_URL."footer.php" ?>	
 
@@ -226,15 +228,48 @@
 		<?php include(BASE_URL.'export_session.php') ?> <!-- Incluir esse arquivo antes do outro, senao a variavel sessao nao estaria iniciada -->
 		<script type="text/javascript" src="<?=ROOT?>consulta.js"> </script>
 		<script>
+
+			
 			$.extend( true, $.fn.dataTable.defaults, {
 				"searching": false,
 				"bLengthChange": false
 			} );
 			$(function(){
+				var $tableSel = $('#example');
+				
+
 				$('select').formSelect();
 				
-				$(document).ready(function() {
-				$('#example').DataTable( {
+				$("#limpar-filtro").on('click', function(e){
+					e.preventDefault();
+
+					$('input').val("");
+					$('select').prop('selectedIndex',0);
+					$('select').formSelect();
+
+
+				});
+
+				$("#search").on('input', function(e){
+					console.log('call')
+					var valores = {
+						filtro  : '',
+						modo    : '',
+						idioma  : '',
+						formato : ''
+					}
+					valores.filtro = $(this).val();
+					valores.modo   = $("#modo_pesquisa");
+					valores.modo   = $("#modo_pesquisa");
+					valores.idioma = $("#idioma");
+					valores.formato= $("#formato");
+
+					filtroExterno(valores);
+					$tableSel.dataTable().fnDraw();
+				})
+				
+			
+				var dTable = $tableSel.DataTable({
 					language: {
 						sEmptyTable: "Nenhum registro encontrado",
 						sInfo: "Mostrando de _START_ até _END_ de _TOTAL_ registros",
@@ -258,19 +293,48 @@
 							sSortDescending: ": Ordenar colunas de forma descendente"
 						}
 					},
-					processing: true,
-					serverSide: false,
-					ajax:window.root + "queries/consultar-db.php",
-
-					columnDefs: [
+					
+					processing  : true,
+					serverSide  : true,
+					bServerSide : false,
+					ajax        : {
+						"url"    : window.root + "queries/consultar-db.php"
+					},
+					columns  :[
+						{ "data": "TITULO" },
+						{ "data": "NIVEIS" },
+						{ "data": "TECNICAS" },
+						{ "data": "CRITERIOS" },
 						{
-							targets: [ 0, 1, 2 ],
-							className: 'mdl-data-table__cell--non-numeric'
+						"targets": -1,
+						"data": null,
+						"defaultContent": "<button class='select-row waves-effect waves-light btn cyan modal-trigger' href='#show_info'><i class='material-icons'>add</i></button>"
 						}
 					]
-					} );
-				} );
+				});
+
+
+				$('#example tbody').on( 'click', '.select-row', function () {
+					var data = dTable.row( $(this).parents('tr') ).data();
+					
+					$.each(data, (index,el) => {
+						if(index != 'ID_RECURSO'){
+							console.log(typeof index)
+							let label = index.replace("_", " ");
+							label     = label.charAt(0).toUpperCase() + label.slice(1).toLowerCase();
+							$("#insert-contet").append('<li class="collection-item"><b>'+label+': </b><span id="modal-'+index+'">'+el+'</span></li>');
+						}
+					})
+					$('#show_info').modal();
+				});
+
 			});
+
+
+			/**Tratamentos de filtro via js */
+
+			
+            
 		</script>
 	</body>
 </html>

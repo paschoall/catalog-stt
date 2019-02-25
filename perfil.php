@@ -58,12 +58,15 @@
 		<main>
 			<div class="container">
 				<div class="row" style="margin-top: 50px">
-					<div class="col s2">
+					<div class="col s3">
 						<div class="collection">
 							<a href="<?=ROOT?>perfil.php" class="sidebar collection-item active">
 								Meus Dados
 							</a>
-							<a href="<?=ROOT?>recursos.php" class="sidebar collection-item">
+							<a href="<?=ROOT?>recursos/inserir.php" class="sidebar collection-item">
+								Adicionar Recursos
+							</a>
+							<a href="<?=ROOT?>recursos/gerenciar.php" class="sidebar collection-item">
 								Meus Recursos
 							</a>
 							<a href="<?=ROOT?>logout.php" class="sidebar collection-item">
@@ -71,7 +74,6 @@
 							</a>
 						</div>
 					</div>
-					<div class="col s1"></div>
 					<div class="col s9">
 						<div class="divider"></div>
 						<div class="section">
