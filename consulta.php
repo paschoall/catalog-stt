@@ -26,10 +26,15 @@
 			    min-height: 100vh;
 				flex-direction: column;
 			}
-
+			#example_filter{
+				display:none!important;
+			}
 			main {
 			    flex: 1 0 auto;
 			    text-align: justify;
+			}
+			table#example td:nth-child(2) {
+				display: block;
 			}
 
 		</style>
@@ -61,9 +66,9 @@
 
 						<label for="modo_pesquisa"> Escolha o modo de pesquisa </label>
 							<select id="modo_pesquisa">
-								<option style="color: grey" value="1">Por título</option>
-								<option style="color: grey" value="2">Por autor</option>
-								<option style="color: grey" value="3">Por palavras-chave</option>
+								<option style="color: grey" value="0">Por título</option>
+								<option style="color: grey" value="6">Por autor</option>
+								<option style="color: grey" value="5">Por palavras-chave</option>
 							</select>
 						</div>
 					</div>
@@ -81,6 +86,10 @@
 									<th>Técnica de teste</th>
 									<th>Critério de teste</th>
 									<th>Mais</th>
+									<th></th>
+									<th></th>
+									<th></th>
+									<th></th>
 								</tr>
 							</thead>
 							<tbody>
@@ -231,7 +240,7 @@
 
 			
 			$.extend( true, $.fn.dataTable.defaults, {
-				"searching": false,
+				"searching": true,
 				"bLengthChange": false
 			} );
 			$(function(){
@@ -251,24 +260,14 @@
 				});
 
 				$("#search").on('input', function(e){
-					console.log('call')
-					var valores = {
-						filtro  : '',
-						modo    : '',
-						idioma  : '',
-						formato : ''
-					}
-					valores.filtro = $(this).val();
-					valores.modo   = $("#modo_pesquisa");
-					valores.modo   = $("#modo_pesquisa");
-					valores.idioma = $("#idioma");
-					valores.formato= $("#formato");
-
-					filtroExterno(valores);
+					filtroExterno();
 					$tableSel.dataTable().fnDraw();
 				})
 				
-			
+				$( "select" ).change(function() {
+					filtroExterno();
+					$tableSel.dataTable().fnDraw();
+				})
 				var dTable = $tableSel.DataTable({
 					language: {
 						sEmptyTable: "Nenhum registro encontrado",
@@ -295,7 +294,7 @@
 					},
 					
 					processing  : true,
-					serverSide  : true,
+					serverSide  : false,
 					bServerSide : false,
 					ajax        : {
 						"url"    : window.root + "queries/consultar-db.php"
@@ -306,11 +305,16 @@
 						{ "data": "TECNICAS" },
 						{ "data": "CRITERIOS" },
 						{
-						"targets": -1,
+						"targets": 5,
 						"data": null,
 						"defaultContent": "<button class='select-row waves-effect waves-light btn cyan modal-trigger' href='#show_info'><i class='material-icons'>add</i></button>"
-						}
+						},
+						{ "data": "PALAVRAS_CHAVE" , "visible": false},
+						{ "data": "AUTORES" , "visible": false},
+						{ "data": "IDIOMA" , "visible": false},
+						{ "data": "FORMATO", "visible": false }
 					]
+
 				});
 
 
@@ -328,6 +332,16 @@
 					$('#show_info').modal();
 				});
 
+
+				var filtroExterno = function(){
+					var filtro   = $("#search").val();
+					var modo     = $("#modo_pesquisa");
+					var idioma   = $("#idioma");
+					var formato  = $("#formato");
+
+					dTable.columns(parseInt(modo.val())).search(filtro).draw();
+					$tableSel.dataTable().fnDraw();
+				}
 			});
 
 

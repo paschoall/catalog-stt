@@ -3,7 +3,11 @@
 	include_once "../defines.php";
 
 
+	// you're developing, so you want all errors to be shown
 	
+	error_reporting(E_ALL);
+ini_set('display_errors', 'on');
+
 	function get_autores($conn, $id) {
 		$answer = [];
 		$statement = $conn->prepare("SELECT USUARIO.NOME AS NOME FROM AUTOR_RECURSO JOIN USUARIO ON AUTOR_RECURSO.NOME = USUARIO.EMAIL WHERE AUTOR_RECURSO.ID_RECURSO = {$id}");
@@ -88,7 +92,6 @@
 	session_start();
 
 
-	mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 	try {
 		$conn = new mysqli($hostname, $username, $password, $database);
 		$conn->set_charset("utf8mb4");
@@ -98,7 +101,7 @@
 	}
 
 
-	$statement = $conn->prepare("SELECT * FROM RECURSO LIMIT 20");
+	$statement = $conn->prepare("SELECT * FROM RECURSO");
 
 	try {
 		$statement->execute();
