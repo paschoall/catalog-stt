@@ -1,10 +1,9 @@
 <?php
-	include_once "../database_credentials.php";
-	include_once "../defines.php";
+	include_once "../../database_credentials.php";
+	include_once "../../defines.php";
 
-
+    session_start();
 	// you're developing, so you want all errors to be shown
-	
 	error_reporting(E_ALL);
 ini_set('display_errors', 'on');
 
@@ -74,7 +73,7 @@ ini_set('display_errors', 'on');
 	}
 	function get_criterios($conn, $id) {
 		$answer = [];
-		$statement = $conn->prepare("SELECT CRITERIO.NOME AS NOME FROM CRITERIO WHERE ID_RECURSO={$id}");
+		$statement = $conn->prepare("SELECT CRITERIO.NOME AS NOME FROM CRITERIO WHERE ID_RECURSO={$id} ");
 		try {
 			$statement->execute();
 			$result = $statement->get_result();
@@ -89,7 +88,7 @@ ini_set('display_errors', 'on');
 		return $answer;
 	}
 	// Script que simplesmente consulta todos os recursos existentes 
-	session_start();
+	
 
 
 	try {
@@ -100,8 +99,7 @@ ini_set('display_errors', 'on');
 		exit('Error connecting to the database');
 	}
 
-
-	$statement = $conn->prepare("SELECT * FROM RECURSO");
+    $statement = $conn->prepare("SELECT * FROM RECURSO WHERE CADASTRADOR = '".$_SESSION['email']."'");
 
 	try {
 		$statement->execute();
@@ -120,7 +118,7 @@ ini_set('display_errors', 'on');
 			unset($save["CADASTRADOR"]);
 			
 			$answer[] = $save;
-		}
+        }
 		$retorno = array();
 		$retorno["draw"] = 1;
 		$retorno["recordsTotal"] = sizeof($answer);
