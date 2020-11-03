@@ -3,7 +3,10 @@
 		o nome do schema é catalog 
 	*/
 	$hostname = "localhost";
-	$username = "catalog";
-	$password = "catalogstt@2018";
+	$username = "root";
+	$password = "";
 	$database = "catalog";
+	
+	//conecta a base de dados
+	mysqli_connect ($hostname, $username, $password) or die (mysqli_error ());
 ?>

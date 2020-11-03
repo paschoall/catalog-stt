@@ -45,7 +45,7 @@
 	<body>
 
 		<!-- O logo e os links da navbar deverao ser decididos depois -->
-		<?php include(BASE_URL.'header.php') ?>
+		<?php include(BASE_URL.'../header.php') ?>
 
 		<main>
 		<div class="container">
@@ -376,14 +376,14 @@
 		</div>
 		</main>
 
-		<?php include(BASE_URL.'footer.php') ?>
+		<?php include(BASE_URL.'../footer.php') ?>
 		<!--  Scripts-->
 		<script src="<?=ROOT?>jquery/external/jquery/jquery.js"></script>
 		<script src="<?=ROOT?>jquery/jquery-ui.min.js"></script>
 		<script src="<?=ROOT?>js/materialize.js"></script>
 		<script src="<?=ROOT?>js/init.js"></script>
 
-		<?php include(BASE_URL.'export_session.php') ?>
+		<?php include(BASE_URL.'../export_session.php') ?>
 		<script type="text/javascript" src="<?=ROOT?>perfil.js"> </script>
 		<script>
 		function validateEmail(email) {

@@ -82,6 +82,13 @@
                 }
             }
 
+            //echo $id_recurso;
+            foreach($_POST["autor_recurso"] as $email){
+                if (!$mysqli->query("INSERT INTO catalog.AUTOR_RECURSO(id_recurso, nome) values('".$id_recurso."', '".$email."')")) {
+                    printf("Error: %s\n", $mysqli->error);
+                }
+            }
+
         } catch (Exception $e) {
             //caso ocorra um erro na execuçaõ do sql
 
