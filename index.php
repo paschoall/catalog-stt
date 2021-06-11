@@ -56,7 +56,6 @@
 				<div class="divider"> </div>
 				<div class="section">
 					<p> O Catalog-STT - acrônimo para <i> A Catalog of Open Educational Resources to Support Software Testing Teaching </i> - é um sistema criado por um grupo de pesquisa do ICMC-USP com o objetivo de facilitar o registro e a consulta de recursos educacionais abertos no domínio de teste de software. Se você deseja explorar ou procurar um material didático - seja vídeo, apostila ou qualquer tipo de recurso educacional, faça uma <a href="<?=ROOT?>consulta.php"> consulta. </a> </p>
-					<p> Se você é um professor ou autor de algum material e deseja publicá-lo, <a href="<?=ROOT?>login.php"> entre</a> ou <a href="<?=ROOT?>cadastro.php"> cadastre-se.</a>
 				</div>
 
 			</div>

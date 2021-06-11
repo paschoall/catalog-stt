@@ -2,3 +2,6 @@
 [1014/001129.566:ERROR:file_io_win.cc(179)] CreateFile C:\Program Files (x86)\Gunbean\Reports\Dump\settings.dat: Acesso negado. (0x5)
 [1015/140242.648:ERROR:file_io_win.cc(179)] CreateFile C:\Program Files (x86)\Gunbean\Reports\Dump\settings.dat: Acesso negado. (0x5)
 [1015/173055.655:ERROR:file_io_win.cc(179)] CreateFile C:\Program Files (x86)\Gunbean\Reports\Dump\settings.dat: Acesso negado. (0x5)
+[1103/184152.609:ERROR:registration_protocol_win.cc(103)] CreateFile: O sistema não pode encontrar o arquivo especificado. (0x2)
+[1103/184237.274:ERROR:registration_protocol_win.cc(103)] CreateFile: O sistema não pode encontrar o arquivo especificado. (0x2)
+[1126/101026.954:ERROR:file_io_win.cc(179)] CreateFile C:\Program Files (x86)\Gunbean\Reports\Dump\settings.dat: Acesso negado. (0x5)

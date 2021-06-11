@@ -1,6 +1,7 @@
 <?php 
-
+    // DEU RUIM DA CTRL Z
     include ('../../database_credentials.php');
+    session_start();
     //Declara quais varivais são obrigatoria e quais são multivaloradas
     $obrigatorios = ["titulo", "idioma", "repositorio","descricao", "descricao_educacional", "entidade_contribuinte", "versao", "status", "formato", "localizacao", "requisitos_tecnologicos", "instrucoes_instalacao", "tipo_interatividade", "tipo_recurso", "creative_commons", "copyright"];
     $multivalorado = ["autor_recurso", "palavraschave", "niveis", "tecnica", "criterio"];
@@ -35,18 +36,19 @@
         try {
             $query = "INSERT INTO ";
             $query .= "RECURSO(";
-            $query .= "titulo, idioma, descricao, repositorio, versao, status, ";
+            $query .= "cadastrador, titulo, idioma, descricao, repositorio, versao, status, ";
             $query .= "entidade_contribuinte, formato, tamanho, localizacao, ";
             $query .= "requisitos_tecnologicos, instrucoes_instalacao, duracao, ";
             $query .= "tipo_interatividade, tipo_recurso, descricao_educacional, ";
             $query .= "custo, creative_commons, copyright) ";
-            $query .= "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $query .= "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
             $stmt = $mysqli->prepare($query);
             if ($stmt === FALSE) {
                 die ("Mysql Error: " . $mysqli->error);
             }
-            $stmt->bind_param('ssssssssisssisssiss',
+            $stmt->bind_param('sssssssssisssisssiss',
+                $_SESSION['email'],
                 $_POST['titulo'],
                 $_POST['idioma'],
                 $_POST['descricao'],
@@ -68,11 +70,9 @@
                 $_POST['copyright']
             );
             $stmt->execute();
-            printf("Error: %s.\n", $stmt->error);
 
             $id_recurso = $stmt->insert_id;
 
-            echo $id_recurso;
             foreach($multivalorado as $table_name){
                 foreach($_POST[$table_name] as $name){
                     if (!$mysqli->query("INSERT INTO ".strtoupper($table_name)."(nome, id_recurso) values('".$name."', '".$id_recurso."')")) {
@@ -82,19 +82,12 @@
                 }
             }
 
-            //echo $id_recurso;
-            foreach($_POST["autor_recurso"] as $email){
-                if (!$mysqli->query("INSERT INTO catalog.AUTOR_RECURSO(id_recurso, nome) values('".$id_recurso."', '".$email."')")) {
-                    printf("Error: %s\n", $mysqli->error);
-                }
-            }
-
         } catch (Exception $e) {
             //caso ocorra um erro na execuçaõ do sql
 
 
             $error["mysql"] = $e->getMessage();
-
+            echo "ex:";
             echo $e->getMessage();
 
             //Retorna as condiçoes anteriores
@@ -106,6 +99,7 @@
             'sucesso' => 'Recurso cadastrado com sucesso. Ele estará disponível após aprovação'
         ];
 
+        echo json_encode($retorno);
     }else{
         echo json_encode($error);
     }

@@ -214,8 +214,9 @@ $(function() {
 		$("#confirmar").attr("disabled", true);
 		$.post(window.root + "cadastro-db.php", $("#form").serialize()).done(function(data) {
 			if(data.includes("Duplicate entry")) alert("Este email já existe");
-			else alert(data);
+			else alert("Cadastro feito, favor logar.\n\n" + data);
 			$("#confirmar").attr("disabled", false);
+			window.location.replace(window.root + "recursos/gerenciar.php");
 		});
 		return false;
 	});
