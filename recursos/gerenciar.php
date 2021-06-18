@@ -90,6 +90,10 @@
 		</main>
         <!-- Modal Structure -->
         <div id="show_info" class="modal">
+			<div class="modal-header">
+				<h5 style="margin:10px">Catálogo de recursos, clique no botao de + para adicionar um recurso aqui...</h5>
+				<a href="#!" class="modal-close waves-effect waves-green btn-flat" style="background-color:red;color:white;margin:10px;" onclick="document.location.reload(true);">Limpar Catálogo</a>
+			</div>
             <div class="modal-content">
                 <div class="row">
                     <div class="col s12">
@@ -99,7 +103,6 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Fechar</a>
             </div>
         </div>
 		<?php include(BASE_URL.'../footer.php') ?>
@@ -277,6 +280,9 @@
                     $("#insert-contet").append('<li class="collection-item"><b>'+label+': </b><span id="modal-'+index+'">'+el+'</span></li>');
                 }
             })
+			$("#insert-contet").append('<a href="http://'+ data.LOCALIZACAO +'" class="modal-close waves-effect waves-green btn-flat" id="butao" style="margin:10px;margin-left:40%;background-color:#00bcd4;color:white;">Acessar recurso</a>')
+			$("#insert-contet").append('<br><hr><br>');
+			console.log(JSON.stringify(data, null, 4));
             $('#show_info').modal();
         });
 
