@@ -101,7 +101,7 @@ ini_set('display_errors', 'on');
 	}
 
 
-	$statement = $conn->prepare("SELECT * FROM RECURSO");
+	$statement = $conn->prepare("SELECT * FROM RECURSO WHERE RECURSO.APROVADO = 1"); // Testando SQL somente com os aprovados (APROVADO = 1)
 
 	try {
 		$statement->execute();
