@@ -9,6 +9,7 @@
 				<li id="perfil"> <a href="<?=ROOT?><?php if($_SESSION['admin'] == 1) echo 'admin.php'; else echo 'perfil.php';?>"> <i class="material-icons">person</i> </a> </li>
 				<li id='entrar'><a href="<?=ROOT?>login.php" >Entrar</a></li>
 				<li id='cadastrar'><a href="<?=ROOT?>cadastro.php">Cadastrar</a></li>
+				<li id='recursos'><a href="<?=ROOT?>recursos/gerenciar.php" >Meus Recursos</a></li>
 			</ul>
 		</div>
 	</nav>

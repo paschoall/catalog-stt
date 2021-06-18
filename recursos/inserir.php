@@ -209,7 +209,7 @@
 								<div class="input-field col s12 m3 tooltip" style=""> 
 									<input type="text" id="repositorio" name="repositorio" class="obrigatorio" maxlength="45" > 
 									<label for="repositorio"> Repositório *</label>
-									<span class="tooltiptext">O repositório onde possa encontrar o recurso</span>
+									<span class="tooltiptext">O tipo de repositório onde o recurso está (não o link absoluto, somente o tipo: YouTube, WordPress, Site Local)</span>
 								</div>
 							</div>
 							<div class="row">
@@ -319,7 +319,7 @@
 									<input type="text" id="localizacao" name="localizacao" class="obrigatorio" >
 									<label for="localizacao"> Localização *</label>
 									<span class="helper-text" data-error="wrong" data-success="right">Link para o recurso.</span>
-									<span class="tooltiptext">Link para o local mais atual do recurso</span>
+									<span class="tooltiptext">Link para o local mais atual do recurso (favor colocar o link sem 'http://')</span>
 								</div>
 							</div>
 

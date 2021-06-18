@@ -241,7 +241,7 @@
 		<!-- Modal Structure -->
 		<div id="show_info" class="modal">
 			<div class="modal-header">
-				<a href="#!" class="modal-close waves-effect waves-green btn-flat">Fechar</a>
+				<a href="#!" class="modal-close waves-effect waves-green btn-flat" style="background-color:red;color:white;" onclick="document.location.reload(true);">Limpar Catálogo</a>
 			</div>
 			<div class="modal-content">
 				<div class="row">
@@ -358,6 +358,10 @@
 							$("#insert-contet").append('<li class="collection-item"><b>'+label+': </b><span id="modal-'+index+'">'+el+'</span></li>');
 						}
 					})
+					// let link = document.getElementById('modal-LOCALIZACAO').value;
+					// let link2 = $( "modal-LOCALIZACAO" ).text();
+					$("#insert-contet").append('<a href="http://'+ data.LOCALIZACAO +'" class="modal-close waves-effect waves-green btn-flat" id="butao" style="margin:10px;margin-left:40%;background-color:#00bcd4;color:white;">Acessar recurso</a>')
+					$("#insert-contet").append('<br><hr><br>');
 					$('#show_info').modal();
 				});
 
@@ -375,9 +379,6 @@
 
 
 			/**Tratamentos de filtro via js */
-
-			
-            
 		</script>
 	</body>
 </html>

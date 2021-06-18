@@ -72,6 +72,13 @@
 								</div>
 								<input type="submit" hidden="true">
 								</form>
+								<div class="row valign-wrapper" style="margin-bottom: -10px;">
+									<div class="col s2">Sem login?</div>
+									<div class="col s8">
+										<div class="input-field inline" style="margin-left: 20px;"><a href="<?=ROOT?>cadastro.php">Cadastre-se</a></div>
+									</div>
+									<div class="col s2"></div>
+								</div>
 							</div>
 						</div>
 					</div>
