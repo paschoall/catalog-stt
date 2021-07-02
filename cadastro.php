@@ -64,35 +64,35 @@
 					</div>
 					<div class="row">
 						<div class="input-field col s2 validate" style=" margin-top: -10px;"> 
-							<input type="text" id="cep" name="cep" class="validate obrigatorio"> </input> 
-							<label for="cep"> CEP *</label>
+							<input type="text" id="cep" name="cep" class="validate "> </input> 
+							<label for="cep"> CEP</label>
 						</div>
 
 						<div class="input-field col s5" style=" margin-top: -10px;"> 
-							<input type="text" id="cidade" name="cidade" class="obrigatorio" maxlength="45"> </input> 
-							<label for="cidade"> Cidade *</label>
+							<input type="text" id="cidade" name="cidade" class="" maxlength="45"> </input> 
+							<label for="cidade"> Cidade</label>
 						</div>
 						<div class="input-field col s1" style=" margin-top: -10px;"> 
-							<input type="text" id="uf" name="uf" class="obrigatorio" maxlength="45"> </input> 
-							<label for="uf"> UF *</label>
+							<input type="text" id="uf" name="uf" class="" maxlength="45"> </input> 
+							<label for="uf"> UF</label>
 						</div>
 					</div>
 					<div class="row">
 						<div class="input-field col s4" style=" margin-top: -10px;"> 
-							<input type="text" id="rua" name="rua" class="obrigatorio" maxlength="120"> </input> 
-							<label for="rua"> Rua *</label>
+							<input type="text" id="rua" name="rua" class="" maxlength="120"> </input> 
+							<label for="rua"> Rua</label>
 						</div>
 
 						<div class="input-field col s4" style=" margin-top: -10px;"> 
-							<input type="text" id="bairro" name="bairro" class="obrigatorio" maxlength="100"> </input> 
-							<label for="bairro"> Bairro *</label>
+							<input type="text" id="bairro" name="bairro" class="" maxlength="100"> </input> 
+							<label for="bairro"> Bairro</label>
 						</div>
 					</div>
 
 					<div class="row">
 						<div class="input-field col s1" style=" margin-top: -10px;"> 
-							<input type="text" id="numero" name="numero" class="obrigatorio"> </input> 
-							<label for="numero"> Numero *</label>
+							<input type="text" id="numero" name="numero" class=""> </input> 
+							<label for="numero"> Numero</label>
 						</div>
 
 						<div class="input-field col s7" style=" margin-top: -10px;"> 
