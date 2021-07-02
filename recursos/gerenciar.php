@@ -40,6 +40,52 @@
 				min-width: 10px;
 				border-left: 1px solid white; //#00acc1;
 			}
+
+			/* Tooltip container */
+			.tooltip {
+				position: relative;
+				display: inline-block;
+			}
+
+			/* Tooltip text */
+			.tooltip .tooltiptext {
+				visibility: hidden;
+				width: 200px;
+				background-color: rgb(0, 188, 212);
+				color: #fff;
+				text-align: center;
+				padding: 10px;
+				border-radius: 6px;
+
+				/* Position the tooltip text */
+				position: absolute;
+				z-index: 1;
+				bottom: 100%;
+				left: 50%;
+				margin-left: -100px;
+
+				/* Fade in tooltip */
+				opacity: 0;
+				transition: opacity 0.3s;
+			}
+
+			/* Tooltip arrow */
+			.tooltip .tooltiptext::after {
+				content: " ";
+				position: absolute;
+				top: 100%; /* At the bottom of the tooltip */
+  				left: 50%;
+				margin-left: -5px;
+				border-width: 5px;
+				border-style: solid;
+				border-color: rgb(0, 188, 212) transparent transparent transparent;
+			}
+
+			/* Show the tooltip text when you mouse over the tooltip container */
+			.tooltip:hover .tooltiptext {
+				visibility: visible;
+				opacity: 1;
+			}
 		</style>
 	</head>
 	<body>
@@ -67,6 +113,9 @@
 					</div>
 				</div>
 				<div class="col s9">
+					<p style="color:gray;">Pesquisar</p>
+				</div>
+				<div class="col s9 tooltip">
                     <table id="example" class="display" style="width:100%; margin-top: 50px;">
                         <thead>
                             <tr>
@@ -84,6 +133,7 @@
                         <tbody>
                         </tbody>
 					</table>
+					<span class="tooltiptext">Faça uma pesquisa aqui!</span>
 				</div>
 			</div>
 		</div>
@@ -91,7 +141,6 @@
         <!-- Modal Structure -->
         <div id="show_info" class="modal">
 			<div class="modal-header">
-				<h5 style="margin:10px">Catálogo de recursos, clique no botao de + para adicionar um recurso aqui...</h5>
 				<a href="#!" class="modal-close waves-effect waves-green btn-flat" style="background-color:red;color:white;margin:10px;" onclick="document.location.reload(true);">Limpar Catálogo</a>
 			</div>
             <div class="modal-content">
@@ -232,7 +281,7 @@
                 sLoadingRecords: "Carregando...",
                 sProcessing: "Processando...",
                 sZeroRecords: "Nenhum registro encontrado",
-                sSearch: "Pesquisar",
+                sSearch: " ",
                 oPaginate: {
                     sNext: "Próximo",
                     sPrevious: "Anterior",

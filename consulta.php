@@ -229,7 +229,7 @@
 										</div> -->
 									</div>
 									<center>
-										<a class="waves-effect waves-light btn cyan" id="limpar-filtro" style="width: 60%; position: absolute; bottom: 15px;right: 20%;">Limpar filtros</a>
+										<a class="waves-effect waves-light btn cyan" id="limpar-filtro" style="width: 60%; position: absolute; bottom: 15px;right: 20%;">Aplicar filtros</a>
 									</center>
 								</form>
 							</div>
@@ -241,7 +241,6 @@
 		<!-- Modal Structure -->
 		<div id="show_info" class="modal">
 			<div class="modal-header">
-				<h5 style="margin:10px">Catálogo de recursos, clique no botao de + para adicionar um recurso aqui...</h5>
 				<a href="#!" class="modal-close waves-effect waves-green btn-flat" style="background-color:red;color:white;margin:10px;" onclick="document.location.reload(true);">Limpar Catálogo</a>
 			</div>
 			<div class="modal-content">
