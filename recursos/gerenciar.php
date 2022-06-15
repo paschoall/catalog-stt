@@ -91,21 +91,22 @@
 	<body>
 
 		<!-- O logo e os links da navbar deverao ser decididos depois -->
-		<?php include(BASE_URL.'../header.php') ?>
+		<!-- <//?php include(BASE_URL.'../header.php') ?> -->
+		<?php include(BASE_URL.'header.php') ?>
 
 		<main>
 		<div class="container">
 			<div class="row"  style="margin-top: 50px">
 				<div class="col s3">
 					<div class="collection">
-						<a href="<?=ROOT?>perfil.php" class="sidebar collection-item">
-							Meus Dados
-						</a>
 						<a href="<?=ROOT?>recursos/inserir.php" class="sidebar collection-item ">
 							Adicionar Recursos
 						</a>
 						<a href="<?=ROOT?>recursos/gerenciar.php" class="sidebar collection-item active">
 							Meus Recursos
+						</a>
+						<a href="<?=ROOT?>perfil.php" class="sidebar collection-item">
+							Meus Dados
 						</a>
 						<a href="<?=ROOT?>logout.php" class="sidebar collection-item">
 							Sair <i id="sair_icon" class="material-icons right"> vertical_align_bottom </i>
@@ -141,7 +142,7 @@
         <!-- Modal Structure -->
         <div id="show_info" class="modal">
 			<div class="modal-header">
-				<a href="#!" class="modal-close waves-effect waves-green btn-flat" style="background-color:red;color:white;margin:10px;" onclick="document.location.reload(true);">Limpar Catálogo</a>
+				<a href="#!" class="modal-close waves-effect waves-green btn-flat" style="background-color:red;color:white;margin:10px;margin-right: 5%;float: right;" onclick="limpar_modal();">X</a>
 			</div>
             <div class="modal-content">
                 <div class="row">
@@ -163,7 +164,8 @@
 		<script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
 		<script src="<?=ROOT?>js/dataTables.material.min.js"></script>
 
-		<?php include(BASE_URL.'../export_session.php') ?>
+		<!-- <//?php include(BASE_URL.'../export_session.php') ?> -->
+		<?php include(BASE_URL.'export_session.php') ?>
 		<script type="text/javascript" src="<?=ROOT?>perfil.js"> </script>
 		<script>
 		function validateEmail(email) {
@@ -261,6 +263,22 @@
 
 <script>
 
+	function limpar_modal() {
+		$('#show_info ul').empty();
+	}
+
+	$(document).on('focusout', $('#show_info').focus(), function (e) {
+		setTimeout(function(){
+			var focus=$(document.activeElement);
+			if (focus.is("#show_info") || $('#show_info').has(focus).length) {
+			} else {
+				limpar_modal();
+				//document.location.reload(true);
+			}
+		},0);
+	});
+
+
 			
     $.extend( true, $.fn.dataTable.defaults, {
         "searching": true,
@@ -311,8 +329,7 @@
                 },
                 { "data": "PALAVRAS_CHAVE" , "visible": false},
                 { "data": "AUTORES" , "visible": false},
-                { "data": "IDIOMA" , "visible": false},
-                { "data": "FORMATO", "visible": false }
+                { "data": "IDIOMA" , "visible": false}
             ]
 
         });
@@ -329,7 +346,7 @@
                     $("#insert-contet").append('<li class="collection-item"><b>'+label+': </b><span id="modal-'+index+'">'+el+'</span></li>');
                 }
             })
-			$("#insert-contet").append('<a href="http://'+ data.LOCALIZACAO +'" class="modal-close waves-effect waves-green btn-flat" id="butao" style="margin:10px;margin-left:40%;background-color:#00bcd4;color:white;">Acessar recurso</a>')
+			$("#insert-contet").append('<a href="http://'+ data.LOCALIZACAO +'" class="modal-close waves-effect waves-green btn-flat" id="butao" target="_blank" style="margin:10px;margin-left:40%;background-color:#00bcd4;color:white;">Acessar recurso</a>')
 			$("#insert-contet").append('<br><hr><br>');
 			console.log(JSON.stringify(data, null, 4));
             $('#show_info').modal();

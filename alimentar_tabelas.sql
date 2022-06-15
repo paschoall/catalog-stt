@@ -1,5 +1,5 @@
 /* Alimentar tabelas de SQL para teste */
-SET FOREIGN_KEY_CHECKS=0
+SET FOREIGN_KEY_CHECKS=0;
 #Insere admin
 insert into catalog.USUARIO(EMAIL, NOME, SENHA, ADMIN) values('paschoalln@usp.br', 'Leo Natan Paschoal', 
 	'$2y$10$TR937qgts6b6PbsstPGA3.LbPgYXzbmSHMqDYISISMJi4K5XRyTGm', 1);
@@ -102,4 +102,4 @@ insert into catalog.TECNICA values('Teste Estrutural', 2);
 insert into catalog.CRITERIO values('Particionamento em classes de equivalência', 2);
 insert into catalog.CRITERIO values('Mutação', 2);
 
-SET FOREIGN_KEY_CHECKS=1
+SET FOREIGN_KEY_CHECKS=1;

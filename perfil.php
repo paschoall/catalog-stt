@@ -60,14 +60,14 @@
 				<div class="row" style="margin-top: 50px">
 					<div class="col s3">
 						<div class="collection">
-							<a href="<?=ROOT?>perfil.php" class="sidebar collection-item active">
-								Meus Dados
-							</a>
 							<a href="<?=ROOT?>recursos/inserir.php" class="sidebar collection-item">
 								Adicionar Recursos
 							</a>
 							<a href="<?=ROOT?>recursos/gerenciar.php" class="sidebar collection-item">
 								Meus Recursos
+							</a>
+							<a href="<?=ROOT?>perfil.php" class="sidebar collection-item active">
+								Meus Dados
 							</a>
 							<a href="<?=ROOT?>logout.php" class="sidebar collection-item">
 								Sair <i id="sair_icon" class="material-icons right"> vertical_align_bottom </i>
@@ -116,8 +116,7 @@
 							</div>
 						</div>
 						<div class="divider"></div>
-						<a class=" waves-effect waves-teal btn-flat right" style="font-size: 10pt; color: #333333; margin-top: 20px;">Excluir conta</a>
-
+						<a class=" waves-effect waves-teal btn-flat right" style="font-size: 10pt; color: #333333; margin-top: 20px;" onclick='excluirConta()' >Excluir conta</a>
 					</div>
 				</div>
 			</div>
@@ -133,6 +132,7 @@
 		<script src="<?=ROOT?>jquery/external/jquery/jquery.js"></script>
 		<script src="<?=ROOT?>jquery/jquery-ui.min.js"></script>
 		<script src="<?=ROOT?>js/materialize.js"></script>
+		<script src="<?=ROOT?>js/material-dialog.js"></script>
 		<script src="<?=ROOT?>js/init.js"></script>
 
 		<?php include(BASE_URL.'export_session.php') ?> <!-- Incluir esse arquivo antes do outro, senao a variavel sessao nao estaria iniciada -->

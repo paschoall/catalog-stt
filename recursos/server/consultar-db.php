@@ -23,6 +23,22 @@ ini_set('display_errors', 'on');
 
 		return $answer;
 	}
+	function get_entidades($conn, $id) {
+		$answer = [];
+		$statement = $conn->prepare("SELECT ENTIDADE_CONTRIBUINTE.NOME AS NOME FROM ENTIDADE_CONTRIBUINTE WHERE ID_RECURSO={$id}");
+		try {
+			$statement->execute();
+			$result = $statement->get_result();
+			while($row = $result->fetch_assoc()) {
+				$answer[] = $row["NOME"];
+			}
+			$statement->close();
+		} catch(Exception $e) {
+			error_log("On id = {$id}: " + $e->getMessage());
+		}
+
+		return $answer;
+	}
 	function get_niveis($conn, $id) {
 		$answer = [];
 		$statement = $conn->prepare("SELECT NIVEIS.NOME AS NOME FROM NIVEIS WHERE ID_RECURSO={$id}");
@@ -109,6 +125,7 @@ ini_set('display_errors', 'on');
 		while($row = $result->fetch_assoc()) {
 			$save =  $row;
 			$save["NIVEIS"] = implode(', ', get_niveis($conn, $row["ID_RECURSO"]));
+			$save["ENTIDADES_CONTRIBUINTES"] = implode(', ', get_entidades($conn, $row["ID_RECURSO"]));
 			$save["TECNICAS"] = implode(', ', get_tecnicas($conn, $row["ID_RECURSO"]));
 			$save["PALAVRAS_CHAVE"] = implode(', ', get_chaves($conn, $row["ID_RECURSO"]));
 			$save["AUTORES"] = implode(', ', get_autores($conn, $row["ID_RECURSO"]));

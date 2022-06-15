@@ -55,6 +55,22 @@
 				die('Houve um erro desconhecido');				
 			}
 
+			// Recuperar entidades contribuintes
+			$statement = $conn->prepare("select NOME from ENTIDADE_CONTRIBUINTE where ID_RECURSO = {$id_recurso};");
+
+			try {
+				$statement->execute();
+				$result = $statement->get_result();
+
+				while($row = $result->fetch_assoc()) {
+					$entidades[] = $row['NOME'];
+				}
+				$statement->close();
+			} catch(Exception $e) {
+				error_log($e->getMessage());
+				die('Houve um erro desconhecido');
+			}
+
 			// Recuperar palavras chave
 			$statement = $conn->prepare("select NOME from PALAVRASCHAVE where ID_RECURSO = {$id_recurso};");
 
@@ -227,22 +243,32 @@
 								?> 
 							</td> 
 						</tr>
+						<tr> <td class="legenda"> Entidades contribuintes: </td>
+							<td>
+								<?php 
+									for($i = 0; $i < count($entidades); $i++) {
+										if($i) echo ", ";
+										echo $entidades[$i];
+									} 
+								?> 
+							</td> 
+						</tr>
 						<tr> <td class="legenda"> Localização: </td> <td><a rel='external' href="<?php echo $req['LOCALIZACAO'];?>"> <?php echo $req['LOCALIZACAO'];?></a></td></tr>
 						<tr> <td class="legenda"> Repositório: </td> <td><?php echo $req['REPOSITORIO'];?></td></tr>
 						<tr> <td class="legenda"> Versão: </td> <td><?php echo $req['VERSAO'];?></td></tr>
 						<tr> <td class="legenda"> Status: </td> <td><?php echo $req['STATUS'];?></td></tr>
-						<tr> <td class="legenda"> Entidade Contribuinte: </td> <td><?php echo $req['ENTIDADE_CONTRIBUINTE'];?></td></tr>
-						<tr> <td class="legenda"> Formato: </td> <td><?php echo $req['FORMATO'];?></td></tr>
-						<tr> <td class="legenda"> Tamanho: </td> <td><?php echo $req['TAMANHO']." MB";?></td></tr>
+						<!-- <tr> <td class="legenda"> Entidade Contribuinte: </td> <td><?php echo $req['ENTIDADE_CONTRIBUINTE'];?></td></tr> -->
+						<!-- <tr> <td class="legenda"> Formato: </td> <td><?php echo $req['FORMATO'];?></td></tr> -->
+						<!-- <tr> <td class="legenda"> Tamanho: </td> <td><?php echo $req['TAMANHO']." MB";?></td></tr> -->
 						<tr> <td class="legenda"> Requisitos Tecnológicos: </td> <td><?php echo $req['REQUISITOS_TECNOLOGICOS'];?></td></tr>
 						<tr> <td class="legenda"> Instruções Instalação: </td> <td><?php echo $req['INSTRUCOES_INSTALACAO'];?></td></tr>
-						<tr> <td class="legenda"> Duração: </td> <td><?php echo $req['DURACAO'] == NULL? "-" : $req['DURACAO'];?></td></tr>
-						<tr> <td class="legenda"> Tipo de Interatividade: </td> <td><?php echo $req['TIPO_INTERATIVIDADE'];?></td></tr>
-						<tr> <td class="legenda"> Tipo de Recurso: </td> <td><?php echo $req['TIPO_RECURSO'];?></td></tr>
-						<tr> <td class="legenda"> Descricao Educacional: </td> <td><?php echo $req['DESCRICAO_EDUCACIONAL'];?></td></tr>
-						<tr> <td class="legenda"> Custo: </td> <td><?php echo $req['CUSTO']. ' R$'?></td></tr>
+						<!-- <tr> <td class="legenda"> Duração: </td> <td><?php echo $req['DURACAO'] == NULL? "-" : $req['DURACAO'];?></td></tr> -->
+						<!-- <tr> <td class="legenda"> Tipo de Interatividade: </td> <td><?php echo $req['TIPO_INTERATIVIDADE'];?></td></tr> -->
+						<!-- <tr> <td class="legenda"> Tipo de Recurso: </td> <td><?php echo $req['TIPO_RECURSO'];?></td></tr> -->
+						<!-- <tr> <td class="legenda"> Descricao Educacional: </td> <td><?php echo $req['DESCRICAO_EDUCACIONAL'];?></td></tr> -->
+						<!-- <tr> <td class="legenda"> Custo: </td> <td><?php echo $req['CUSTO']. ' R$'?></td></tr> -->
 						<tr> <td class="legenda"> Creative Commons: </td> <td><?php echo $req['CREATIVE_COMMONS'];?></td></tr>
-						<tr> <td class="legenda"> Copyright: </td> <td><?php echo $req['COPYRIGHT'];?></td></tr>
+						<!-- <tr> <td class="legenda"> Copyright: </td> <td><?php echo $req['COPYRIGHT'];?></td></tr> -->
 						<tr> <td class="legenda"> Adicionado em: </td> <td><?php echo $req['DATA_AD'];?></td></tr>
 					</table>
 			</div>

@@ -16,6 +16,26 @@ function noDigits(value) {
     return /^\D*$/.test(value);
 }
 
+/* Exibe um modal ao invés de um alert */
+function modalAlert(mensagem, redirecionamento){
+    MaterialDialog.alert(
+        mensagem, // Corpo do alerta
+        {
+            title:'Atenção', // Titulo do modal
+            buttons:{ // Botoes de recepção (Alerts utilizam apenas botoes de fechar/cancelar)
+                close:{
+                    text:'Fechar', //Texto do btn
+                    className:'red', // Classe que define a cor do btn
+                }
+            },
+            onCloseEnd: function() {
+                // if(redirecionamento)
+                    // window.location.replace("");
+            }
+        }
+    );
+}
+
 /* Retirado de https://stackoverflow.com/questions/469357/html-text-input-allows-only-numeric-input */
 // Restricts input for the given textbox to the given inputFilter (a function).
 function setInputFilter(textBox, inputFilter) {
@@ -143,7 +163,8 @@ function confirmEventCepEditBox() {
             } //end if.
             else {
                 //CEP pesquisado não foi encontrado.
-                alert("CEP não encontrado.");
+                msgAlerta = "CEP não encontrado.";
+                modalAlert(msgAlerta, false);
                 createCepEditBox();
                 $("#cep").addClass("invalid");
                 $("#cep").removeClass("valid");
@@ -153,7 +174,8 @@ function confirmEventCepEditBox() {
         /* Criar funcao de wait ate que o callback seja chamado (poe um icone de carregamento na tela) */
         return true;
     } else {
-        alert("Formato inválido");
+        msgAlerta = "Formato inválido";
+        modalAlert(msgAlerta, false);
         return false;
     }
 }
@@ -259,7 +281,8 @@ function alterarUsuario() {
     $("salvar_mudancas").attr("enabled", true);
 
     $.post(window.root + "alterar_usuario-db.php", objeto).done(function(data) {
-        alert(data);
+        msgAlerta = data;
+        modalAlert(msgAlerta, false);
         $("salvar_mudancas").attr("disabled", false);
     });
 }
@@ -315,14 +338,17 @@ $(function() {
 
     $("#mudar_senha").submit(function(event) {
         if (validarSenha($("#nova").val()) == false) { // If redundante para segurança
-            alert("Senha inválida");
+            msgAlerta = "Senha inválida";
+            modalAlert(msgAlerta, false);
             return false;
         }
         $("#mudar_senha_btn").attr("disabled", true);
         $.post(window.root + "mudar_senha-db.php", $("#mudar_senha").serialize()).done(function(data) {
             $("#mudar_senha_btn").attr("disabled", false);
-            alert(data);
+            msgAlerta = data;
+            modalAlert(msgAlerta, false);
         });
+
 
         return false;
     });
@@ -334,3 +360,8 @@ $(function() {
 
 
 });
+
+function excluirConta() {
+    msgAlerta = "Para excluir sua conta, entre em contato com o adminstrador pelo seguinte email: paschoalln@usp.br";
+    modalAlert(msgAlerta, false);
+}

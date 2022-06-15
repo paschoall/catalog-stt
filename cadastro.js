@@ -41,6 +41,26 @@ function validarSenha(senha) {
 	return senha.length >= 6 && senha.match(/[0-9]/g) && senha.match(/[a-z]/g) && senha.match(/[A-Z]/g);
 }
 
+/* Exibe um modal ao invés de um alert */
+function modalAlert(mensagem, redirecionamento){
+	MaterialDialog.alert(
+		mensagem, // Corpo do alerta
+		{
+			title:'Atenção', // Titulo do modal
+			buttons:{ // Botoes de recepção (Alerts utilizam apenas botoes de fechar/cancelar)
+				close:{
+					text:'Fechar', //Texto do btn
+					className:'red', // Classe que define a cor do btn
+				}
+			},
+			onCloseEnd: function() {
+				if(redirecionamento)
+					window.location.replace(window.root + "recursos/gerenciar.php");
+			}
+		}
+	);
+}
+
 /* Valida Campos */
 function validarCampos() {
 	// Primeiro checa se todos os campos estao validos
@@ -50,12 +70,14 @@ function validarCampos() {
 	}
 	for(var i = 0; i < campos_obrigatorios.length; ++i) {
 		if(campos_obrigatorios[i].classList.contains("invalid")) {
-			alert("Existe algum campo inválido");
+			msgAlerta = "Existe algum campo inválido";
+			modalAlert(msgAlerta, false);
 			return false;
 		}
 
 		if(campos_obrigatorios[i].value == "") {
-			alert("Preencha todos os campos obrigatórios");
+			msgAlerta = "Preencha todos os campos obrigatórios";
+			modalAlert(msgAlerta, false);
 			return false;
 		}
 	}
@@ -74,7 +96,7 @@ $(function() {
 		$("#cadastrar").hide();
 	}    
 	// Input filters
-	setInputFilter(document.getElementById("cep"), onlyDigits);
+	// setInputFilter(document.getElementById("cep"), onlyDigits);
 	setInputFilter(document.getElementById("numero"), onlyDigits);
 	setInputFilter(document.getElementById("data_nascimento"), onlyDigitsAndBars);
 
@@ -87,7 +109,7 @@ $(function() {
 	// Quando o campo cep perde o foco procura no banco de dados.
 	$("#cep").blur(function() {
 	    //Nova variável "cep" somente com dígitos.
-	    var cep = $(this).val().replace(/\D/g, '');
+	    var cep = $(this).val().replace(/\.|\-/g, '');
 
 	    //Verifica se campo cep possui valor informado.
 	    if (cep != "") {
@@ -110,11 +132,11 @@ $(function() {
 
 	                if (!("erro" in dados)) {
 	                    //Atualiza os campos com os valores da consulta.
-	                    $("#rua").val(dados.logradouro);
-	                    $("#bairro").val(dados.bairro);
-	                    $("#cidade").val(dados.localidade);
-	                    $("#uf").val(dados.uf);
-	                    $("#ibge").val(dados.ibge);
+	                    $("#rua").val(dados.logradouro).focus();
+	                    $("#bairro").val(dados.bairro).focus();
+	                    $("#cidade").val(dados.localidade).focus();
+	                    $("#uf").val(dados.uf).focus();
+	                    $("#ibge").val(dados.ibge).focus();
 
 	                    $("#cep").addClass("valid");
 	                    $("#cep").removeClass("invalid");
@@ -122,7 +144,8 @@ $(function() {
 	                else {
 	                    //CEP pesquisado não foi encontrado.
 	                    limpa_formulario_cep();
-	                    alert("CEP não encontrado.");
+	                    msgAlerta = "CEP não encontrado.";
+	                    modalAlert(msgAlerta, false);
 	                    $("#cep").addClass("invalid");
 	                    $("#cep").removeClass("valid");
 	                }
@@ -133,8 +156,10 @@ $(function() {
 	        	$("#cep").removeClass("valid");
 	            //cep é inválido.
 	            limpa_formulario_cep();
-				alert("Formato de CEP inválido.");
-		    }
+				msgAlerta = "Formato de CEP inválido. Você deve indicar o CEP da seguinte forma: xxxxxxx.";
+		    	modalAlert(msgAlerta, false);
+			}
+
 		} else {
 			$("#cep").removeClass("invalid");
 	        $("#cep").removeClass("valid");
@@ -213,10 +238,15 @@ $(function() {
 
 		$("#confirmar").attr("disabled", true);
 		$.post(window.root + "cadastro-db.php", $("#form").serialize()).done(function(data) {
-			if(data.includes("Duplicate entry")) alert("Este email já existe");
-			else alert("Cadastro feito, favor logar.\n\n" + data);
+			if(data.includes("Duplicate entry")){
+				msgAlerta = "Este email já existe";	
+				modalAlert(msgAlerta, false);
+			}else{
+				msgAlerta = "Cadastro feito, favor logar.\n\n" + data;	
+				modalAlert(msgAlerta, true);
+			} 
+
 			$("#confirmar").attr("disabled", false);
-			window.location.replace(window.root + "recursos/gerenciar.php");
 		});
 		return false;
 	});

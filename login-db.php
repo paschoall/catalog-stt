@@ -31,7 +31,7 @@ try {
     $statement->execute();
     $result = $statement->get_result();
 
-    if($result->num_rows == 0) die('Usuario nao encontrado');
+    if($result->num_rows == 0) die('Usuário não encontrado');
     else if($result->num_rows == 1) {
         while($row = $result->fetch_assoc()) {
             $hash = $row["senha"];

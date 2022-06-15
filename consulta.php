@@ -74,7 +74,7 @@
 				<div class = "row">
 					<div class = "col s9 tooltip" style=" height: 50px;"> 
 
-						<label for="search"> Filtros: </label>
+						<label for="search"> Pesquisar </label>
 						<div class="collection" style="padding: 0px; margin: 0px;">
 								<div class = "row" style="padding: 0px; margin: 0px;"> 
 									<div class = "col s11"> 
@@ -86,7 +86,7 @@
 								</div>	
 							
 						</div>
-						<span class="tooltiptext">Pesquise por vários tipos de informação, selecionados a direita...</span>
+						<span class="tooltiptext">Busque por recursos educacionais registrados no sistema</span>
 					</div>
 					<div class = "col s3 tooltip">
 
@@ -147,6 +147,7 @@
 												<option value="DA"> (DA) Dinamarquês </option>
 												<option value="DE"> (DE) Alemão </option>
 												<option value="EL"> (EL) Grego </option>
+												<option value="EN"> (EN) Inglês </option>
 												<option value="ES"> (ES) Espanhol </option>
 												<option value="ET"> (ET) Estoniano </option>
 												<option value="EU"> (EU) Basco </option>
@@ -228,9 +229,10 @@
 											</select>
 										</div> -->
 									</div>
-									<center>
+									<!-- <center> 
 										<a class="waves-effect waves-light btn cyan" id="limpar-filtro" style="width: 60%; position: absolute; bottom: 15px;right: 20%;">Aplicar filtros</a>
 									</center>
+									-->
 								</form>
 							</div>
 						</div>
@@ -241,7 +243,7 @@
 		<!-- Modal Structure -->
 		<div id="show_info" class="modal">
 			<div class="modal-header">
-				<a href="#!" class="modal-close waves-effect waves-green btn-flat" style="background-color:red;color:white;margin:10px;" onclick="document.location.reload(true);">Limpar Catálogo</a>
+				<a href="#!" class="modal-close waves-effect waves-green btn-flat" style="background-color:red;color:white;margin:10px;margin-right: 5%;float: right;" onclick="limpar_modal();">X</a>
 			</div>
 			<div class="modal-content">
 				<div class="row">
@@ -267,7 +269,21 @@
 		<script type="text/javascript" src="<?=ROOT?>consulta.js"> </script>
 		<script>
 
-			
+			function limpar_modal() {
+			    $('#show_info ul').empty();
+			}
+
+			$(document).on('focusout', $('#show_info').focus(), function (e) {
+			    setTimeout(function(){
+			        var focus=$(document.activeElement);
+			        if (focus.is("#show_info") || $('#show_info').has(focus).length) {
+			        } else {
+			            limpar_modal();
+			            //document.location.reload(true);
+			        }
+			    },0);
+			});
+
 			$.extend( true, $.fn.dataTable.defaults, {
 				"searching": true,
 				"bLengthChange": false
@@ -285,7 +301,6 @@
 					$('select').prop('selectedIndex',0);
 					$('select').formSelect();
 
-
 				});
 
 				$("#search").on('input', function(e){
@@ -297,6 +312,7 @@
 					filtroExterno();
 					$tableSel.dataTable().fnDraw();
 				})
+
 				var dTable = $tableSel.DataTable({
 					language: {
 						sEmptyTable: "Nenhum registro encontrado",
@@ -340,10 +356,8 @@
 						},
 						{ "data": "PALAVRAS_CHAVE" , "visible": false},
 						{ "data": "AUTORES" , "visible": false},
-						{ "data": "IDIOMA" , "visible": false},
-						{ "data": "FORMATO", "visible": false }
+						{ "data": "IDIOMA" , "visible": false}
 					]
-
 				});
 
 
@@ -360,9 +374,10 @@
 					})
 					// let link = document.getElementById('modal-LOCALIZACAO').value;
 					// let link2 = $( "modal-LOCALIZACAO" ).text();
-					$("#insert-contet").append('<a href="http://'+ data.LOCALIZACAO +'" class="modal-close waves-effect waves-green btn-flat" id="butao" style="margin:10px;margin-left:40%;background-color:#00bcd4;color:white;">Acessar recurso</a>')
+					$("#insert-contet").append('<a href="http://'+ data.LOCALIZACAO +'" class="modal-close waves-effect waves-green btn-flat" id="butao" target="_blank" style="margin:10px;margin-left:40%;background-color:#00bcd4;color:white;">Acessar recurso</a>')
 					$("#insert-contet").append('<br><hr><br>');
 					$('#show_info').modal();
+					flag = 1;
 				});
 
 
@@ -370,10 +385,15 @@
 					var filtro   = $("#search").val();
 					var modo     = $("#modo_pesquisa");
 					var idioma   = $("#idioma");
-					var formato  = $("#formato");
 
-					dTable.columns(parseInt(modo.val())).search(filtro).draw();
-					$tableSel.dataTable().fnDraw();
+					if(idioma.val() != "ALL"){
+						dTable.columns(7).search(idioma.val()).columns(parseInt(modo.val())).search(filtro).draw();
+					}else{
+						dTable.columns().search("").columns(parseInt(modo.val())).search(filtro).draw();
+					}
+					
+
+					$tableSel.dataTable().fnDraw(); 
 				}
 			});
 

@@ -44,12 +44,12 @@
 		<?php include BASE_URL."header.php"; ?>
 
 		<main>
-		<div class="container">
+		<div class="container card" style="margin: auto; padding-left: 5%;">
 			<div class="section" style="margin-top: 20px">
-				<h5> Cadastrar </h5>
+				<h5> Cadastro de usuário </h5>
 			</div>
 			<div class="row">
-				<form class="col s12" method="post" id="form" name="new_user" action="cadastro.php">
+				<form class="col s12" method="post" id="form"  name="new_user" action="cadastro.php">
 					<div class="row" style=" margin-top: -10px;">
 						<div class="input-field col s5"> 
 							<input type="text" id="nome" name="nome" class="obrigatorio" maxlength="45"> </input> 
@@ -124,7 +124,7 @@
 							<button class="btn waves-effect waves-light cyan darken-1" id="confirmar" name="confirmar">Confirmar</button>
 						</div>
 					</div>
-					<div class="row" style="margin-top: -20px; margin-left: 0px;">
+					<div class="row" style="margin-top: -20px; margin-left: 0px; font-size: 11px; color:#A9A9A9;">
 						<p>  A senha deve conter pelo menos 6 caracteres compostos por letras maiúsculas e minúsculas e pelo menos 1 dígito. </p>
 					</div>
 				</form>
@@ -139,9 +139,18 @@
 		<script src="<?=ROOT?>jquery/external/jquery/jquery.js"></script>
 		<script src="<?=ROOT?>jquery/jquery-ui.min.js"></script>
 		<script src="<?=ROOT?>js/materialize.js"></script>
+		<script src="<?=ROOT?>js/material-dialog.js"></script>
 		<script src="<?=ROOT?>js/init.js"></script>
+
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.0/jquery.mask.js"></script>
 
 		<?php include(BASE_URL.'export_session.php') ?> <!-- Incluir esse arquivo antes do outro, senao a variavel sessao nao estaria iniciada -->
 		<script type="text/javascript" src="<?=ROOT?>cadastro.js"> </script>
+
+		<script type="text/javascript">
+			
+			$('#cep').mask('00.000-000', {reverse: true});
+
+		</script>
 	</body>
 </html>

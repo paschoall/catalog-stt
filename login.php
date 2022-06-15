@@ -97,6 +97,7 @@
 		<script src="<?=ROOT?>jquery/external/jquery/jquery.js"></script>
 		<script src="<?=ROOT?>jquery/jquery-ui.min.js"></script>
 		<script src="<?=ROOT?>js/materialize.js"></script>
+		<script src="<?=ROOT?>js/material-dialog.js"></script>
 		<script src="<?=ROOT?>js/init.js"></script>
 
 		<?php include(BASE_URL.'export_session.php') ?> <!-- Incluir esse arquivo antes do outro, senao a variavel sessao nao estaria iniciada -->
