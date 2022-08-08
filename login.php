@@ -66,18 +66,26 @@
 									<div class="col s8">
 										<div class="input-field inline" style="margin-left: 20px;"> <input id="senha" type="password" name="senha"> </div>
 									</div>
-									<div class="col s2">
-										<a class="btn-floating btn-medium green" onclick="login()"><i class="material-icons" style="font-size: 20px">arrow_forward</i></a>
+									<!-- <div class="col s2">
+										<a class="btn-floating btn-medium blue" onclick="login()"><i class="material-icons" style="font-size: 20px">arrow_forward</i></a>
+									</div> -->
+									<div class="col s2"></div>
+								</div>
+
+								<div class="row valign-wrapper" style="margin-top: -20px">
+									<div class="col s3 right-align"></div>
+									<div class="col s8">
+										<button class="btn waves-effect waves-light cyan darken-1" style="width: 100%;" onclick="login()">Entrar</button>
 									</div>
+									<div class="col s2"></div>
 								</div>
 								<input type="submit" hidden="true">
 								</form>
 								<div class="row valign-wrapper" style="margin-bottom: -10px;">
-									<div class="col s2">Sem login?</div>
+									<div class="col s4">Sem login?</div>
 									<div class="col s8">
 										<div class="input-field inline" style="margin-left: 20px;"><a href="<?=ROOT?>cadastro.php">Cadastre-se</a></div>
 									</div>
-									<div class="col s2"></div>
 								</div>
 							</div>
 						</div>

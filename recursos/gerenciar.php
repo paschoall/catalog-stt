@@ -108,8 +108,8 @@
 						<a href="<?=ROOT?>perfil.php" class="sidebar collection-item">
 							Meus Dados
 						</a>
-						<a href="<?=ROOT?>logout.php" class="sidebar collection-item">
-							Sair <i id="sair_icon" class="material-icons right"> vertical_align_bottom </i>
+						<a href="#" onclick="sair('<?=ROOT?>logout.php');" class="sidebar collection-item">
+							Sair <i id="sair_icon" class="material-icons right"> reply_all </i>
 						</a>
 					</div>
 				</div>
@@ -163,6 +163,8 @@
 		<script src="<?=ROOT?>js/init.js"></script>
 		<script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
 		<script src="<?=ROOT?>js/dataTables.material.min.js"></script>
+		<script src="<?=ROOT?>js/materialize.js"></script>
+		<script src="<?=ROOT?>js/material-dialog.js"></script>
 
 		<!-- <//?php include(BASE_URL.'../export_session.php') ?> -->
 		<?php include(BASE_URL.'export_session.php') ?>
@@ -343,17 +345,49 @@
                     console.log(typeof index)
                     let label = index.replace("_", " ");
                     label     = label.charAt(0).toUpperCase() + label.slice(1).toLowerCase();
-                    $("#insert-contet").append('<li class="collection-item"><b>'+label+': </b><span id="modal-'+index+'">'+el+'</span></li>');
+                    if(label == 'Localizacao')
+						$("#insert-contet").append('<li class="collection-item"><b>'+label+': </b><span id="modal-'+index+'"><a href="http://'+el+'" target="_blank">'+el+'</a></span></li>');
+					else
+						$("#insert-contet").append('<li class="collection-item"><b>'+label+': </b><span id="modal-'+index+'">'+el+'</span></li>');
                 }
             })
-			$("#insert-contet").append('<a href="http://'+ data.LOCALIZACAO +'" class="modal-close waves-effect waves-green btn-flat" id="butao" target="_blank" style="margin:10px;margin-left:40%;background-color:#00bcd4;color:white;">Acessar recurso</a>')
+			$("#insert-contet").append('<a href="http://'+ data.LOCALIZACAO +'" class="modal-open waves-effect waves-green btn-flat" id="butao" target="_blank" style="margin:10px;margin-left:40%;background-color:#00bcd4;color:white;">Acessar recurso</a>')
 			$("#insert-contet").append('<br><hr><br>');
 			console.log(JSON.stringify(data, null, 4));
             $('#show_info').modal();
         });
+	});
 
+	/* Exibe um modal de confirmacao */
+	function modalDialog(mensagem, redirecionamento){
+		MaterialDialog.dialog(
+			mensagem, // Corpo do alerta
+			{
+				title:'Atenção',
+				modalType:"modal-fixed-footer",
+				onOpenStart: function(modal) {
+					$(".material-dialog").height(200);
+				},
+				buttons:{
+					close:{
+						className:"red",
+						text:"Ficar na pagina"
+					},
+					confirm:{
+						className:"blue",
+						text:"Sair da pagina",
+						callback:function(){
+							window.location.replace(redirecionamento);
+						}
+					}
+				}
+			}
+		);
+	}
 
-});
+	function sair(caminho){
+		modalDialog("Você realmente deseja sair?", caminho);
+	}
 
 
 /**Tratamentos de filtro via js */

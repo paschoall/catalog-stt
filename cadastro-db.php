@@ -48,11 +48,15 @@ if(isset($_POST['complemento'])) $complemento = $_POST['complemento'];
 $senha = password_hash($senha, PASSWORD_DEFAULT); // faz um hash da senha
 
 if(isset($_POST['senha'])) { // cadastro realizado normalmente
+
+    $dataConvert  = strtotime($data_nasc);
+    $data_nasc_Convert = date("d/m/Y", $dataConvert);
+
     $statement = $conn->prepare(
         "insert into USUARIO(email, nome, senha, data_nasc, cep, nome_rua, bairro, numero, cidade, estado, complemento)"
         ."values(?, ?, ?, STR_TO_DATE(?, '%d/%m/%Y'), ?, ?, ?, ?, ?, ?, ?);"
     );
-    $statement->bind_param("sssssssisss", $email, $nome, $senha, $data_nasc, $cep, $rua, $bairro, $numero, $cidade, $uf, $complemento);
+    $statement->bind_param("sssssssisss", $email, $nome, $senha, $data_nasc_Convert, $cep, $rua, $bairro, $numero, $cidade, $uf, $complemento);
 
 } else { // pre-cadastro eh realizado (somente nome email e senha)
     $statement = $conn->prepare("insert into USUARIO(email, nome, senha) values(?, ?, ?);");
@@ -67,7 +71,7 @@ try {
     else die($e->getMessage());
 }
 
-echo "Cadastro realizado com sucesso";
+echo "Cadastro realizado. Favor logar.";
 
 $conn->close();
 ?> 

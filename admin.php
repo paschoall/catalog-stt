@@ -82,7 +82,7 @@
 				border-left: 1px solid white; //#00acc1;
 			}
 
-			#sair_icon { transform: rotate(-90deg); }
+			/*#sair_icon { transform: rotate(-90deg); }*/
 
 			.clickable {
 				cursor: pointer;
@@ -105,7 +105,7 @@
 								Solicitações de Recursos
 							</a>
 							<a href="<?=ROOT?>logout.php" class="sidebar collection-item">
-								Sair <i id="sair_icon" class="material-icons right"> vertical_align_bottom </i>
+								Sair <i id="sair_icon" class="material-icons right"> reply_all </i>
 							</a>
 						</div>
 					</div>

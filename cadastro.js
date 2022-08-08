@@ -42,23 +42,38 @@ function validarSenha(senha) {
 }
 
 /* Exibe um modal ao invés de um alert */
-function modalAlert(mensagem, redirecionamento){
-	MaterialDialog.alert(
-		mensagem, // Corpo do alerta
-		{
-			title:'Atenção', // Titulo do modal
-			buttons:{ // Botoes de recepção (Alerts utilizam apenas botoes de fechar/cancelar)
-				close:{
-					text:'Fechar', //Texto do btn
-					className:'red', // Classe que define a cor do btn
+function modalAlert(alerta, mensagem, redirecionamento){
+	if(!redirecionamento){
+		MaterialDialog.alert(
+			mensagem, // Corpo do alerta
+			{
+				title:alerta, // Titulo do modal
+				buttons:{ // Botoes de recepção (Alerts utilizam apenas botoes de fechar/cancelar)
+					close:{
+						text:'Fechar', //Texto do btn
+						className:'red', // Classe que define a cor do btn
+					}
 				}
-			},
-			onCloseEnd: function() {
-				if(redirecionamento)
-					window.location.replace(window.root + "recursos/gerenciar.php");
 			}
-		}
-	);
+		);
+	}else{
+		MaterialDialog.alert(
+			mensagem, // Corpo do alerta
+			{
+				title:alerta, // Titulo do modal
+				buttons:{ // Botoes de recepção (Alerts utilizam apenas botoes de fechar/cancelar)
+					close:{
+						text:'Ok', //Texto do btn
+						className:'green', // Classe que define a cor do btn
+					}
+				},
+				onCloseEnd: function() {
+					if(redirecionamento)
+						window.location.replace(window.root + "recursos/gerenciar.php");
+				}
+			}
+		);
+	}
 }
 
 /* Valida Campos */
@@ -70,14 +85,16 @@ function validarCampos() {
 	}
 	for(var i = 0; i < campos_obrigatorios.length; ++i) {
 		if(campos_obrigatorios[i].classList.contains("invalid")) {
-			msgAlerta = "Existe algum campo inválido";
-			modalAlert(msgAlerta, false);
+			let labelText = $('label[for='+  campos_obrigatorios[i].id  +']').text().replace(/ \*/g,'');
+	    	msgAlerta = "O campo '" +labelText+ "' está inválido. Por favor, complete-o.";
+			modalAlert("Atenção", msgAlerta, false);
 			return false;
 		}
 
 		if(campos_obrigatorios[i].value == "") {
-			msgAlerta = "Preencha todos os campos obrigatórios";
-			modalAlert(msgAlerta, false);
+			let labelText = $('label[for='+  campos_obrigatorios[i].id  +']').text().replace(/ \*/g,'');
+	    	msgAlerta = "O campo '" +labelText+ "' não está preenchido. Por favor, complete-o.";
+			modalAlert("Atenção", msgAlerta, false);
 			return false;
 		}
 	}
@@ -98,7 +115,7 @@ $(function() {
 	// Input filters
 	// setInputFilter(document.getElementById("cep"), onlyDigits);
 	setInputFilter(document.getElementById("numero"), onlyDigits);
-	setInputFilter(document.getElementById("data_nascimento"), onlyDigitsAndBars);
+	// setInputFilter(document.getElementById("data_nascimento"), onlyDigitsAndBars);
 
 	setInputFilter(document.getElementById("nome"), noDigits);
 	setInputFilter(document.getElementById("cidade"), noDigits);
@@ -145,7 +162,7 @@ $(function() {
 	                    //CEP pesquisado não foi encontrado.
 	                    limpa_formulario_cep();
 	                    msgAlerta = "CEP não encontrado.";
-	                    modalAlert(msgAlerta, false);
+	                    modalAlert("Atenção", msgAlerta, false);
 	                    $("#cep").addClass("invalid");
 	                    $("#cep").removeClass("valid");
 	                }
@@ -156,8 +173,8 @@ $(function() {
 	        	$("#cep").removeClass("valid");
 	            //cep é inválido.
 	            limpa_formulario_cep();
-				msgAlerta = "Formato de CEP inválido. Você deve indicar o CEP da seguinte forma: xxxxxxx.";
-		    	modalAlert(msgAlerta, false);
+				msgAlerta = "Formato de CEP inválido. Você deve indicar o CEP da seguinte forma: xx.xxx-xx.";
+		    	modalAlert("Atenção", msgAlerta, false);
 			}
 
 		} else {
@@ -198,16 +215,16 @@ $(function() {
 	});
 
 	/* Valida campo de data de nascimento quando este perder o foco */
-	$("#data_nascimento").blur(function(){
-		var str = $("#data_nascimento").val();
-		if(/^[0-9]{2}\/[0-9]{2}\/[0-9]{4}$/.test(str)) {
-			$("#data_nascimento").removeClass("invalid");
-			$("#data_nascimento").addClass("valid");
-		} else {
-			$("#data_nascimento").removeClass("valid");
-			$("#data_nascimento").addClass("invalid");
-		}
-	});
+	// $("#data_nascimento").blur(function(){
+	// 	var str = $("#data_nascimento").val();
+	// 	if(/^[0-9]{2}\/[0-9]{2}\/[0-9]{4}$/.test(str)) {
+	// 		$("#data_nascimento").removeClass("invalid");
+	// 		$("#data_nascimento").addClass("valid");
+	// 	} else {
+	// 		$("#data_nascimento").removeClass("valid");
+	// 		$("#data_nascimento").addClass("invalid");
+	// 	}
+	// });
 
 	/* Cria datepicker */
 	$(".datepicker").datepicker({
@@ -240,10 +257,10 @@ $(function() {
 		$.post(window.root + "cadastro-db.php", $("#form").serialize()).done(function(data) {
 			if(data.includes("Duplicate entry")){
 				msgAlerta = "Este email já existe";	
-				modalAlert(msgAlerta, false);
+				modalAlert("Atenção", msgAlerta, false);
 			}else{
-				msgAlerta = "Cadastro feito, favor logar.\n\n" + data;	
-				modalAlert(msgAlerta, true);
+				msgAlerta = data;	
+				modalAlert("Sucesso", msgAlerta, true);
 			} 
 
 			$("#confirmar").attr("disabled", false);

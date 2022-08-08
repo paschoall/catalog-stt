@@ -40,6 +40,10 @@
 				min-width: 10px;
 				border-left: 1px solid white; //#00acc1;
 			}
+
+			.email_box{
+				text-transform: lowercase;
+			}
 		</style>
 
 		<link href="<?=ROOT?>css/styleInserir.css" type="text/css" rel="stylesheet"/>
@@ -55,17 +59,17 @@
 			<div class="row"  style="margin-top: 50px">
 				<div class="col s3">
 					<div class="collection">
-						<a href="<?=ROOT?>recursos/inserir.php" class="sidebar collection-item active">
+						<a href="#" onclick="acessarLink('<?=ROOT?>recursos/inserir.php');" class="sidebar collection-item active">
 							Adicionar Recursos
 						</a>
-						<a href="<?=ROOT?>recursos/gerenciar.php" class="sidebar collection-item">
+						<a href="#" onclick="acessarLink('<?=ROOT?>recursos/gerenciar.php');" class="sidebar collection-item">
 							Meus Recursos
 						</a>
-						<a href="<?=ROOT?>perfil.php" class="sidebar collection-item">
+						<a href="#" onclick="acessarLink('<?=ROOT?>perfil.php');" class="sidebar collection-item">
 							Meus Dados
 						</a>
-						<a href="<?=ROOT?>logout.php" class="sidebar collection-item">
-							Sair <i id="sair_icon" class="material-icons right"> vertical_align_bottom </i>
+						<a href="#" onclick="sair('<?=ROOT?>logout.php');" class="sidebar collection-item">
+							Sair <i id="sair_icon" class="material-icons right"> reply_all </i>
 						</a>
 					</div>
 				</div>
@@ -86,91 +90,94 @@
 								<div class="row" style="">
 									<div class="input-field col s12 m5 tooltip"> 
 										<input type="text" id="titulo" name="titulo" class="obrigatorio" maxlength="45" />
-										<label for="titulo"> Titulo *</label>
+										<label for="titulo">Titulo *</label>
 										<span class="tooltiptext">O titulo do recurso.</span>
 									</div>
 									<div class="input-field col s12 m4 tooltip"> 
 										<select id="idioma" name="idioma">
-											<option value="AF"> (AF) Afrikanns </option>
-											<option value="AR"> (AR) Árabe </option>
-											<option value="BG"> (BG) Búlgaro </option>
-											<option value="BN"> (BN) Bengali </option>
-											<option value="BO"> (BO) Tibetano </option>
-											<option value="BR"> (BR) Português (Brasil) </option>
-											<option value="CA"> (CA) Catalão </option>
-											<option value="CS"> (CS) Tcheco </option>
-											<option value="CY"> (CY) Welsh </option>
-											<option value="DA"> (DA) Dinamarquês </option>
-											<option value="DE"> (DE) Alemão </option>
-											<option value="EL"> (EL) Grego </option>
-											<option value="EN"> (EN) Inglês </option>
-											<option value="ES"> (ES) Espanhol </option>
-											<option value="ET"> (ET) Estoniano </option>
-											<option value="EU"> (EU) Basco </option>
-											<option value="FA"> (FA) Persa </option>
-											<option value="FI"> (FI) Finlandês </option>
-											<option value="FJ"> (FJ) Fiji </option>
-											<option value="FR"> (FR) Francês </option>
-											<option value="GA"> (GA) Irlandês </option>
-											<option value="GU"> (GU) Gujarati </option>
-											<option value="HE"> (HE) Hebraico </option>
-											<option value="HI"> (HI) Hindi </option>
-											<option value="HR"> (HR) Croata </option>
-											<option value="HU"> (HU) Húngaro </option>
-											<option value="HY"> (HY) Armênio </option>
-											<option value="ID"> (ID) Indonésio </option>
-											<option value="IS"> (IS) Islandês </option>
-											<option value="IT"> (IT) Italiano </option>
-											<option value="JA"> (JA) Japonês </option>
-											<option value="JW"> (JW) Javanês </option>
-											<option value="KA"> (KA) Georgiano </option>
-											<option value="KM"> (KM) Cambojano </option>
-											<option value="KO"> (KO) Coreano </option>
-											<option value="LA"> (LA) Latim </option>
-											<option value="LT"> (LT) Lituano </option>
-											<option value="LV"> (LV) Letão </option>
-											<option value="MI"> (MI) Maori </option>
-											<option value="MK"> (MK) Macedônio </option>
-											<option value="ML"> (ML) Malayalam </option>
-											<option value="MN"> (MN) Mongol </option>
-											<option value="MR"> (MR) Marathi </option>
-											<option value="MS"> (MS) Malaio </option>
-											<option value="MT"> (MT) Maltês </option>
-											<option value="NE"> (NE) Nepali </option>
-											<option value="NL"> (NL) Holandês </option>
-											<option value="NO"> (NO) Norueguês </option>
-											<option value="PA"> (PA) Punjabi </option>
-											<option value="PL"> (PL) Polonês </option>
-											<option value="PT"> (PT) Português </option>
-											<option value="QU"> (QU) Quechua </option>
-											<option value="RO"> (RO) Romeno </option>
-											<option value="RU"> (RU) Russo </option>
-											<option value="SK"> (SK) Eslovaco </option>
-											<option value="SL"> (SL) Esloveno </option>
-											<option value="SM"> (SM) Samoano </option>
-											<option value="SQ"> (SQ) Albanês </option>
-											<option value="SR"> (SR) Sérvio </option>
-											<option value="SV"> (SV) Sueco </option>
-											<option value="SW"> (SW) Suaíli </option>
-											<option value="TA"> (TA) Tâmil </option>
-											<option value="TE"> (TE) Telugu </option>
-											<option value="TH"> (TH) Tailandês </option>
-											<option value="TO"> (TO) Tonga </option>
-											<option value="TR"> (TR) Turco </option>
-											<option value="TT"> (TT) Tártaro </option>
-											<option value="UK"> (UK) Ucraniano </option>
-											<option value="UR"> (UR) Urdu </option>
-											<option value="UZ"> (UZ) Uzbeque </option>
-											<option value="VI"> (VI) Vietnamita </option>
-											<option value="XH"> (XH) Xhosa </option>
-											<option value="ZH"> (ZH) Chinês (Mandarim) </option>
+											<!-- <option value="AF"> Afrikanns (AF) </option> 
+											<option value="SQ"> Albanês (SQ) </option> 
+											<option value="DE"> Alemão (DE) </option> 
+											<option value="AR"> Árabe (AR) </option> 
+											<option value="HY"> Armênio (HY) </option> 
+											<option value="EU"> Basco (EU) </option> 
+											<option value="BN"> Bengali (BN) </option> 
+											<option value="BG"> Búlgaro (BG) </option> 
+											<option value="KM"> Cambojano (KM) </option> 
+											<option value="CA"> Catalão (CA) </option> 
+											<option value="ZH"> Chinês (ZH) (Mandarim) </option> 
+											<option value="KO"> Coreano (KO) </option> 
+											<option value="HR"> Croata (HR) </option> 
+											<option value="DA"> Dinamarquês (DA) </option> 
+											<option value="SK"> Eslovaco (SK) </option> 
+											<option value="SL"> Esloveno (SL) </option> 
+											<option value="ES"> Espanhol (ES) </option> 
+											<option value="ET"> Estoniano (ET) </option> 
+											<option value="FJ"> Fiji (FJ) </option> 
+											<option value="FI"> Finlandês (FI) </option> 
+											<option value="FR"> Francês (FR) </option> 
+											<option value="KA"> Georgiano (KA) </option> 
+											<option value="EL"> Grego (EL) </option> 
+											<option value="GU"> Gujarati (GU) </option> 
+											<option value="HE"> Hebraico (HE) </option> 
+											<option value="HI"> Hindi (HI) </option> 
+											<option value="NL"> Holandês (NL) </option> 
+											<option value="HU"> Húngaro (HU) </option> 
+											<option value="ID"> Indonésio (ID) </option> 
+											<option value="EN"> Inglês (EN) </option> 
+											<option value="GA"> Irlandês (GA) </option> 
+											<option value="IS"> Islandês (IS) </option> 
+											<option value="IT"> Italiano (IT) </option> 
+											<option value="JA"> Japonês (JA) </option> 
+											<option value="JW"> Javanês (JW) </option> 
+											<option value="LA"> Latim (LA) </option> 
+											<option value="LV"> Letão (LV) </option> 
+											<option value="LT"> Lituano (LT) </option> 
+											<option value="MK"> Macedônio (MK) </option> 
+											<option value="MS"> Malaio (MS) </option> 
+											<option value="ML"> Malayalam (ML) </option> 
+											<option value="MT"> Maltês (MT) </option> 
+											<option value="MI"> Maori (MI) </option> 
+											<option value="MR"> Marathi (MR) </option> 
+											<option value="MN"> Mongol (MN) </option> 
+											<option value="NE"> Nepali (NE) </option> 
+											<option value="NO"> Norueguês (NO) </option> 
+											<option value="FA"> Persa (FA) </option> 
+											<option value="PL"> Polonês (PL) </option> 
+											<option value="BR"> Português (BR) (Brasil) </option> 
+											<option value="PT"> Português (PT) (Portugal) </option> 
+											<option value="PA"> Punjabi (PA) </option> 
+											<option value="QU"> Quechua (QU) </option> 
+											<option value="RO"> Romeno (RO) </option> 
+											<option value="RU"> Russo (RU) </option> 
+											<option value="SM"> Samoano (SM) </option> 
+											<option value="SR"> Sérvio (SR) </option> 
+											<option value="SW"> Suaíli (SW) </option> 
+											<option value="SV"> Sueco (SV) </option> 
+											<option value="TH"> Tailandês (TH) </option> 
+											<option value="TA"> Tâmil (TA) </option> 
+											<option value="TT"> Tártaro (TT) </option> 
+											<option value="CS"> Tcheco (CS) </option> 
+											<option value="TE"> Telugu (TE) </option> 
+											<option value="BO"> Tibetano (BO) </option> 
+											<option value="TO"> Tonga (TO) </option> 
+											<option value="TR"> Turco (TR) </option> 
+											<option value="UK"> Ucraniano (UK) </option> 
+											<option value="UR"> Urdu (UR) </option> 
+											<option value="UZ"> Uzbeque (UZ) </option> 
+											<option value="VI"> Vietnamita (VI) </option> 
+											<option value="CY"> Welsh (CY) </option> 
+											<option value="XH"> Xhosa (XH) </option> -->
+											<option value="BR"> Português (BR)</option>
+											<option value="EN"> Inglês (EN) </option>
+											<option value="ES"> Espanhol (ES) </option>
 										</select>
-										<label for="idioma"> Idioma *</label>
+										<label for="idioma">Idioma *</label>
 										<span class="tooltiptext">O idioma atual do recurso.</span>
 									</div>
 									<div class="input-field col s12 m3 tooltip" style=""> 
 										<input type="text" id="repositorio" name="repositorio" class="obrigatorio" maxlength="45" > 
-										<label for="repositorio"> Repositório *</label>
+										<label for="repositorio">Repositório *</label>
 										<span class="tooltiptext">O tipo de repositório onde o recurso está (não o link absoluto, somente o tipo: YouTube, WordPress, Site Local).</span>
 									</div>
 								</div>
@@ -182,11 +189,11 @@
 									</div>
 								</div>
 								<div class="row">
-									<div class="input-field col s12 m3 tooltip" style=""> 
+									<div class="input-field col s12 m5 tooltip" style=""> 
 										<input type="text" id="palavraschave" data-box="chave" name="palavraschave" class="obrigatorio multiply-adder" maxlength="45" > 
-										<label for="palavra-chave"> Palavra-Chave *</label>
+										<label for="palavraschave">Palavra-Chave *</label>
 									</div>
-									<div class="col s9">
+									<div class="col s7">
 										<div class="card blue lighten-4">
 											<div class="card-content grey-text text-darken-4 tooltip" id="box-chave">
 												<p>Para adicionar palavras-chave, preencha o campo ao lado e pressione enter.</p>
@@ -196,20 +203,16 @@
 									</div>
 								</div>
 								<div class="row">
-									<div class="input-field col s12 m3" style="">
-										<?php
-											//$_SESSION['email']
-											echo '<input type="email" id="autor_recurso" name="autor_recurso" data-box="autor_recurso" class="validate obrigatorio multiply-adder" maxlength="45" value="' . $_SESSION['email'] . '" style="margin-top: 10px;">';
-										?>
-										<!-- <input type="email" id="autor_recurso" name="autor_recurso" data-box="autor_recurso" class="obrigatorio multiply-adder" maxlength="45" style="margin-top: 10px;"> -->
-										<label for="autor_recurso"> Autor(Email do autor) *</label>
+									<div class="input-field col s12 m5" style="">
+										<input type="email" id="autor_recurso" name="autor_recurso" data-box="autor_recurso" class="obrigatorio multiply-adder" maxlength="45" style="margin-top: 10px;">
+										<label for="autor_recurso">Coautores (Email)</label>
 										<span class="helper-text" data-error="Campo incorreto" data-success="Ok"></span>
 									</div>
 
-									<div class="col s12 m9">
+									<div class="col s12 m7">
 										<div class="card blue lighten-4">
 											<div class="card-content grey-text text-darken-4 tooltip" id="box-autor_recurso">
-												<p>pressione enter para adicionar o seu email. Caso houver outros autores, insira os emails dos demais e pressione enter.</p>
+												
 												<span class="tooltiptext">Os emails dos autores do recurso.</span>
 											</div>
 										</div>
@@ -232,7 +235,7 @@
 									</div> -->
 									<div class="input-field col s12 m6 tooltip"> 
 										<input type="text" id="versao" name="versao" class="obrigatorio" >
-										<label for="versao"> Versão *</label>
+										<label for="versao">Versão *</label>
 										<span class="tooltiptext">A versão do recurso a ser inserido.</span>
 									</div>
 									<div class="input-field col s12 m6 tooltip"> 
@@ -241,17 +244,18 @@
 											<option value="Indisponivel"> Indisponivel </option>
 											<option value="Desconhecido"> Desconhecido </option>
 										</select>
-										<label for="status"> Status *</label>
+										<label for="status">Status *</label>
 										<span class="tooltiptext">Status que se encontra o recurso.</span>
 									</div>
 
 
-									<div class="input-field col s12 m3" style=""> 
+									<div class="input-field col s12 m5 tooltip" style=""> 
 										<input type="text" id="entidade_contribuinte" name="entidade_contribuinte" data-box="entidade_contribuinte" class="obrigatorio multiply-adder" style="margin-top: 21px;">
-										<label for="entidade_contribuinte"> Entidades contribuintes*</label>
+										<label for="entidade_contribuinte">Entidades contribuintes *</label>
+										<span class="tooltiptext">Entidade representa as instituções de origem dos autores e orgão de financiamento que apoiar o desenvolvimento do REA.</span>
 									</div>
 
-									<div class="col s12 m9">
+									<div class="col s12 m7">
 										<div class="card blue lighten-4">
 											<div class="card-content grey-text text-darken-4 tooltip" id="box-entidade_contribuinte">
 												<p>Para adicionar as entidades que contribuiram com a criação deste recurso, preencha o campo ao lado e pressione enter.</p>
@@ -309,7 +313,7 @@
 								<div class="row">
 									<div class="input-field col s12 tooltip">
 										<input type="text" id="localizacao" name="localizacao" class="obrigatorio" >
-										<label for="localizacao"> Localização *</label>
+										<label for="localizacao">Localização *</label>
 										<span class="tooltiptext">Link para o local atual do recurso.</span>
 									</div>
 								</div>
@@ -358,12 +362,12 @@
 								</div>
 								-->
 								<div class="row">
-									<div class="input-field col s12 m3" style=""> 
+									<div class="input-field col s12 m5" style=""> 
 										<input type="text" id="niveis" name="niveis"  data-box="niveis" class="obrigatorio multiply-adder" maxlength="45" > 
 										<label for="niveis">Niveis de Teste *</label>
 									</div>
 
-									<div class="col s12 m9">
+									<div class="col s12 m7">
 										<div class="card blue lighten-4">
 											<div class="card-content grey-text text-darken-4 tooltip" id="box-niveis">
 												<p>Para adicionar niveis de teste, preencha o campo ao lado e pressione enter.</p>
@@ -373,12 +377,12 @@
 									</div>
 								</div>
 								<div class="row">
-									<div class="input-field col s12 m3" style=""> 
+									<div class="input-field col s12 m5" style=""> 
 										<input type="text" id="tecnica" name="tecnica" data-box="tecnica" class="obrigatorio multiply-adder" maxlength="45" > 
-										<label for="tecnica"> Técnicas de Teste*</label>
+										<label for="tecnica">Técnicas de Teste *</label>
 									</div>
 
-									<div class="col s12 m9">
+									<div class="col s12 m7">
 										<div class="card blue lighten-4">
 											<div class="card-content grey-text text-darken-4 tooltip" id="box-tecnica">
 												<p>Para adicionar as técnicas de teste, preencha o campo ao lado e pressione enter.</p>
@@ -388,12 +392,12 @@
 									</div>
 								</div>
 								<div class="row">
-									<div class="input-field col s12 m3" style=""> 
+									<div class="input-field col s12 m5" style=""> 
 										<input type="text" id="criterio" name="criterio" data-box="criterio" class="obrigatorio multiply-adder"  maxlength="45" > 
-										<label for="criterio"> Critérios de Teste *</label>
+										<label for="criterio">Critérios de Teste *</label>
 									</div>
 
-									<div class="col s12 m9">
+									<div class="col s12 m7">
 										<div class="card blue lighten-4">
 											<div class="card-content grey-text text-darken-4 tooltip" id="box-criterio">
 												<p>Para adicionar os critérios de teste, preencha o campo ao lado e pressione enter.</p>
@@ -407,7 +411,7 @@
 							</div>
 
 
-							<button class="collapsible waves-effect waves-light">Direitos Autorais</button>
+							<button class="collapsible waves-effect waves-light" onclick="scrollDown()">Direitos Autorais *</button>
 							<div class="content">
 								<!------------------Inicio Direitos----------------------->
 								<div class="row">
@@ -438,10 +442,21 @@
 									    </p>
 									</div>
 									-->
-									<div class="input-field col s12 tooltip">
-										<input type="text" id="creative_commons" name="creative_commons">
-										<label for="creative_commons"> Creative Common</label>
+
+									<div class="input-field col s12 tooltip" style="margin-top: 19px;">
+										<select id="creative_commons" name="creative_commons">
+											<option value="CC BY"> CC BY </option>
+											<option value="CC BY-SA"> CC BY-SA </option>
+											<option value="CC BY-ND"> CC BY-ND </option>
+											<option value="CC BY-NC"> CC BY-NC </option>
+											<option value="CC BY-NC-SA"> CC BY-NC-SA </option>
+											<option value="CC BY-NC-ND"> CC BY-NC-ND </option>
+										</select>
+										
+
+										<label for="creative_commons">Creative Common *</label>
 										<span class="tooltiptext">Indique o tipo de lincença.</span>
+
 									</div>
 									<!--
 									<div class="input-field col s12 m4 tooltip">
@@ -451,6 +466,13 @@
 									</div>
 									-->
 								</div>
+								<br>
+								<br>
+								<br>
+								<br>
+								<br>
+								<br>
+								<br>
 								<br>
 								<!------------------Fim Direitos----------------------->
 							</div>
@@ -463,6 +485,7 @@
 				</div>
 			</div>
 		</div>
+		<br>
 		</main>
 
 		<?php include(BASE_URL.'../footer.php') ?>
@@ -479,9 +502,100 @@
 		<script type="text/javascript" src="<?=ROOT?>perfil.js"> </script>
 		<script>
 
+		//Vetor que guardará os campos multi-valorados.
+		var multiplos = [];
+
+		var aux = 0;
+
 		$( document ).ready(function() {
 	        $('html, body').animate({scrollTop:100},'0');
+
+	        //Coloca o email do usuário como autor por padrão
+
+	        let email = "<?php print $_SESSION['email']; ?>";
+
+	        $('#box-autor_recurso').append('<a style="margin:0 5px 2px 0" data-box="autor_recurso" data-val="'+email+'" class="waves-effect waves-light btn-small box-button-added email_box">'+email+'</a>');
+
+	        $('#box-autor_recurso').append('<p>Pressione enter para adicionar coautores.</p>');
+
+	        multiplos["autor_recurso"] = []; //Inicializando o vetor multi-valorado com o vetor 'autor_recurso'
+	        multiplos["autor_recurso"].push(email); //Adicionando o email do usuario ao vetor 'autor_recurso'
+
+	        // console.log($("label[for='titulo']").parents().eq(2).prev().text());
 	    });
+
+	    function scrollDown(){
+	    	$("html, body").animate({ scrollTop: $(document).height() }, 1000);
+	    }
+
+		//https://rudmanmrrod.github.io/material-dialog/	
+	    /* Exibe um modal ao invés de um alert */
+		function modalAlert(mensagem, redirecionamento){
+			MaterialDialog.alert(
+				mensagem, // Corpo do alerta
+				{
+					title:'Atenção', // Titulo do modal
+					buttons:{ // Botoes de recepção (Alerts utilizam apenas botoes de fechar/cancelar)
+						close:{
+							text:'Fechar', //Texto do btn
+							className:'red', // Classe que define a cor do btn
+						}
+					},
+					onCloseEnd: function() {
+						if(redirecionamento)
+							window.location.replace("<?=ROOT?>recursos/gerenciar.php"); 
+					}
+				}
+			);
+		}
+
+		/* Exibe um modal de confirmacao */
+		function modalDialog(mensagem, redirecionamento){
+			MaterialDialog.dialog(
+				mensagem, // Corpo do alerta
+				{
+					title:'Atenção',
+					modalType:"modal-fixed-footer",
+					onOpenStart: function(modal) {
+						$(".material-dialog").height(200);
+					},
+					buttons:{
+						close:{
+							className:"red",
+							text:"Ficar na pagina"
+						},
+						confirm:{
+							className:"blue",
+							text:"Sair da pagina",
+							callback:function(){
+								window.location.replace(redirecionamento);
+							}
+						}
+					}
+				}
+			);
+		}
+
+		function sair(caminho){
+			modalDialog("Você realmente deseja sair?", caminho);
+		}
+
+	    function acessarLink(caminho){
+	    	var cont = 0;
+	    	//Verificando somente se os input[type=text] estão preenchidos (nao conta o input email, os textarea e os selects)
+		    $("input[type=text]").each(function(){
+		    	if($(this).val() != ""){
+		    		// console.log($(this).val());
+		   	        cont++;
+		        }
+		    });
+
+		    //este '2' é porque o select utiliza input quando uma opção é selecionada
+		    if(cont == 2)
+		    	window.location.replace(caminho);
+		    else
+		    	modalDialog("Você realmente deseja sair da pagina?", caminho);
+	    }
 
 		$('#test').click(function() {
 		    if (!$(this).is(':checked'))
@@ -505,35 +619,13 @@
 			}
 		}
 
-		/* Exibe um modal ao invés de um alert */
-		function modalAlert(mensagem, redirecionamento){
-			MaterialDialog.alert(
-				mensagem, // Corpo do alerta
-				{
-					title:'Atenção', // Titulo do modal
-					buttons:{ // Botoes de recepção (Alerts utilizam apenas botoes de fechar/cancelar)
-						close:{
-							text:'Fechar', //Texto do btn
-							className:'red', // Classe que define a cor do btn
-						}
-					},
-					onCloseEnd: function() {
-						if(redirecionamento)
-							window.location.replace("<?=ROOT?>recursos/gerenciar.php"); 
-					}
-				}
-			);
-		}
-
-		// $('.modal').modal({backdrop: 'static', keyboard: false}) 
-
 		function validateLink(link) {
 
-			var regex = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
+			var regex = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/;
 			if (regex.test(link)) {
 				return true;
 			}else{
-				msgAlerta = 'Insira um link valido. Ex: "www.google.com". "'+link+'" está incorreto';
+				msgAlerta = 'Insira um link válido. Ex: "www.google.com". "'+link+'" está incorreto';
 				modalAlert(msgAlerta, false);
 	            return false;
 			}
@@ -546,7 +638,6 @@
 		  	validateLink($(this).val());
 		});
 
-
 		$(function(){
 			// console.log(window.sessao);
 			if(window.sessao.email === undefined) {
@@ -558,7 +649,6 @@
 				$("#cadastrar").hide();
 			}
 
-			var multiplos = [];
 			$('select').formSelect();
 
 			$('#enviar').on('click',function(e){
@@ -575,13 +665,18 @@
 				dataForm[13]["value"] = multiplos['tecnica'] ;
 				dataForm[14]["value"] = multiplos['criterio'] ;
 
-				var flag = 0;
+				let flag = 0;
 
-                for (var i = 0; i < 16; i++) {
+                for (let i = 0; i < 16; i++) {
                 	if(i != 10 && i != 11 && i != 15){ // excluindo os campos obrigatorios
                 		if(dataForm[i].value == null || dataForm[i].value == ""){
 	                		flag = 1;
-	                		break;
+	                		//$('input[name="'+dataForm[i].name+'"]').addClass('invalid');
+	                		let labelText = $('label[for='+  dataForm[i].name  +']').text().replace(/ \*/g,'');
+	                		let buttonTextParent = $('label[for='+  dataForm[i].name  +']').parents().eq(2).prev().text().replace(/ \*/g,'');
+	                		msgAlerta = "O campo '" +labelText+ "', presente em '" + buttonTextParent + "', não está preenchido. Por favor, complete-o.";
+							modalAlert(msgAlerta, false);
+	                		return;
 	                	}
                 	}
                 }
@@ -637,12 +732,19 @@
 			});
 			$('form').on(
 				'click','.box-button-added', function(e){
-					let index = multiplos[$(this).data('box')].indexOf($(this).data('val'));
-					if (index > -1) {
-						multiplos[$(this).data('box')].splice(index, 1);
+
+					let email = "<?php print $_SESSION['email']; ?>";
+
+					if(email != $(this).data('val')){
+						let index = multiplos[$(this).data('box')].indexOf($(this).data('val'));
+						if (index > -1) {
+							multiplos[$(this).data('box')].splice(index, 1);
+						}
+						$(this).remove();
+						if(multiplos[$(this).data('box')].length == 0 || ($(this).data('box') == 'autor_recurso' && multiplos[$(this).data('box')].length == 1)){
+							$('#box-'+$(this).data('box')+' p').show();
+						}
 					}
-					$(this).remove();
-					
 				}
 			)
 			$('.multiply-adder').on({
@@ -654,19 +756,56 @@
 							if(typeof multiplos[box] === 'undefined'){
 								multiplos[box] = [];
 							}
+
 							if($(this).attr('type') === 'email'){
 								if(!validateEmail(valor)){
-									msgAlerta = 'Insira um email valido. Ex: "lucas@gmail.com". "'+valor+'" está incorreto.';
+									msgAlerta = 'Insira um email válido. Ex: "lucas@gmail.com". "'+valor+'" está incorreto.';
 									modalAlert(msgAlerta, false);
 									return;
 								}
 							}
-							$('#box-'+box+' p').remove();
-							multiplos[box].push(valor);
-							$('#box-'+box).append('<a style="margin:0 5px 2px 0" data-box="'+box+'" data-val="'+valor+'" class="waves-effect waves-light btn-small box-button-added"><i class="material-icons left">remove_circle</i>'+valor+'</a>');
-							$(this).val(' ');
-						}
 
+							if($(this).attr('type') === 'email' && valor == multiplos[box][0]){
+								modalAlert("Você já está inserido como um autor deste recurso.", false);
+								return;
+							}
+
+							if(jQuery.inArray(valor, multiplos[box]) != -1){
+								modalAlert("Este valor já está inserido.", false);
+								return;
+							}
+
+							if(valor.trim().length === 0){
+								modalAlert("Este valor é inválido. Não pode-se preencer este campo somenente com espaços em branco.", false);
+								return;
+							}
+
+							if($(this).attr('type') === 'email'){
+								let input_email = $(this);
+								$.ajax({
+									method : 'POST',
+									url    : 'server/proc_email_user.php',
+									data   : {"email" : valor},
+									success: function(data) {
+										if(data){ 
+						                	$('#box-'+box+' p').hide();
+											multiplos[box].push(valor);
+											$('#box-'+box).append('<a style="margin:0 5px 2px 0" data-box="'+box+'" data-val="'+valor+'" class="waves-effect waves-light btn-small box-button-added email_box"><i class="material-icons left">remove_circle</i>'+valor+'</a>');
+											//console.log($(this).attr('type'));
+											input_email.val('');
+										}else{
+											modalAlert("Este usuário não está cadastrado.", false);
+										}
+						            } 
+								});
+							}else{
+								//Antes removia, agora so esconde 
+								$('#box-'+box+' p').hide();
+								multiplos[box].push(valor);
+								$('#box-'+box).append('<a style="margin:0 5px 2px 0" data-box="'+box+'" data-val="'+valor+'" class="waves-effect waves-light btn-small box-button-added"><i class="material-icons left">remove_circle</i>'+valor+'</a>');
+								$(this).val('');
+							}
+						}
 					}
 				}
 			})
