@@ -90,8 +90,8 @@
 								<div class="row" style="">
 									<div class="input-field col s12 m5 tooltip"> 
 										<input type="text" id="titulo" name="titulo" class="obrigatorio" maxlength="45" />
-										<label for="titulo">Titulo *</label>
-										<span class="tooltiptext">O titulo do recurso.</span>
+										<label for="titulo">Título *</label>
+										<span class="tooltiptext">Escreva o título do recurso.</span>
 									</div>
 									<div class="input-field col s12 m4 tooltip"> 
 										<select id="idioma" name="idioma">
@@ -173,7 +173,7 @@
 											<option value="ES"> Espanhol (ES) </option>
 										</select>
 										<label for="idioma">Idioma *</label>
-										<span class="tooltiptext">O idioma atual do recurso.</span>
+										<span class="tooltiptext">Indique o idioma atual do recurso.</span>
 									</div>
 									<div class="input-field col s12 m3 tooltip" style=""> 
 										<input type="text" id="repositorio" name="repositorio" class="obrigatorio" maxlength="45" > 
@@ -205,7 +205,7 @@
 								<div class="row">
 									<div class="input-field col s12 m5" style="">
 										<input type="email" id="autor_recurso" name="autor_recurso" data-box="autor_recurso" class="obrigatorio multiply-adder" maxlength="45" style="margin-top: 10px;">
-										<label for="autor_recurso">Coautores (Email)</label>
+										<label for="autor_recurso">Coautores (E-mail)</label>
 										<span class="helper-text" data-error="Campo incorreto" data-success="Ok"></span>
 									</div>
 
@@ -213,7 +213,7 @@
 										<div class="card blue lighten-4">
 											<div class="card-content grey-text text-darken-4 tooltip" id="box-autor_recurso">
 												
-												<span class="tooltiptext">Os emails dos autores do recurso.</span>
+												<span class="tooltiptext">Indique os e-mails dos autores do recurso.</span>
 											</div>
 										</div>
 									</div>
@@ -224,7 +224,7 @@
 
 
 							<button class="collapsible waves-effect waves-light">Ciclo de Vida *</button>
-							<div class="content">
+							<div class="content" style="margin-bottom: 12px;">
 								<!------------------Ciclo de Vida----------------------->
 								
 								<div class="row">
@@ -371,7 +371,7 @@
 										<div class="card blue lighten-4">
 											<div class="card-content grey-text text-darken-4 tooltip" id="box-niveis">
 												<p>Para adicionar niveis de teste, preencha o campo ao lado e pressione enter.</p>
-												<span class="tooltiptext">Os niveis de teste que o recurso pretende ensinar.</span>
+												<span class="tooltiptext">Inclua os níveis de teste que são abordados pelo recurso educacional.</span>
 											</div>
 										</div>
 									</div>
@@ -386,7 +386,7 @@
 										<div class="card blue lighten-4">
 											<div class="card-content grey-text text-darken-4 tooltip" id="box-tecnica">
 												<p>Para adicionar as técnicas de teste, preencha o campo ao lado e pressione enter.</p>
-												<span class="tooltiptext">As técnicas de teste que o recurso pretende ensinar</span>
+												<span class="tooltiptext">Acrescente as técnicas de teste que são discutidas pelo recurso educacional. Por exemplo: teste funcional.</span>
 											</div>
 										</div>
 									</div>
@@ -401,7 +401,7 @@
 										<div class="card blue lighten-4">
 											<div class="card-content grey-text text-darken-4 tooltip" id="box-criterio">
 												<p>Para adicionar os critérios de teste, preencha o campo ao lado e pressione enter.</p>
-												<span class="tooltiptext">Os critérios de teste que o recurso pretende ensinar.</span>
+												<span class="tooltiptext">Apresente os critérios de teste que são abordados pelo recurso educacional. Por exemplo, análise de valor limite.</span>
 											</div>
 										</div>
 									</div>
@@ -702,7 +702,7 @@
 							console.log(ret);
 
 							if(ret[0] != false){
-								msgAlerta = 'Dado enviado para revisão, favor aguardar avaliação de um administrador para que seu recurso seja adicionado ou rejeitado.';
+								msgAlerta = 'O recurso foi registrado com sucesso. Aguarde que em breve entraremos em contato por e-mail para informar se o recurso foi incluído no catálogo de recursos e se há algum problema existente.';
 								modalAlert(msgAlerta, true);
 								// window.location.replace("<?=ROOT?>recursos/gerenciar.php");
 							}else{

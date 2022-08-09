@@ -114,7 +114,7 @@
 					<div class="row">
 						<div class="input-field col s8" style=" margin-top: 10px;"> 
 							<input type="email" id="email" name="email" class="validate obrigatorio" maxlength="45"> </input> 
-							<label for="email">Email *</label>
+							<label for="email">E-mail *</label>
 							<span class="helper-text" data-error="Email inválido" data-success=""></span>
 						</div>
 					</div>

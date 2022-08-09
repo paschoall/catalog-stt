@@ -242,7 +242,7 @@
 										      </label>
 										    </p>
 										    <br>
-											<span class="tooltiptext">Para resultados mais precisos, use filtro para o sistema apresentar recursos educacionais que estão em um idioma específico ou em mais de um idioma</span>
+											<span class="tooltiptext" style="font-size: 15px;">Para resultados mais precisos, use filtro para o sistema apresentar recursos educacionais que estão em um idioma específico ou em mais de um idioma</span>
 										</div>
 										<!-- <div class="input-field col s12"> 
 											<select id="formato" name="formato">

@@ -134,7 +134,7 @@
                         <tbody>
                         </tbody>
 					</table>
-					<span class="tooltiptext">Faça uma pesquisa aqui!</span>
+					<span class="tooltiptext">Faça um busca por recursos educacionais que você registrou no catálogo.</span>
 				</div>
 			</div>
 		</div>
